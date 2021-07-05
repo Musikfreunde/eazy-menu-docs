@@ -1,0 +1,1 @@
+# eazy-menu-docs
