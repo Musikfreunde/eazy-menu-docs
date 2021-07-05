@@ -13,3 +13,6 @@ EazyMenu ist eine Webanwendung die für Arbeiter der Oberösterreichischen Versi
 * Bozidar Spasenovic
 
 
+## ERD
+
+![ERD](plantuml.png)
