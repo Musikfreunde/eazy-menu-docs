@@ -1,6 +1,6 @@
 # EazyMenu Documentation
 
-Github Pages: (https://musikfreunde.github.io/eazy-menu-docs/) [EazyMenu Index]
+Github Pages: [EazyMenu Index](https://musikfreunde.github.io/eazy-menu-docs/)
 
 ## Info 
 
