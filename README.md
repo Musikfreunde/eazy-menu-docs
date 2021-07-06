@@ -34,18 +34,23 @@ Diese ERD is (stand 06.07.2021), laut der Firma, in Ordnung und wird auch verwen
 ## Mockups
 
 ### Logins
-
+Einfaches Login für die Mitarbeiter aber auch Kantine und Personal. Wird wahrscheinlich mit Keycloak gemacht.
 ![login](login-view.png)
 
 ### Menü Übersicht 
+Hier wird jedes Menü angezeigt zum davor ausgewählten Datum. Der user kann zwischen 3 Mahlzeiten wählen.
 
 ![übersicht](menubestellung-übersicht.png)
 
 ### Formular Übersicht (nach auswahl des Menüs)
 
+Der User muss nach auswahl der Mahlzeit dieses "Formular" ausfühlen. Die muss auswählen um wie viel Uhr gegessen wird und wie viel Mahzeiten konsumiert werden.
+
 ![übersicht-onClick](menubestellung-übersicht-onClick.png)
 
 ### History
+
+Hier werden alle Mahlzeiten angezeigt die der User gegessen hat.
 
 ![history mockup-view](history.png)
 
