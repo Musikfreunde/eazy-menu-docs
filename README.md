@@ -19,9 +19,15 @@ EazyMenu ist eine Webanwendung die für Arbeiter der Oberösterreichischen Versi
 
 ## ERD Alt
 
+Die linke seite ist schon von der Firma vorgegeben worden. Es werden aber kleine Details geändert und verbessert. 
+
+Dieses ERD is veraltet. Laut der Firma ist es zu Groß und Detailiert. Die Kantine findet es besser wenn es vereinfacht wird.
+
 ![ERD-alt](erd.png)
 
 ## ERD Neu
+
+Diese ERD is (stand 06.07.2021), laut der Firma, in Ordnung und wird auch verwendet.
 
 ![ERD-neu](erd-neu.png)
 
