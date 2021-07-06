@@ -19,10 +19,11 @@ EazyMenu ist eine Webanwendung die für Arbeiter der Oberösterreichischen Versi
 
 ## ERD Alt
 
-![ERD](erd.png)
+![ERD-alt](erd.png)
+
 ## ERD Neu
 
-![ERD-Alt](erd-neu-png)
+![ERD-neu](erd-neu.png)
 
 ## Mockups
 
