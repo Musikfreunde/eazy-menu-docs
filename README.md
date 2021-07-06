@@ -44,7 +44,7 @@ Hier wird jedes Menü angezeigt zum davor ausgewählten Datum. Der User kann zwi
 
 ![übersicht](menubestellung-übersicht.png)
 
-### Formular Übersicht (nach Auswahl des Menüs)
+### Formular Übersicht (Nach Auswahl des Menüs)
 
 Der User muss nach auswahl der Mahlzeit dieses "Formular" ausfüllen. Die muss auswählen, um wie viel Uhr gegessen wird und wie viel Mahlzeiten konsumiert werden.
 
