@@ -1,6 +1,10 @@
 # EazyMenu Documentation
 
-Github Pages: [EazyMenu Index](https://musikfreunde.github.io/eazy-menu-docs/)
+## Anmerkung
+
+Wir werden hier einige Datein einfügen die wir für unsere Diplomarbeit verwenden werden. Da die Firewall in der Firma Github Blockiert werden wir voraussichtlich in dieser Readme alles Dokumentieren.
+
+Github Pages: [EazyMenu Index](https://musikfreunde.github.io/eazy-menu-docs/) (Noch nicht Fertig)
 
 ## Info 
 
@@ -15,4 +19,12 @@ EazyMenu ist eine Webanwendung die für Arbeiter der Oberösterreichischen Versi
 
 ## ERD
 
-![ERD](plantuml.png)
+![ERD](erd.png)
+
+## Mockups
+
+![übersicht-onClick](menubestellung-übersicht-onClick.png)
+
+![login](login-view.png)
+
+![übersicht](menubestellung-übersicht.png)
