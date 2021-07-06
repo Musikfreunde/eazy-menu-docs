@@ -23,8 +23,14 @@ EazyMenu ist eine Webanwendung die für Arbeiter der Oberösterreichischen Versi
 
 ## Mockups
 
-![übersicht-onClick](menubestellung-übersicht-onClick.png)
+### Logins
 
 ![login](login-view.png)
+
+### Übersicht (nach auswahl des Menüs)
+
+![übersicht-onClick](menubestellung-übersicht-onClick.png)
+
+### Menü Übersicht 
 
 ![übersicht](menubestellung-übersicht.png)
