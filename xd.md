@@ -1,6 +1,10 @@
 Beschreibung des Datenmodells: 
-Owner: OOEVKANTINE  
+Owner: OOEVKANTINE  
 **Tabelle: KANTINE**
+
+<div class="table-wrap">
+
+<table class="confluenceTable">
 
 <tbody>
 
@@ -42,7 +46,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Bezeichnung der Kantine</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -56,7 +60,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Gruppenbezeichnung der Öffnungszeiten</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -70,7 +74,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Kennzeichen, ob der Kantineneintrag (A)ktiv oder (I)naktiv ist</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -182,7 +186,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">verpflichtende Referenz auf den künstlichen internen Schlüssel der Tabelle KANTINE.</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -196,7 +200,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Kennzeichen, ob der Öffnungszeiteneintrag (A)ktiv oder (I)naktiv ist.</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -210,7 +214,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">"Beginn des Zeitfensters, ab dem die Kantine geöffnet ist. Formatvorgabe hh24:mi"</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -224,7 +228,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">"Ende des Zeitfensters, ab dem die Kantine geöffnet ist. Formatvorgabe hh24:mi"</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -238,7 +242,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Maximale Anzahl von Plätzen, die in dem definierten Zeitfester verfügbar sind. NULL steht für keine Einschränkung.</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -350,7 +354,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">verpflichtende Referenz auf den künstlichen internen Schlüssel der Tabelle KANTINE.</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -378,7 +382,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Kennzeichnung des Menüs innerhalb eines Tages (A, B, C ...)</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -392,7 +396,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Beschreibung der Vorspeise</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -406,7 +410,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Beschreibung der Hauptspeise</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -420,7 +424,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Beschreibung der Nachspeise</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -488,7 +492,9 @@ Owner: OOEVKANTINE  
 
 **Tabelle: BESTELLUNG**
 
+<div class="table-wrap">
 
+<table class="confluenceTable">
 
 <tbody>
 
@@ -530,7 +536,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Auswahl einer Servicezeit - verpflichtende Referenz auf den künstlichen internen Schlüssel der Tabelle OEFFNUNGSZEIT.</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -544,7 +550,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Auswahl des Menüs - verpflichtende Referenz auf den künstlichen internen Schlüssel der Tabelle MENUE.</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -558,7 +564,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">User, der die Bestellung durchgeführt hat</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -572,7 +578,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">User, für den die Bestellung durchgeführt wurde (Konsument)</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -586,7 +592,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Zusatzwünsche an die Kantine</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -600,7 +606,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Personalnummer zur Verrechnung des Menüs (in der Regel die Nummer des Konsumenten)</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -614,7 +620,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Anzahl der Menüs, die bestellt wurden</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -628,7 +634,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Datum der Stornierung</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -642,7 +648,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Zeitpunkt, wann die Bestellung abgerechnet wurde</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -656,7 +662,7 @@ Owner: OOEVKANTINE  
 
 <td class="confluenceTd">Kostenstelle, gegen die die Kosten verrechnet werden</td>
 
-<td class="confluenceTd"> </td>
+<td class="confluenceTd"> </td>
 
 </tr>
 
@@ -720,8 +726,8 @@ Owner: OOEVKANTINE  
 
 </table>
 
-
+</div>
 
 Zusatz: 
-* zu jeder Tabelle gibt es eine technische History-Tabelle, welche automatisch bei DMLs mitgewartet werden. Es dürfte KEINEN Geschäftsfall geben, wo die Anwendung auf diese Tabellen (*_h) zugreifen sollte. 
-* es wurden bereits eine Handvoll Testdaten erzeugt (verscripted, damit wiederholbar und ausbaufähig)</div>
+  * zu jeder Tabelle gibt es eine technische History-Tabelle, welche automatisch bei DMLs mitgewartet werden. Es dürfte KEINEN Geschäftsfall geben, wo die Anwendung auf diese       Tabellen (*_h) zugreifen sollte. 
+  * es wurden bereits eine Handvoll Testdaten erzeugt (verscripted, damit wiederholbar und ausbaufähig)</div>
