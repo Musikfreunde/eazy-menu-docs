@@ -1,8 +1,6 @@
-<div class="action-body flooded">Beschreibung des Datenmodells: Owner: OOEVKANTINE  **Tabelle: KANTINE**
-
-<div class="table-wrap">
-
-<table class="confluenceTable">
+Beschreibung des Datenmodells: 
+Owner: OOEVKANTINE  
+**Tabelle: KANTINE**
 
 <tbody>
 
@@ -490,9 +488,7 @@
 
 **Tabelle: BESTELLUNG**
 
-<div class="table-wrap">
 
-<table class="confluenceTable">
 
 <tbody>
 
@@ -724,6 +720,8 @@
 
 </table>
 
-</div>
 
-Zusatz: * zu jeder Tabelle gibt es eine technische History-Tabelle, welche automatisch bei DMLs mitgewartet werden. Es dürfte KEINEN Geschäftsfall geben, wo die Anwendung auf diese Tabellen (*_h) zugreifen sollte. * es wurden bereits eine Handvoll Testdaten erzeugt (verscripted, damit wiederholbar und ausbaufähig)</div>
+
+Zusatz: 
+* zu jeder Tabelle gibt es eine technische History-Tabelle, welche automatisch bei DMLs mitgewartet werden. Es dürfte KEINEN Geschäftsfall geben, wo die Anwendung auf diese Tabellen (*_h) zugreifen sollte. 
+* es wurden bereits eine Handvoll Testdaten erzeugt (verscripted, damit wiederholbar und ausbaufähig)</div>
