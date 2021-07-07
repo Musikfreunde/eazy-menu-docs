@@ -1,5 +1,5 @@
-Beschreibung des Datenmodells: 
-Owner: OOEVKANTINE  
+Beschreibung des Datenmodells:   
+Owner: OOEVKANTINE    
 **Tabelle: KANTINE**
 
 <div class="table-wrap">
