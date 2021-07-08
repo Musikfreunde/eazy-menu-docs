@@ -21,7 +21,7 @@ EazyMenu ist eine Webanwendung, die für Arbeiter der Oberösterreichischen Vers
 
 Die linke Seite ist schon von der Firma vorgegeben worden. Es werden aber kleine Details geändert und verbessert. 
 
-![ERD-alt](erd.png)
+![ERD-alt](images/erd.png)
 
 Dieses ERD ist veraltet. Laut der Firma ist es zu groß und detailliert. Die Kantine findet es besser wenn, es vereinfacht wird.
 
@@ -29,31 +29,31 @@ Dieses ERD ist veraltet. Laut der Firma ist es zu groß und detailliert. Die Kan
 
 Diese ERD ist (stand 06.07.2021), laut der Firma, in Ordnung und wird auch verwendet.
 
-![ERD-neu](erd-neu.png)
+![ERD-neu](images/erd-neu.png)
 
 ## Mockups
 
 ### Login
 
 Einfaches Login für die Mitarbeiter, aber auch Kantine und Personal. Wird wahrscheinlich mit Keycloak gemacht.
-![login](login-View.png)
+![login](images/login-View.png)
 
 ### Menü Übersicht 
 
 Hier wird jedes Menü angezeigt zum davor ausgewählten Datum. Der User kann zwischen 3 Mahlzeiten wählen.
 
-![übersicht](menubestellung-übersicht.png)
+![übersicht](images/menubestellung-übersicht.png)
 
 ### Formular Übersicht (Nach Auswahl des Menüs)
 
 Der User muss nach auswahl der Mahlzeit dieses "Formular" ausfüllen. Die muss auswählen, um wie viel Uhr gegessen wird und wie viel Mahlzeiten konsumiert werden.
 
-![übersicht-onClick](menubestellung-übersicht-onClick.png)
+![übersicht-onClick](images/menubestellung-übersicht-onClick.png)
 
 ### History
 
 Hier werden alle Mahlzeiten angezeigt, welcher der User gegessen hat.
 
-![history mockup-view](history.png)
+![history mockup-view](images/history.png)
 
 
