@@ -31,11 +31,15 @@ Diese ERD ist (stand 06.07.2021), laut der Firma, in Ordnung und wird auch verwe
 
 ![ERD-neu](images/erd-neu.png)
 
+## System Architektur
+
+![sys-arc](images/system_arc.PNG)
+
 ## Mockups
 
 ### Login
 
-Einfaches Login für die Mitarbeiter, aber auch Kantine und Personal. Wird wahrscheinlich mit Keycloak gemacht.
+Einfaches Login für die Mitarbeiter, aber auch Kantine und Personal. Wird wahrscheinlich mit Keycloak gemacht.  
 ![login](images/login-View.png)
 
 ### Menü Übersicht 
