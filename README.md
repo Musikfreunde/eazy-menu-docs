@@ -72,7 +72,7 @@ NPM: https://www.npmjs.com/package/axios
 
 Bootstrap-Vue (jquery): https://bootstrap-vue.org/
 
-Tausch: \\ntschth\Tausch
+Tausch: \\\ntschth\Tausch
 
 Hilfe: Fabian Mauhart Meetingpoint Links
 
