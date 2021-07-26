@@ -60,20 +60,5 @@ Hier werden alle Mahlzeiten angezeigt, welcher der User gegessen hat.
 
 ![history mockup-view](images/history.png)
 
-## Info
-
-Vertriebsapp: https://gitea.ooev.at/OOEV/vertriebsapp/src/branch/master
-
-Vue: https://vuex.vuejs.org/
-
-Vue router: https://router.vuejs.org/
-
-NPM: https://www.npmjs.com/package/axios
-
-Bootstrap-Vue (jquery): https://bootstrap-vue.org/
-
-Tausch: \\\ntschth\Tausch
-
-Hilfe: Fabian Mauhart Meetingpoint Links
 
 
