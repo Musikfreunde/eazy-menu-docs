@@ -12,6 +12,8 @@ sehr intuitive Intelligenz, die es dem Entwickler sehr einfach macht damit zu pr
 Wir haben uns dafür entschieden, da wir damit viel Erfahrung hatten und die oben genannten Punkte
 unterstützten unsere Entscheidung enorm.
 
+\section{Android Studio}
+
 \section{Git}
 \author{Benjamin Besic}
 Git ist ein Versionskontrollsystem (oft abgekürzt durch VCS) für Entwickler. Es ist ein Open-Source System, das im Jahre 2005
@@ -208,14 +210,82 @@ Das Diagramm hier stellt den Ablauf einer Erstellung einer neuen Vue Instanz dar
 
 \subsubsection{Vue Components}
 Komponenten sind wiederverwendbare Vue Instanzen mit einem eigenen Namen. Diese Komponenten können mittels HTML-Tags in anderen Komponenten verwendet werden.
+Eine Vue.js Seite ist meistens in mehrere Komponenten aufgeteilt, um größere Bereiche auf der Seite zu trennen und übersichtlicher zu gestalten. Diese können miteinander 
+kommunizieren und Daten austauschen, um z.B. Daten, die ständig verändert werden ordentlich darzustellen.\cite{VueGuideComponents} \\*
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.3]{pics/NestedComponentsTree.png}
+    \caption{Darstellung von vernetzten Komponenten innerhalb einer Webpage}
+        \small \url{https://vuejs.org/images/components.png?_sw-precache=b5c08269dfc26ae6d7db3801e9efd296}
+    \label{fig:impl:NestedComponentsTree}
+\end{figure}
+Die folgende Grafik veranschaulicht den Component Tree, der zeigt wie die Single-Page Anwendung umgesetzt ist. 
+Die grünen Boxen zeigen die miteinander vernetzten Komponenten, jeder Komponent kann mehrere Unterkomponenten haben, je nach Einteilung der Webseite.
+\subsection{Angular vs. Vue}
+\subsubsection{Marktstatistik}
+\textbf{Angular:}
+\begin{itemize}
+    \item Angular wird eher für Seiten benutzt mit hohen Aufrufzahlen
+    \item Nachdem was bekannt ist benutzen unter 0.4\% aller Webseiten Angular    
+    \item Angular wird von 16.1\% Entwicklern weltweit verwendet \cite{AngVsVueSIM}
+\end{itemize}
 
-
-\section{Angular vs. Vue}
+\textbf{Vue:}
+\begin{itemize}
+    \item Es gibt mehr als 1.523.449 Millionen Webseiten, die Vue benutzen
+    \item Der Marktanteil von Vue beträgt nicht mehr als 0.5\% \cite{AngVsVueSIM}       
+\end{itemize}
+\subsubsection{Vor- und Nachteile}
+Von der Lernkurve her ist Vue deutlich im Vorteil, da es einfacher zu verstehen ist als Angular. Angular benötigt viel Einarbeitungszeit, bis man die Funktionsweise
+verstanden hat. Angular ist eher für umfangreiche Projekte gedacht, währenddessen Vue auf geringe Größe und hohe Performance abzielt. \\*
+In Angular sind die Logik und das Aussehen strikt getrennt, währenddessen in Vue alles in einem File zu finden ist und mehr an HTML erinnert durch die Scripts, die man schreibt.
+Ein Vorteil von Angular ist die Implementierung von Typescript, was eine Weiterentwicklung von Javascript ist, die versucht die Macken von Javascript zu verbessern.\\* 
+Was noch zu erwägen ist ist, dass Angular weiter verbreitet ist als Vue und es oft Features oder Plugins gibt, die in Angular selbstverständlich sind, aber in Vue nicht aufzufinden sind.
+Dies sollte sich aber im Laufe der Zeit verbessern. \\*  Generell kann man sagen, dass das Programmieren mit Angular eher and die Programmierung mit Java erinnert mit den Objekten, Abhängigkeiten,
+Konstruktoren, usw. Während Vue an das Programmieren von Websites mittels HTML und Javascript erinnert. \cite{AngVsVueHOST}
+\subsubsection{Warum Vue?}
+Unserer Entscheidung Vue zu nehmen ist einerseits von der Firma beeinflusst worden, da sie es vorgeschlagen haben und es bei ihnen das gängige Framework ist.\\*
+Andere Faktoren waren noch, dass wir Angular in der Schule oft verwendet haben und wollten durch Vue eine andere Methode ausprobieren, um Webanwendungen zu erstellen.
+Vue ist die bessere Wahl für den Umfang unserer Webanwendung gewesen und die bessere Performance in Vue ist wichtig, damit die Bestellungen reibungslos ablaufen können im Echtbetrieb.
 
 \section{HTML}
+HTML genannt HyperText Markup Language, ist eine einheitliche, textbasierte, Auszeichnungssprache für Webdokumente. HTML definiert ganz allgemein gesehen die Struktur eines Dokuments. 
+Am 13.März 1989 wurde am CERN in Genf das Konzept HTML von Tim Berners-Lee vorgeschlagen, um eine einheitliche Methode zu finden Dokumente öffentlich zu übermitteln. Seitdem ist HTML  einer Grundbausteine des World Wide Webs geworden. \\*
+HTML basiert auf sogenannten Tags, die verschiedene Inhalte auf der Website definieren sollten. Diese basieren auf einer bestimmten Syntax, um das Schreiben zu vereinheitlichen. \\*
+Es ist im Grunde eigentlich keine Programmiersprache, sondern eine statische Sprache, die zur Definierung benutzt wird. 
+Das HTML Gerüst wird von einem Browser eingelesen und dieser generiert dann auf der Basis des HTML Files eine Website. \cite{HTMLTut} \cite{HTMLSeoKueche}
+
+\begin{lstlisting}[language=HTML,caption=HTML File Grundgerüst,label=lst:impl:foo]
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Titel der Webseite </title>
+    </head>
+    <body>
+        <h1> Ueberschrift </h1>
+    </body>
+</html>
+\end{lstlisting}
+
+Wie man im Beispiel sieht gibt bei Tags ein Beginn und ein Ende und der Inhalt dazwischen wird dargestellt.
+Es gibt auch Tags ohne Beginn und Ende, sogenannte inhaltslose Tags.
+Doch HTML wird meist nie allein verwendet, erst in der Kombination mit CSS, Bootstrap und Javascript kann man eine gute Website erstellen.
 
 \section{CSS}
+CSS (Cascading Style Sheets) ist die Sprache, die benutzt wird eine HTML Seite visuell zu gestalten. CSS ist wie HTML keine Programmiersprache, sie wurde dafür entwickelt um das Aussehen von HTML Seiten einheitlich zu verändern.\\*
+Eine CSS-Datei wird durch einen Tag mit dem zugehörigen HTML Dokument verbunden und dadurch werden die Änderungen angewendet.
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.3]{pics/CSSRegel.png}
+    \caption{Aufbau einer CSS-Regel}
+        \small \url{https://media.prod.mdn.mozit.cloud/attachments/2017/09/27/15467/3889d04d90c10b27e863c6850d588c43/css-example.png}
+    \label{fig:impl:CSSRule}
+\end{figure}
+
+Die Struktur von CSS-Dateien wird durch Regeln beschrieben. Jede Regel hat einen Selektor, der auf ein zugehöriges HTML Tag zugreift.
+Innerhalb der Deklaration wird dann der Wert einer bestimmten Eigenschaft gesetzt (Mehrere Eigenschaften sind möglich).
+Es gibt eine große Auswahl von Eigenschaften wie z.B.: Schriftfarbe, Textart, Positionierung, etc.
 \section{Javascript}
 
 \section{Json Web Token (JWT)}
@@ -223,6 +293,8 @@ Komponenten sind wiederverwendbare Vue Instanzen mit einem eigenen Namen. Diese 
 \section{Progressive Web App(PWA)}
 
 \section{Google Charts}
+
+\section{Jetpack Compose}
 
 \subsubsection{Deepest}
 Vermeide mich.
