@@ -113,16 +113,16 @@ Es gibt ebenfalls bezahlte Pläne, die es vor allem Organisationen und Unternehm
 \section{Java}
 
 \section{Java EE}
-
-\section{Maven}
-
 \subsection{Java EE vs. Quarkus}
 
 \subsection{JPA}
 
+\section{Quarkus}
 \subsection{Hibernate}
 
 \subsection{Panache}
+
+\section{Maven}
 
 \section{JBoss}
 
@@ -239,12 +239,12 @@ Die grünen Boxen zeigen die miteinander vernetzten Komponenten, jeder Komponent
 Von der Lernkurve her ist Vue deutlich im Vorteil, da es einfacher zu verstehen ist als Angular. Angular benötigt viel Einarbeitungszeit, bis man die Funktionsweise
 verstanden hat. Angular ist eher für umfangreiche Projekte gedacht, währenddessen Vue auf geringe Größe und hohe Performance abzielt. \\*
 In Angular sind die Logik und das Aussehen strikt getrennt, währenddessen in Vue alles in einem File zu finden ist und mehr an HTML erinnert durch die Scripts, die man schreibt.
-Ein Vorteil von Angular ist die Implementierung von Typescript, was eine Weiterentwicklung von Javascript ist, die versucht die Macken von Javascript zu verbessern.\\* 
+Ein Vorteil von Angular ist die Implementierung von Typescript, was eine Weiterentwicklung von JavaScript ist, die versucht die Macken von JavaScript zu verbessern.\\* 
 Was noch zu erwägen ist ist, dass Angular weiter verbreitet ist als Vue und es oft Features oder Plugins gibt, die in Angular selbstverständlich sind, aber in Vue nicht aufzufinden sind.
 Dies sollte sich aber im Laufe der Zeit verbessern. \\*  Generell kann man sagen, dass das Programmieren mit Angular eher and die Programmierung mit Java erinnert mit den Objekten, Abhängigkeiten,
-Konstruktoren, usw. Während Vue an das Programmieren von Websites mittels HTML und Javascript erinnert. \cite{AngVsVueHOST}
+Konstruktoren, usw. Während Vue an das Programmieren von Websites mittels HTML und JavaScript erinnert. \cite{AngVsVueHOST}
 \subsubsection{Warum Vue?}
-Unserer Entscheidung Vue zu nehmen ist einerseits von der Firma beeinflusst worden, da sie es vorgeschlagen haben und es bei ihnen das gängige Framework ist.\\*
+Unsere Entscheidung Vue zu nehmen ist einerseits von der Firma beeinflusst worden, da sie es vorgeschlagen haben und es bei ihnen das gängige Framework ist.\\*
 Andere Faktoren waren noch, dass wir Angular in der Schule oft verwendet haben und wollten durch Vue eine andere Methode ausprobieren, um Webanwendungen zu erstellen.
 Vue ist die bessere Wahl für den Umfang unserer Webanwendung gewesen und die bessere Performance in Vue ist wichtig, damit die Bestellungen reibungslos ablaufen können im Echtbetrieb.
 
@@ -270,7 +270,7 @@ Das HTML Gerüst wird von einem Browser eingelesen und dieser generiert dann auf
 
 Wie man im Beispiel sieht gibt bei Tags ein Beginn und ein Ende und der Inhalt dazwischen wird dargestellt.
 Es gibt auch Tags ohne Beginn und Ende, sogenannte inhaltslose Tags.
-Doch HTML wird meist nie allein verwendet, erst in der Kombination mit CSS, Bootstrap und Javascript kann man eine gute Website erstellen.
+Doch HTML wird meist nie allein verwendet, erst in der Kombination mit CSS, Bootstrap und JavaScript kann man eine gute Website erstellen.
 
 \section{CSS}
 \author{Benjamin Besic}
@@ -288,15 +288,68 @@ Eine CSS-Datei wird durch einen Tag mit dem zugehörigen HTML Dokument verbunden
 Die Struktur von CSS-Dateien wird durch Regeln beschrieben. Jede Regel hat einen Selektor, der auf ein zugehöriges HTML Tag zugreift.
 Innerhalb der Deklaration wird dann der Wert einer bestimmten Eigenschaft gesetzt (Mehrere Eigenschaften sind möglich).
 Es gibt eine große Auswahl von Eigenschaften wie z.B.: Schriftfarbe, Textart, Positionierung, etc. \cite{CSSMozilla}
-\section{Javascript}
 
-\section{Json Web Token (JWT)}
+\section{JavaScript}
+\author{Benjamin Besic}
+JavaScript ist eine leichtgewichtige Skriptsprache, die 1995 vom Softwareunternehmen Netscape entwickelt geworden ist, um die Möglichkeiten von HTML und CSS zu erweitern.
+Bekannt ist sie hauptsächlich als Sprache für Webseiten geworden, jedoch wird sie auch in vielen Umgebungen außerhalb des Browsers oft benutzt, wie z.B. Servern. 
+\\* Sie unterstützt objektorientierte, imperative als auch deklarative Programmierung. JavaScript folgt dem Standard ECMAScript, welche alle Browser unterstützen. 
+JavaScript dient dazu auf Webseiten Benutzerinteraktionen auszuwerten, Inhalte zu verändern, nachzuladen oder zu generieren. Sie bietet normalen HTML Webseiten eine Großzahl an Verbesserung, durch Hinzufügen von Programmierelementen. \\*
+Jedoch sollte man JavaScript nicht mit der Programmiersprache Java verwechseln. Beide sind verschiedene Handelsmarken der Firma Oracle und ähneln einander höchstens mit der Syntax.
+\cite{JSWiki} \cite{JSMozilla}
+\section{JSON Web Token (JWT)}
+\author{Benjamin Besic}
+JSON Web Token ist ein nach RFC 7519 genormter Standard, um Daten sicher zwischen zwei Parteien auszutauschen. Es wird in der Form eines JSON-Objektes übertragen.
+Die Information, die der Token enthält kann verifiziert werden, weil es eine digitale Unterschrift enthält. Der Token selbst kann entweder mit einem geheimen Schlüssel (HMAC-Algorithmus) oder einem private/public Schlüsselpaar (RSA oder ECDSA) verschlüsselt werden.\\*
+Beliebte Anwendungsfälle des Tokens sind Authentifizierung und Datenaustausch. Der Token selbst enthält Informationen über den Absender und ob er die nötigen Zugriffsrechte hat.
+\cite{JWTIO} \cite{JWTIONOS}
+\subsection{Aufbau eines JWT}
+Ein signierter JWT besteht aus 3 Teilen, getrennt durch einen Punkt. Jeder dieser Teile wird mit Base64 kodiert. \\*
+Jeder JWT hat auch eine Gültigkeitsdauer, wenn diese abgelaufen ist, gilt ein Token als ungültig.
+\clearpage
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.4]{pics/JWT.JPG}
+    \caption{Aufbau eines JSON Web Tokens (Ausschnitt von jwt.io)}
+        \small \url{https://jwt.io/}
+    \label{fig:impl:JWT}
+\end{figure}
 
+\subsubsection{Header}
+Der Header besteht meist aus zwei Teilen und liefert Informationen über den Typ des Tokens und den verwendeten Signatur- bzw. Verschlüsselungsalgorithmus.
+\begin{itemize}
+    \item Der "typ"-Wert beschreibt den IANA Medientypen des Tokens, oft wird "application/jwt" verwendet.
+    \item Der "alg"-Wert gibt an welcher Algorithmus zum Signieren des Tokens verwendet wurde. Es ist möglich auch keine Verschlüsselung anzugeben, was jedoch nicht zu empfehlen ist. \cite{JWTIONOS}     
+\end{itemize}
+\subsubsection{Payload}
+Der Payload ist der Teil des Tokens, der die tatsächlichen Daten bzw. Informationen enthält, die übermittelt werden sollen.
+Sie werden als Key-/Value-Paare bereitgestellt, diese Werte werden bei JWT als Claims bezeichnet. \cite{JWTIONOS}  Davon gibt es drei verschiedene Arten:
+\begin{itemize}
+    \item \textbf{Registrierte Claims} sind standardisiert und im JWT Claim Register festgelegt. Es wird empfohlen diese zu verwenden.
+    \item \textbf{Öffentliche Claims} sind nach belieben definierbar.
+    \item \textbf{Private Claims} sind für Informationen gedacht, die speziell auf unsere Anwendung angepasst sind wie z.B. "Benutzer-ID". \cite{JWTIONOS} 
+\end{itemize}
+
+\subsubsection{Signature}
+Diese wird durch Base64-Kodierung des Headers, des Payloads und der angegebenen Signaturmethode erzeugt. Der Aufbau ist definiert nach dem RFC 7515 Standard, auch genannt JWS (JSON Web Signature).
+Damit die Signatur funktioniert, muss man einen geheimen Schlüssel verwenden, der nur dem Ursprung bekannt ist. \cite{JWTIONOS} 
+
+\subsection{Sicherungsverfahren}
+\subsubsection{Keine Sicherung}
+Wenn die Daten keiner Verschlüsselung bedürfen, kann im Header "none" angegeben werden. In diesem Fall wird keine Signatur generiert, dadurch fällt auch der Signature-Teil weg. \\*
+Ohne Sicherung lässt sich die Nachricht nach einer Base64-Entschlüsselung klar und deutlich lesen. Der Absender oder ob die Nachricht im Laufe verändert worden ist, ist nicht mehr verifizierbar.\cite{JWTIONOS} 
+\subsubsection{Signatur (JWS)}
+Im Normalfall reicht es nur zu prüfen, ob die Daten vom richtigen Absender kommen und ob Veränderungen geschehen sind. Da kommt die JWS (JSON Web Signature) zum Einsatz, die genau die vorher genannten Sachen überprüft.
+\\* Bei diesem Verfahren lässt sich die Payload nach Base64-Entschlüsselung klar und deutlich lesen. \cite{JWTIONOS}
+\subsubsection{Signatur (JWS) und Verschlüsselung (JWE)}
+Es ist möglich zusätzlich zum JWS noch eine JWE (JSON Web Encryption) zu benützen. JWE verschlüsselt den Inhalt des Payloads, diese werden danach mit JWS signiert.
+Um die Inhalte dann zu entschlüsseln wird noch ein Kennwort oder ein privater Schlüssel angegeben. \\*
+Damit ist der Absender verifiziert, die Nachricht authentisch und der Payload ist nicht lesbar nach einer Base64-Entschlüsselung. \cite{JWTIONOS}
 \section{Progressive Web App(PWA)}
 
 \section{Google Charts}
 
 \section{Jetpack Compose}
 
-\subsubsection{Deepest}
-Vermeide mich.
+\section{Docker}
+\subsection{Docker Compose}
