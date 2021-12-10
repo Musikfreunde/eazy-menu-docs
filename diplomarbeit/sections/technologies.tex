@@ -131,7 +131,7 @@ Es gibt ebenfalls bezahlte Pläne, die es vor allem Organisationen und Unternehm
 \section{Keycloak}
 \author{Benjamin Besic}
 Keycloak ist eine Open-Source Software, die Single-Sign On mit Identity und Access Management für moderne Applikationen bereitstellt. Der erste Release war 2014 als Wildfly Community Projekt, seit 2018 aber steht es unter der Verwaltung von RedHat. \cite{KeycloakWiki}  \\* 
-Es hat mehrere Distributionen und ist mit einer Vielzahl von Frameworks und Tools kompatibel wie z.B.: Quarkus, Angular, Vue.js, Spring, usw. \cite{KeyCloakDZone}
+Es hat mehrere Distributionen und ist mit einer Vielzahl von Frameworks und Tools kompatibel bzw. integriert wie z.B.: Quarkus, Angular, Vue.js, Spring, usw. \cite{KeyCloakDZone}
 
 \subsection{Distributionen}
 \subsubsection{Server}
@@ -140,7 +140,62 @@ Die Standalone Applikation ist downloadbar als .zip auf der Keycloak Seite. Es g
 Genau so wie beim Server gibt es auch hier zwei verschiedene, offizielle Docker-Images, eins, dass auf dem Wildfly Server basiert und eins, dass auf Quarkus basiert.
 \subsubsection{Operator}
 Dies ist eine Distribution für Kubernetes und OpenShift, basierend auf der Operator SDK. \cite{KeyCloakDZone}
+\subsection{IAM (Identity Access Management)}
+\label{sec:IAM}
+Eine der Hauptfunktionen von Keycloak ist das IAM. \\*
+IAM oder auch IdM (Identity Management) ist ein Framework, das zum Authentifizieren von Benutzern und deren Rechten genutzt wird. \\*
+Es prüft ob der Benutzer Zugang zu bestimmten Bereichen, Dateien und anderen Ressourcen hat, auf die er zugreifen will. Es prüft auch wer diese Rechte verändern darf.
+IAM-Systeme stellen auch nützliche Admin-Tools zur Verfügung, um z.B. Nutzerrechte zu ändern oder die Aktivität von Benutzern zu verfolgen. \cite{KeycloakMakeIT} \\*
+IAM hat vier Hauptfunktionen:
+\begin{itemize}
+    \item \textbf{Die Identitäts-Funktion: }Es umfasst die Erstellung von Identitäten (Benutzern), das Managen und Löschen von diesen.  
+    \item \textbf{Die User Zugriff-Funktion (log-on): } Dies umfasst ein Interface, indem der Benutzer seine Zugriffsdaten eingeben (übermitteln) kann.
+    \item \textbf{Die Service-Funktion: } Für Benutzer und deren Geräte stellt das System personalisierte, rollenabhängige, multimedia, online und on-demand Services zur Verfügung. \cite{KeycloakMakeIT}
+\end{itemize}
+
+\subsection{Single Sign-On (SSO)}
+\label{sec:SSO}
+SSO ist eine Variante der Zugangskontrolle, deren sich Keycloak bedient. \\*
+Es ist für mehrere und zusammenhängende Softwaresysteme gedacht, wo der Benutzer nur einmal sein Passwort und Benutzernamen eingeben muss, um auf alle Systeme zugreifen zu können,
+ohne sich dazwischen neu identifizieren zu müssen.\\* SSO ist typischerweise zu ermöglichen mit LDAP (Lightweight Directory Access Protocol). Bei IP-Netzwerken funktioniert das Ganze über Cookies, die gespeichert bleiben 
+und die Seiten müssen eine gleiche, übergeordnete DNS Domain haben.\\* 
+Authentifizierungsschemas, die dies unterstützen sind: OAuth, OpenID, OpenID Connect und Facebook Connect. Diese ermöglichen das Einloggen über mehrere verschiedene Websites mit den selben Anmeldedaten.\cite{KeycloakMakeIT}
+\subsubsection{Vorteile von SSO}
+\begin{itemize}
+    \item Reduziert das Risiko beim Verwenden von Drittanbieter-Websites
+    \item Reduziert die Passwortschwäche von den verschiedenen User und Passwort Kombinationen.
+    \item Reduziert die Zeit, die man für das Eingeben der verschiedenen Identitäten braucht
+    \item Reduziert IT-Helpdesk Anrufe wegen Passwörtern, daraus werden auch die IT-Kosten reduziert \cite{KeycloakMakeIT}
+\end{itemize}
+
 \subsection{Features}
+\subsubsection{Multiple Protocols Support}
+Gerade unterstützt Keycloak drei verschiedene Authentifizierungsprotokolle: OpenID Connect, OAuth 2.0 und SAML 2.0 \cite{KeyCloakDZone}
+\subsubsection{SSO (Single Sign-On)}
+\hyperref[sec:SSO]{Siehe hier}
+\subsubsection{Admin Konsole}
+Keycloak stellt eine web-basiertes Interface zur Verfügung, wo der Admin seine Konfigurationen intuitiv vornehmen kann. \cite{KeyCloakDZone}
+\subsubsection{User Identity und Accesses}
+\hyperref[sec:IAM]{Siehe hier}
+\subsubsection{External Identity Source Sync}
+Wenn man ein eigene User-Datenbank  hat, kann man diese mit Keycloak verbinden und synchronisieren. Standardmäßig unterstützt es LDAP und Active Directory, aber diese
+kann man durch selbstgeschriebene Extensions erweitern. Diese kann man mit der Keycloak User-Storage API machen. Es garantiert aber nicht, dass Keycloak alle Funktionen aufweist,
+die auch die Datenbank hat. \cite{KeyCloakDZone}
+\subsubsection{Identity Brokering}
+Keycloak kann auch als Proxy zwischen den Usern und einem oder mehreren externen Identity Provider fungieren. Diese können im Admin Panel editiert werden. \cite{KeyCloakDZone}
+\subsubsection{Social Identity Providers}
+Zusätzlich erlaubt Keycloak die Benutzung von Social Identity Providern. Es hat eine eingebaute Unterstützung für Google, Twitter, Facebook, Stack Overflow, diese müssen aber 
+im Admin Panel manuell konfiguriert werden. Die volle Liste der kompatiblen Social Identity Provider kann in der Keycloak Dokumentation gefunden werden. \cite{KeyCloakDZone}
+\subsubsection{Pages Customization}
+Keycloak erlaubt eine Anpassung aller Seiten, die dem User angezeigt werden (z.B. Login-Page). Diese sind im .ftl Format, somit kann man klassisches HTML und CSS zum editieren verwenden.
+Auch Javascript steht zur Verfügung, damit ist der Anpassungsspielraum unendlich. \cite{KeyCloakDZone}
+
+\subsection{Funktionsweise}
+https://www.comakeit.com/wp-content/uploads/keycloak-1.jpg
+\subsubsection{Realm}
+\subsubsection{Client}
+\subsubsection{Rollen}
+\subsubsection{User}
 
 \section{Oracle Datenbank}
 \section{Vue.js}
