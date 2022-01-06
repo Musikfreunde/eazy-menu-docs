@@ -194,20 +194,33 @@ Auch Javascript steht zur Verfügung, damit ist der Anpassungsspielraum unendlic
 \subsection{Funktionsweise}
 \begin{figure}[htp]
     \centering
-    \includegraphics[scale=1.5]{pics/KeycloakFunktionsweise.jpg}
+    \includegraphics[scale=0.55]{pics/Keycloak-Funktionsweise2.png}
     \caption{Keycloak Funktionsweise}
-        \small \url{https://www.comakeit.com/wp-content/uploads/keycloak-1.jpg}
+        \small \url{https://miro.medium.com/max/1400/1*1McvnvrW6wh37ECYpmTSxw.png}
     \label{fig:impl:KeycloakFunc}
 \end{figure}
 
+Keycloak speichert sich einen Public Link der Applikation. Wenn dieser Link von einem User geöffnet wird, leitet Keycloak diesen zu einer Keycloak Authentication Page weiter.
+Nachdem erfolgreichen Einloggen leitet Keycloak den User dann zu dem eigentlich gewünschtem Link weiter und gibt einen Token mit Zeitstempel mit.
+Die Applikation kann dann den Token verwenden um den User und seine Rechte zu identifizieren. \cite{KeycloakMakeIT} \\*
+\textbf{Bei der Funktionsweise sind wichtige Begriffe von Nöten:}
 
 \subsubsection{Realm}
+Ein Realm kann man sich als Mieter vorstellen, der einen Bereich zur Verfügung stellt. Dieser sogenannte Realm ist vollkommen isoliert (im Sinne von Usern, Konfigurationen, Rollen, etc.)
+von anderen Realms. \\* Aus diesem Grund kann man einen internen Realm für z.B. Mitarbeiter machen und einen externen für z.B. Kunden. Somit sind die beiden von einander getrennt. \cite{KeyCloakCodex}
 
 \subsubsection{Client}
+Clients sind die Anwendungen, die eine Authentifizierung von Keycloak fordern, also z.B. eine Webapp. Diese können aber auch mobile oder native Applikationen sein.
+Sie können jeder Servicetyp sein wie REST API's, gRPC oder WebSockets, die nur eine simple Authentifizierung und Rollenvergabe mittels Access Tokens benötigen. \cite{KeyCloakCodex}
 
 \subsubsection{Rollen}
+Eine Rolle repräsentiert eine Rolle in der Organisation bzw. in der Applikation. Ein User kann z.B. eine Admin-Rolle bekommen und somit alles an der Applikation konfigurieren.
+Wenn man dies nicht will kann man Rollen und deren Spielraum eingrenzen, sodass die Applikation nicht willkürlich verändert wird. \\*
+Keycloak unterstützt ebenfalls zusammengesetzte Rollen. Diese Funktion sollte man aber vorsichtig behandeln, da diese die Komplexität der Applikation erhöht und diese somit schwerer zu pflegen ist. \cite{KeyCloakCodex}
 
 \subsubsection{User}
+Der User ist der eigentliche Benutzer der Applikation. Dieser kann dementsprechend zu einem Realm gehören und seine eigenen Rechte haben.
+Dieser identifiziert sich durch den Client und seine Rollen im Realm werden der Applikation mitgegeben.
 
 
 \section{Oracle Datenbank}
