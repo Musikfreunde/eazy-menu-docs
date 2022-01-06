@@ -1,11 +1,5 @@
 # EazyMenu Documentation
 
-## Anmerkung
-
-Wir werden hier einige Daten einfügen, die wir für unsere Diplomarbeit verwenden werden. Da die Firewall in der Firma Github blockiert werden wir voraussichtlich in dieser Readme alles Dokumentieren.
-
-Github Pages: [EazyMenu Index](https://musikfreunde.github.io/eazy-menu-docs/) (Noch nicht fertig)
-
 ## Info 
 
 EazyMenu ist eine Webanwendung, die für Mitarbeiter entwickelt wird, um essen bei einer Kantine zu bestellen.
