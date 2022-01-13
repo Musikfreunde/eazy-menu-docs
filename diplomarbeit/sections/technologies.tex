@@ -168,6 +168,55 @@ Authentifizierungsschemas, die dies unterstützen sind: OAuth, OpenID, OpenID Co
     \item Reduziert IT-Helpdesk Anrufe wegen Passwörtern, daraus werden auch die IT-Kosten reduziert \cite{KeycloakMakeIT}
 \end{itemize}
 
+\subsection{OAuth 2.0}
+Es ist möglich mit Keycloak den Standard OAuth 2.0 umzusetzen. \\*
+OAuth 2.0 ist ein offener Standard, der im Oktober 2012 als Überarbeitung des Standards OAuth veröffentlicht wurde. \\*
+Er behandelt ausschließlich den autorisierten Zugriff eines Benutzers auf eine Ressource. Wichtig zu beachten ist, dass er die Identität nicht überprüft. \\*
+Ein Anwendungsfall von OAuth wäre einen Client zu verwenden, um Neuigkeiten auf einem Social-Media Profil zu veröffentlichen. Der Client holt die Autorisierung dazu aus der Social-Media Plattform. \cite{OAuthIonos} \cite{KeycloakCodeCentric}
+\pagebreak
+
+\subsubsection{Ablauf von OAuth 2.0}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.8]{pics/Ablauf_OAuth2.png}
+    \caption{Ablauf des OAuth 2.0 Protokolls}
+    \small \url{https://miro.medium.com/max/1400/1*1McvnvrW6wh37ECYpmTSxw.png} 
+    \label{fig:impl:OAuth2Protocoll}
+\end{figure}
+
+Diese Grafik beschreibt den Weg, den der Client geht, um sich die Rechte auf die bestimmte Ressource (z.B. Veröffentlichung eines Beitrags) zu sichern. \\*
+Wie man an der Grafik erkennen kann kommuniziert OAuth 2.0 nicht mit dem Benutzernamen und Passwort des Benutzers. 
+Als Kommunikationsgrundlage dient ein Access-Token, dieser kann jeder Zeit ungültig gemacht werden, somit verliert der Client auch die Rechte auf die Ressource. \cite{KeycloakCodeCentric}
+
+\subsection{OpenID Connect (OIDC)}
+Mit Keycloak ist es ebenfalls möglich OIDC umzusetzen bzw. zu benutzen. \\*
+OpenID Connect ist ein Authentifizierungs- und Autorisierungsprotokoll, dass im Februar 2014 von der OpenID Foundation veröffentlicht wurde.
+Es erweitert die Funktionalität von OAuth 2.0 und benutzt dazu auch JWT (JSON Web Tokens). \\*
+OpenId Connect soll die zentrale Stelle zur Verwaltung eines Benutzerprofils sein. Somit läuft auch jeder Authentifizierungsprozess über diesen ab.
+Der Browser soll quasi die zentrale Komponente im Internet darstellen und jede Website benutzt die selbe OIDC Authentifizierung. Somit werden einem mehrere Benutzeraccounts gespart. \cite{KeycloakCodeCentric}
+\pagebreak
+
+\subsubsection{Ablauf von OIDC}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.6]{pics/Ablauf_OIDC.png}
+    \caption{Ablauf des OIDC Protokolls}
+    \small \url{https://blog.codecentric.de/files/2016/08/openidconnect1.png} 
+    \label{fig:impl:OIDCProtocoll}
+\end{figure}
+
+Der Browser leitet anfangs den Benutzer zum OpenID Provider hin, wo man sich beispielsweise mit Benutzername und Passwort authentifiziert.
+Danach bekommt der Client einen Auth-Code, dieser wird dann zum Access, Identity und Refresh Token umgewandelt.
+Der Client wird durch Keycloak verifiziert, indem er vorher bei Keycloak mit einem Secret und einer ID konfiguriert wurde. Dies dient dazu, damit kein willkürlicher Client diese Information erhalten kann.
+In dem ganzen Prozess muss aber sichergestellt sein, dass jede Komponente das Secret sicher bewahren kann.
+Zu allerletzt setzt der Browser dann die Session vom Benutzer und diese bleibt auch. \cite{KeycloakCodeCentric}
+
+\subsubsection{Unterschied zu OAuth 2.0}
+Der initiale Ablauf ähnelt dem von OAuth 2.0, doch der große Unterschied liegt in den Tokens.
+Bei OIDC wird ein JWT (Json Web Token) übergeben. Dieser enthält Informationen zur Identität und zu den Attributen des Benutzers.
+Diese können dann von der Applikation benutzt werden. 
+
+
 \subsection{Features}
 \subsubsection{Multiple Protocols Support}
 Gerade unterstützt Keycloak drei verschiedene Authentifizierungsprotokolle: OpenID Connect, OAuth 2.0 und SAML 2.0 \cite{KeyCloakDZone}
@@ -196,7 +245,7 @@ Auch Javascript steht zur Verfügung, damit ist der Anpassungsspielraum unendlic
     \centering
     \includegraphics[scale=0.55]{pics/Keycloak-Funktionsweise2.png}
     \caption{Keycloak Funktionsweise}
-        \small \url{https://miro.medium.com/max/1400/1*1McvnvrW6wh37ECYpmTSxw.png}
+    \small \url{https://miro.medium.com/max/1400/1*1McvnvrW6wh37ECYpmTSxw.png}
     \label{fig:impl:KeycloakFunc}
 \end{figure}
 
