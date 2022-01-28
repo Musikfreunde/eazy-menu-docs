@@ -111,13 +111,78 @@ Es gibt ebenfalls bezahlte Pläne, die es vor allem Organisationen und Unternehm
 
 
 \section{Java}
+\author{David Ignjatovic} 
+
+Die relativ junge Programmiersprache Java, welche 1995 entwickelt wurde, weckte schon von Beginn an das Interesse der Programmiergemeinschaft auf. \cite{Java} \\*
+James Gosling, welcher ursprünglich aus Kanada abstammt, entwickelte die objektorientierten, plattformunabhängigen Programmiersprache Java. \cite{JavaErfinder} \\*
+Die Programmiersprache Java ist Teil der Java-Technologie. Sie besteht im Wesentlichen aus dem Java Development Kit (JDK) zum Erstellen von Java-Programmen und dem Java Runtime Environment (JRE) für deren Ausführung. 
+Die Programmiersprache selbst sollte aber nicht gleichgesetzt werden mit der Java-Technologie. \cite{JavaSprache}
+
+\subsection{Hello World}
+\author{David Ignjatovic} 
+\begin{lstlisting}[language=Java,caption=Java File HelloWorld,label=lst:impl:foo]
+    public class HelloWorld {
+        public static void main (String[] args){
+                // Ausgabe Hello World!
+                System.out.println("Hello World!");
+        }
+    }
+    \end{lstlisting}
+
+\subsection{Java Runtime Environment }
+\author{David Ignjatovic} 
+
+Java Runtime Environment (JRE) führt Software aus, die in der objektorientierten Programmiersprache Java geschrieben ist. 
+Denn bei Java benötigt der Computer im Vergleich zur Programmiersprache C eine Laufzeitumgebung „Java Runtime Environment“ für das Betriebssystem, um Java-Programme ausführen zu können. \cite{JRE}
+
+\subsection{Java Virtual Machine}
+\author{David Ignjatovic} 
+
+Java Virtual Machine (JVM) ist eine virtuelle Maschine, welche plattformunabhängige Anwendungen ermöglicht. Sommit lassen sich Systemweit Java-Programme ausführen.
+Die Plattformunabhängigkeit wird in Java durch das Zusammenspiel zweier Programme gelöst: \\*
+Der Compiler wandelt den Quelltext, also die .java-Dateien, in einen sogennanten Java-Bytecode. Der Interpreter (Virtual Machine) führt dann den Java-Bytecode aus. \cite{JVM}
+
+\subsection{Java Byte-Code}
+\author{David Ignjatovic} 
+
+Bytecode in Java ist der Grund dafür, dass Java plattformunabhängig ist. Sobald ein Java-Programm kompiliert wird, wird der Bytecode generiert. 
+Genauer gesagt ist ein Java-Bytecode der Maschinencode in Form einer .class-Datei.
 
 \section{Java EE}
+\author{David Ignjatovic} 
+
+Die Java Enterprise Edititon ist eine standardisierte Sammlung von Spezifikationen für Frameworks, die die Entwicklung verteilter Anwendungen erleichtern sollen.
+Wenn man jetzt alle diese Spezifikationen umsetzen und kombinieren, erhaltet man einen JEE-Anwendungsserver wie zum Beispiel GlassFish oder JBoss. \cite{JavaEE}
+
 \subsection{Java EE vs. Quarkus}
+\author{David Ignjatovic} 
+
+Der größte Unterschied zwischen Java EE und Quarkus ist, dass man bei Quarkus keinen Application Server benötigt. 
+Ein weiter Vorteil ist, dass bei Quarkus keine war-File erstellt wird, sondern eine jar-File, welche sehr klein ist. 
+In diesem jar-File befinden sich auch noch die einzelnen Libaries, welche für die Webanwendung verwendet werden. \\*
+
+Im gegensatzt zu Java EE wird eine war-File erstellt und auf dem JEE-Application Server sind schon viele Libraries vorhanden. 
+Der größte Nachteil aber ist, dass man auch für kleine Anwendung einen ganzen Application Server braucht. \\*
+
+Im Großen und Ganzen kann man sagen, dass Quarkus hier dominanter ist, da es sehr praktisch und schnell ist. Noch dazu ist Quarkus relativ neu und kann sich im Laufe der Jahre noch mehr verbessern.
+
 
 \subsection{JPA}
+\author{David Ignjatovic} 
+
+Enterprise Applikationen führen üblicherweise viele Operationen auf Datenbanken durch. Um aber eine Datenbankanbindung zu haben, müsste man sehr viel Code schreiben.
+Durch die Hilfe von JPA (Java Persistance API) wird der aufwand reduziert, welcher benötigt wird, um mit der Datenbank zu komunizieren. 
+Die Objekte des Java Programmes werden mit den relationalen Modellen verbunden. Der Unterschied aber ist, dass die relationalen Objekte der Datenbank eher in tabellenform kommt, während das Objekt im Java Code ein Ojekt mit etlichen Attributen darstellt. \cite{JPA}
 
 \section{Quarkus}
+\author{David Ignjatovic} 
+
+Quarkus ist ein cloud-nativer Stack welcher von Red Hat entwickelt wurde. Es basierend auf den Jakarta EE- und MicroProfile-Standards. 
+Eine Quarkus-Applikation hat gegenüber ein Konkurrenzprodukt eine deutlich kürzere Startzeit und einen erheblich geringeren Speicherbedarf, was ein großer vorteil ist für das Serverless Computing.  \cite{Quarkus} \\*
+
+Quarkus wurde für entwickelt um de entwicklern die möglichkeit zu geben, applicationen für die moderne, cloud-native welt zu erstellen. 
+Es ist ein Kubernetes-natives Java-Framework, das auf GraalVM und HotSpot angepasst wurde. Noch dazu wurde es aus erstklassigen Java-Bibliotheken und Standards erstellt.
+
 \subsection{Hibernate}
 
 \subsection{Panache}
