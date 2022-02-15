@@ -151,45 +151,85 @@ Genauer gesagt ist ein Java-Bytecode der Maschinencode in Form einer .class-Date
 \section{Java EE}
 \author{David Ignjatovic} 
 
-Die Java Enterprise Edititon ist eine standardisierte Sammlung von Spezifikationen für Frameworks, die die Entwicklung verteilter Anwendungen erleichtern sollen.
-Wenn man jetzt alle diese Spezifikationen umsetzen und kombinieren, erhaltet man einen JEE-Anwendungsserver wie zum Beispiel GlassFish oder JBoss. \cite{JavaEE}
+Die Enterprise Edition der Java Plattform (JEE), eine Spezifikation der Java-Plattform. 
+Der wichtigste bestandteil von Java EE sind die Webanwendungen. Um solch eine Anwendung ausführen zu können, wird eine Applikationsserver verwendet, welcher 
+in mehrere Systeme unterteilt wird, die auch Container gennant werden. Für eine Webanwendung reicht meistens reicht ein einzelner Web-Container aus. \\*
+
+Die erste Version von Java EE, welche damals noch Java2EE genannt wurde, erschien im Jahr 1990. Im Jahr 2003 wurde der Name der Plattform auf Java EE geändert.
+Die erste richtige Version von Java EE, welches wir bis heute noch kennen, erschien im Mai 2006 und trug die Versionsnummer 5. 2009 folgte die Version 6 und 2013 die Version 7.
+
+Wie schon berreit erwähnt, wird zum ausführen einer Java EE Webanwendung ein Applikationsserver verwendet. Die am meisten verwendeten Applikationsserver sind so gennante 
+Open-Source-Server wie zum Beispiel Apache Geronimo und GlassFish. 
+Als Alternative zu einem vollständigen Applikationsserver können auch Programme verwendet werden, welche nur einen Web-Container implementieren.
+Diese Web-Container werden oft auch als Servlet- oder JSP-Container bezeichnet und sind meistens dafür ausrecheichend. Der bekannteste Web-Container ist Apache Tomcat.
+
+\cite{JavaEE}
+
+\section{Quarkus}
+\author{David Ignjatovic} 
+
+Quarkus ist ein cloud-nativer Stack welcher von Red Hat entwickelt wurde. Es basiert auf den Jakarta EE- und MicroProfile-Standards. 
+Eine Quarkus-Applikation hat gegenüber ein Konkurrenzprodukt eine deutlich kürzere Startzeit und einen erheblich geringeren Speicherbedarf, was ein großer vorteil ist für das Serverless Computing.  \cite{Quarkus} \\*
+
+Quarkus wurde für entwickelt um de entwicklern die möglichkeit zu geben, applicationen für die moderne, cloud-native welt zu erstellen. 
+Es ist ein Kubernetes-natives Java-Framework, das auf GraalVM und HotSpot angepasst wurde. Noch dazu wurde es aus erstklassigen Java-Bibliotheken und Standards erstellt. \\*   
+
+Im März 2019 wurde Quarkus nach mehr als einem Jahr interner Entwicklung der Open-Source-Community vorgestellt
 
 \subsection{Java EE vs. Quarkus}
 \author{David Ignjatovic} 
 
 Der größte Unterschied zwischen Java EE und Quarkus ist, dass man bei Quarkus keinen Application Server benötigt. 
-Ein weiter Vorteil ist, dass bei Quarkus keine war-File erstellt wird, sondern eine jar-File, welche sehr klein ist. 
+Ein weiter Vorteil währe, dass bei Quarkus keine war-File erstellt wird, sondern eine jar-File, welche dem entsrpechend sehr klein ist. 
 In diesem jar-File befinden sich auch noch die einzelnen Libaries, welche für die Webanwendung verwendet werden. \\*
 
-Im gegensatzt zu Java EE wird eine war-File erstellt und auf dem JEE-Application Server sind schon viele Libraries vorhanden. 
-Der größte Nachteil aber ist, dass man auch für kleine Anwendung einen ganzen Application Server braucht. \\*
+Im gegensatzt zu Java EE wird eine war-File erstellt. Noch dazu befinden sich auf dem JEE-Application Server schon viele Libraries die schon vorinstalliert sind. 
+Der größte Nachteil von Java EE ist, dass man auch für kleine Anwendung einen ganzen Application Server braucht. \\*
 
-Im Großen und Ganzen kann man sagen, dass Quarkus hier dominanter ist, da es sehr praktisch und schnell ist. Noch dazu ist Quarkus relativ neu und kann sich im Laufe der Jahre noch mehr verbessern.
+Im Großen und Ganzen kann man sagen, dass Quarkus hier dominanter ist, da es sehr praktisch und schnell ist. Noch dazu ist Quarkus relativ neu und kann sich im Laufe der Jahre noch umso mehr verbessern.
+
 
 
 \subsection{JPA}
 \author{David Ignjatovic} 
 
-Enterprise Applikationen führen üblicherweise viele Operationen auf Datenbanken durch. Um aber eine Datenbankanbindung zu haben, müsste man sehr viel Code schreiben.
-Durch die Hilfe von JPA (Java Persistance API) wird der aufwand reduziert, welcher benötigt wird, um mit der Datenbank zu komunizieren. 
-Die Objekte des Java Programmes werden mit den relationalen Modellen verbunden. Der Unterschied aber ist, dass die relationalen Objekte der Datenbank eher in tabellenform kommt, während das Objekt im Java Code ein Ojekt mit etlichen Attributen darstellt. \cite{JPA}
+Java Persistence API (JPA) ist eine API welche für Datenbankzugriffe und für das objektrelationales Mapping verwendet wird. 
+Objektrelationales Mapping (ORM) zeigt eine objektorientierte Sicht auf Tabellen und Beziehungen in relationalen Datenbank-Management-Systemen an.  \\*
 
-\section{Quarkus}
-\author{David Ignjatovic} 
+Enterprise Applikationen führern üblicherweise viele Operationen auf Datenbanken durch.
+Um aber eine Datenbankanbindung zu haben, müsste man sehr viel Code schreiben.
+Durch die Hilfe von JPA (Java Persistance API) wird der aufwand reduziert, welcher benötigt wird, um mit der Datenbank zu komunizieren. \\* \cite{JPA}
 
-Quarkus ist ein cloud-nativer Stack welcher von Red Hat entwickelt wurde. Es basierend auf den Jakarta EE- und MicroProfile-Standards. 
-Eine Quarkus-Applikation hat gegenüber ein Konkurrenzprodukt eine deutlich kürzere Startzeit und einen erheblich geringeren Speicherbedarf, was ein großer vorteil ist für das Serverless Computing.  \cite{Quarkus} \\*
-
-Quarkus wurde für entwickelt um de entwicklern die möglichkeit zu geben, applicationen für die moderne, cloud-native welt zu erstellen. 
-Es ist ein Kubernetes-natives Java-Framework, das auf GraalVM und HotSpot angepasst wurde. Noch dazu wurde es aus erstklassigen Java-Bibliotheken und Standards erstellt.
+JPA wurde von JSR 220 Expert Group entwickelt und im Mai 2006 erstmals veröffentlicht. 
 
 \subsection{Hibernate}
 
+Hibernate wird oft als Object Relational Mapping Tool bezeichnet. Es ist ein Framework zur Abildung von Objekten auf relationaler Datenbank für die Programmiersprache Java.
+Hibernate implementiert die Java Persistence API (JPA)und bietet Funktionalitäten wie zum Beispiel  Datenbankabfragen mit der sogennanten Hibernate Query Language (HQL). \\*
+
+Es wurde von JBoss im Jahr 2001 entwickelt und veröffentlicht. Sommit ist auch Hibernate in dem Boss Applikations-Server integriert .\cite{Hibernate}
+
+
+\section{JBoss}
+
+Red Hat JBoss Enterprise Application Platform (JBoss EAP) bietet Sicherheit und Performance. Der JBoss EAP ist eine Open-Source-Java EE-basierte Laufzeitplattform für Anwendungsserver.
+
+
 \subsection{Panache}
+
+Panache ist eine Quarkus-spezifische Bibliothek, welche die Entwicklung einer Hibernate-basierten Persistenzschicht vereinfacht. 
+Panache ersetzt den größten Teil des Boilerplate-Codes mit einfachen methoden die man in die Quarkus Anwendung implementieren kann. 
+Methoden wie create, update, and remove aber auch eigene Abfragen auf der Datenbank werden von Panache zur Verfügung gestellt. \\* \cite{Panache}
 
 \section{Maven}
 
-\section{JBoss}
+
+Apache Maven ist ein leistungsfähiges Werkzeug, welches immer weider vorkommende Prozeduren automatisiert und vereinfacht. 
+Es wird oft als "Build Management System" bezeichnet und ist Teil vom "Software Configuration Management (SCM)".  \\* \cite{Maven}
+
+Neben Maven gibt es auch noch ANT was eher kommandoorientiert arbeitet. Maven ist eher strategisch orientiert, realisiert mehr Abstraktionen, wird deklarativer gesteuert, 
+berücksichtigt Abhängigkeiten besser und ist besonders für aufwändigere Multimodulprojekte geeignet. \cite{Maven}
+
 
 \section{Cypress}
 
