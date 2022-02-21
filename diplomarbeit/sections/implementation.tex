@@ -9,29 +9,28 @@
     \label{fig:impl:SysArc}
 \end{figure}
 
+\section{Datenmodell}
 
-\section {Webapp}
+\section{REST-Schnittstellen}
 
-\subsection{Datenmodell}
+\section{Authentifizierung}
 
-\subsection{REST-Schnittstellen}
-
-\subsection{Authentifizierung}
-
-\subsection {Interface}
-\subsubsection{Login}
+\section {Interface Webapp}
+\subsection{Login}
 Beim Aufrufen der Webapp wird man zunächst zu der Login-Seite weitergeleitet. Wie diese fungiert, sieht man in der nächsten Abbildung. \\*
 Der Login dient in erster Hinsicht dazu, um festzustellen ob der Benutzer ein Mitarbeiter oder Kantinenmitarbeiter ist.
 Denn nach dem Login wird man entweder zur Mitarbeiter-Ansicht oder Kantinenmitarbeiter-Ansicht weitergeleitet. \\*
 *Abbildung Login*
 
-\subsubsection {Mitarbeiter-Ansicht}
+\subsection {Mitarbeiter-Ansicht}
 
-\textbf{Home} \\*
+\subsubsection {Home}
 Das Erste, was ein Mitarbeiter zu sehen bekommt, ist die Home Ansicht. In dieser Ansicht ist eine Kalender und die Menüauswahl enthalten. \\*
 Der Benutzer kann im Kalender das gewünschte Bestelldatum anklicken, dadurch wird automatisch die Menüauswahl aktualisiert. Man kann sich in die Zukunft, sowohl auch 
 in die Vergangenheit klicken, um sich Auskunft über die vergangenen/kommenden Menüs zu beschaffen. Die Ansicht ist nur auf die Bestelltage beschränkt, an denen Menüs angeboten werden.\\*
-Nach der erfolgreichen Datumswahl hat man unten drei Menüs zur Auswahl, sowohl wie die dazugehörige Vor- und Nachspeise. Wenn die Bedingungen für eine Bestellung erfüllt sind,
+Nach der erfolgreichen Datumswahl hat man unten drei Menüs zur Auswahl, sowohl wie die dazugehörige Vor- und Nachspeise. Das dem Benutzer empfohlene Menü (Analyse aus seinem Bestellverlauf) wird grün hinterlegt.
+Neben den Bestellköpfen befindet sich ein Fragezeichen-Knopf, wenn man über diesen geht werden einem die Kategorien des Menüs angezeigt.
+\\* Wenn die Bedingungen für eine Bestellung erfüllt sind,
 kann man auf einen der drei Bestellknöpfe drücken, um zur Bestellansicht weitergeleitet zu werden. Sind diese Bedingungen nicht erfüllt, sind die Knöpfe ausgeschaltet. \\*
 Weiters werden unter den Menüs noch relevante Informationen angezeigt. Durch das Klicken des Fragezeichen-Knopfs wird ein Bild der 14 Allergene geöffnet.
 
@@ -44,7 +43,7 @@ Weiters werden unter den Menüs noch relevante Informationen angezeigt. Durch da
 
 \pagebreak
 
-\textbf{Bestellansicht} \\*
+\subsubsection {Bestellansicht}
 
 In der Bestellansicht werden die nötigen Daten für die Bestellung ausgefüllt. Die ersten drei Felder sind automatisch ausgefüllt, aufgrund der vorherigen Auswahl. \\*
 Die Tabelle auf der rechten Seite enthält alle Bestellzeiträume, die es gibt. Man kann nur eine gleichzeitig auswählen. Außerdem stehen die freien Plätze dabei, die aus der Datenbank geladen werden.\\*
@@ -61,7 +60,13 @@ Die Bestellung ist erst ausführbar, sobald alle Felder außer des Kommentars au
 \end{figure}
 \pagebreak
 
-\textbf{Bestellübersicht} \\*
+\subsubsection {Bestellübersicht}
+
+Die Bestellübersicht dient dem Benutzer dazu seine Bestellhistorie nachzuvollziehen. Zu jeder Bestellung ist der Name des bestellten Menüs, das Menüdatum, der Bestellzeitpunkt und die Essenszeit zugeordnet. \\*
+Der Benutzer hat die Möglichkeit, oben in der Suchleiste, die Bestellungen nach Name oder Menüdatum zu filtern. Das Filtern erfolgt direkt nach der Eingabe. \\*
+Man kann jede Bestellung anklicken und falls eine Bestellung die Stornierbedingungen erfüllt kann diese mit dem unten gelegen Storno-Button storniert werden.
+Nach einer erfolgreichen Stornierung verschwindet die Bestellung aus dem Verlauf, doch in der Datenbank wird nur das Stornierdatum gesetzt und somit wird die Bestellung ungültig gemacht. 
+
 
 \begin{figure}[htp]
     \centering
@@ -69,5 +74,30 @@ Die Bestellung ist erst ausführbar, sobald alle Felder außer des Kommentars au
     \caption{Bestellungsübersicht}
     \label{fig:impl:BestellenMitarbeiterUebersicht}
 \end{figure}
+\pagebreak
+
+\subsubsection {Statistiken}
+
+Der Benutzer kann in dieser Ansicht mehr Informationen über seine vergangenen Bestellungen bekommen.
+Durch das Wechseln des Tabs oben links wird entweder eine Statistik über die Kategorien oder über die Wochentage angezeigt.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.3]{pics/statistiken_kategorien.JPG}
+    \caption{Kategorie Statistiken}
+    \label{fig:impl:StatsCategories}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.3]{pics/statistiken_wochentage.JPG}
+    \caption{Wochentage Statistiken}
+    \label{fig:impl:WeekDaysCategories}
+\end{figure}
+
+\pagebreak
+
+\subsection {Kantinen-Ansicht}
 
 \section{Android App}
+
