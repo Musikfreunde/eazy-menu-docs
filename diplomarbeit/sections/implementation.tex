@@ -321,6 +321,7 @@ Denn nach dem Login wird man entweder zur Mitarbeiter-Ansicht oder Kantinenmitar
 \subsection {Mitarbeiter-Ansicht}
 
 \subsubsection {Home}
+\label{sec:MitHome}
 Das Erste, was ein Mitarbeiter zu sehen bekommt, ist die Home Ansicht. In dieser Ansicht ist eine Kalender und die Menüauswahl enthalten. \\*
 Der Benutzer kann im Kalender das gewünschte Bestelldatum anklicken, dadurch wird automatisch die Menüauswahl aktualisiert. Man kann sich in die Zukunft, sowohl auch 
 in die Vergangenheit klicken, um sich Auskunft über die vergangenen/kommenden Menüs zu beschaffen. Die Ansicht ist nur auf die Bestelltage beschränkt, an denen Menüs angeboten werden.\\*
@@ -337,6 +338,13 @@ Weiters werden unter den Menüs noch relevante Informationen angezeigt. Durch da
     \label{fig:impl:HomeMitarbeiter}
 \end{figure}
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.5]{pics/kategorien_mitarbeiter.JPG}
+    \caption{Kategorieanzeige eines Menüs}
+    \label{fig:impl:CategoriesForMenue}
+\end{figure}
+
 \pagebreak
 
 \subsubsection {Bestellansicht}
@@ -350,7 +358,7 @@ Die Bestellung kann durch den Abschließen-Knopf durchgeführt werden und Abbrec
 Die Bestellung ist erst ausführbar, sobald alle Felder außer des Kommentars ausgefüllt wurden.
 \begin{figure}[htp]
     \centering
-    \includegraphics[scale=0.6]{pics/mitarbeiter-bestellen.JPG}
+    \includegraphics[scale=0.7]{pics/mitarbeiter-bestellen.JPG}
     \caption{Bestellansicht}
     \label{fig:impl:BestellenMitarbeiter}
 \end{figure}
@@ -395,7 +403,52 @@ Durch das Wechseln des Tabs oben links wird entweder eine Statistik über die Ka
 
 \subsection {Kantinen-Ansicht}
 \subsubsection {Home}
+
+Die Startseite der Kantinenmitarbeiter ähnelt der Ansicht der Mitarbeiter. \hyperref[sec:MitHome]{Siehe hier}. \\*
+Die Unterschiede sind, dass die Kantine Textfelder für jedes Menü und dessen Vor- und Nachspeise hat.
+Ebenfalls erscheint beim Kategorien-Knopf eine Liste von Kategorien zum Anhaken, um dem Menü die entsprechenden Kategorien zuzuordnen. \\*
+Die Textfelder und Kategorien können bearbeitet werden, um ein vorhandenes Menü zu aktualisieren oder um ein neues zu erstellen.
+Die Erstellung bzw. die Änderung kann durch den Speichern-Knopf durchgeführt werden. Je nach Fall werden neue Menüs an das Backend geschickt oder ein
+vorhandenes wird aktualisiert.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.35]{pics/kantine_home.JPG}
+    \caption{Kantine Homeansicht}
+    \label{fig:impl:CantineHome}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.4]{pics/kategorien_kantine.JPG}
+    \caption{Kategorieauswahl}
+    \label{fig:impl:CategoryChooseCantine}
+\end{figure}
+\pagebreak
+
 \subsubsection {Drucken}
+
+Die Druckansicht dient den Kantinenmitarbeitern dazu, um die Bestellungen des jeweiligen Tages auch durchführen zu können.
+Der Tag kann durch eine Datumsauswahl bestimmt werden.
+Die Ansicht zeigt alle nötigen Informationen, damit die Kantine einen Überblick über die Bestellungen hat und dementsprechend das Essen vorbereiten kann.
+Es sind die Essenszeiten sowie Anzahl der jeweiligen Menücodes summiert für einen schnellen Überblick. \\*
+Durch das Drücken des Drucken-Knopfs hat die Kantine die Möglichkeit ein pdf-Dokument aus der kompletten Ansicht, die unter dem Knopf zu sehen ist, zu drucken.
+Dies dient dazu, dass sie einen Ausdruck auf Papier haben, der für die Kantine praktischer ist.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.45]{pics/kantine_drucken.JPG}
+    \caption{Druckansicht der Kantine}
+    \label{fig:impl:CantinePrint}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=1]{pics/pdf_ansicht.JPG}
+    \caption{PDF der Ansicht}
+    \label{fig:impl:CantinePrintPDF}
+\end{figure}
+\pagebreak
 
 \section {Interface Android-App}
 
