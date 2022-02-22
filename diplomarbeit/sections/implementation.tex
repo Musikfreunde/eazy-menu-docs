@@ -4,7 +4,7 @@
 \begin{figure}[htp]
     \centering
     \author{David Ignjatovic}
-    \includegraphics[scale=0.7]{pics/sys-arc-new.JPG}
+    \includegraphics[scale=0.7]{pics/final-sys-arc.PNG}
     \caption{Systemarchitektur des Programms}
     \label{fig:impl:SysArc}
 \end{figure}
@@ -28,7 +28,7 @@ Unser Projektes beinhaltet 5 Entitäten:
   \item Oeffungszeit
 \end{itemize}
 
-\texttt{Bestellung} 
+\subsection{Bestellung} 
 
 Die Entität Bestellung enthält die wichtigsten Informationen über einen Mitarbeiter und die dazu ausgewählte Mahlzeit.
 Zur Identifikation einer Bestellung verwenden wir eine Id welche generiert wird. \\*
@@ -62,8 +62,11 @@ Das wichtigste in der Bestellung ist die Mahlzeit und für wann es bestellt wurd
 }
 
 \begin{lstlisting}
-    @SequenceGenerator(name = "bestellung_seq_gen", sequenceName = "BESTELLUNG_SEQ",allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bestellung_seq_gen")
+    @SequenceGenerator(name = "bestellung_seq_gen", 
+                        sequenceName = "BESTELLUNG_SEQ",
+                        allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
+                        generator = "bestellung_seq_gen")
     @Id
     @Column(name = "BESTELLUNG_ID")
     private Long id;
@@ -113,7 +116,7 @@ Das wichtigste in der Bestellung ist die Mahlzeit und für wann es bestellt wurd
     private Menue menue;
 \end{lstlisting}
 
-\texttt{Categories}
+\subsection{Categories}
 
 Die Entität Categories ist ein Enum, welches wir Hauptsächlich für unseren Algorithmus verwenden. Es besteht aus 4 einträgen: \\*
 
@@ -134,12 +137,177 @@ Die Entität Categories ist ein Enum, welches wir Hauptsächlich für unseren Al
 
 Die einzelnen Kategorien beschreiben eine Mahlezeit. Sommit kann man ganz einfach zwischen einzelnen Mahlezeiten unterscheiden und sie auch gruppieren.
 
+\subsection{Kantine}
 
-\texttt{Kantine}
+In der Entitäten Kantine befinden sich die wichtigsten Informationen über eine Kantine wie zum Beispiel ob eine Kantine offen ist oder zurzeit geschlossen ist. 
+Eine kleine Beschreibung über die Kantine und über das Service ist ebenso enthalten. \\*
 
+\begin{lstlisting}
+    @Id
+    @Column(name = "KANTINE_ID")
+    private Long id;
 
+    @Column(name = "KANTINENBEZEICHNUNG", length = 200)
+    private String canteenDesc;
+
+    @Column(name = "SERVICEBEZEICHNUNG", length = 200)
+    private String serviceDesc;
+
+    @Column(name = "STATUSKZ", length = 1)
+    private char status;
+
+    @Column(name = "ANGELEGTUM",length = 6)
+    private Timestamp createdAt;
+
+    @Column(name = "ANGELEGTVON",length = 32)
+    private String createdBy;
+
+    @Column(name = "GEAENDERTUM",length = 6)
+    private Timestamp changedAt;
+
+    @Column(name = "GEAENDERTVON",length = 32)
+    private String changedBy;
+
+\end{lstlisting}
+
+\subsection{Menue}
+
+In der Entität Menue stehen die wichtigsten Informationen über ein Menü. Ein Menü beinhaltet eine Vorspeise, Hauptspeise, Nachspeise und ein Dessert. 
+Noch dazu findet man in der Entität ein Datum, um zuzuordnen wann das Menü bestellt wurde. \\*
+Neben dem Bestelldatum beinhaltet die Entität Menue auch noch weiter Timestamps.
+Die verwendeten Timestamps werden verwendet, um zu speichern, wann ein Menue erstellt wurde oder wann ein Menue geändert wurde. Natürlich wird auch mitgespeichert von wem diese Änderungen durchgeführt wurden. \\*
+
+Die bereits oben genannten Kategorien finden wir in der Entität Menue. 
+Diese werden verwendet, um einzelne Menüs zu unterscheiden und mit Hilfe der Kategorien und unserem Algorithmus kann man einfach hervorwagen welche Mahlzeit zu welchem Mitarbeiter am besten passt. \\*
+
+Für jedes Menü wird auch die dazu ausgewählte Kantine mitgespeichert. So weiß man, zu welcher Kantine der Mitarbeiter gehen muss, um sein Menü zu bekommen. \\*
+
+\begin{lstlisting}
+    @SequenceGenerator(name = "menue_seq_gen", 
+                        sequenceName = "MENUE_SEQ",
+                        allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
+                    generator = "menue_seq_gen")
+    @Id
+    @Column(name = "MENUE_ID")
+    private Long id;
+
+    @Column(name = "MENUEDATUM")
+    private LocalDate date;
+
+    @Column(name = "MENUECODE", length = 1)
+    private char code;
+
+    @Column(name = "VORSPEISE", length = 2000)
+    private String appetizer;
+
+    @Column(name = "HAUPTSPEISE", length = 2000)
+    private String mainDish;
+
+    @Column(name = "NACHSPEISE", length = 2000)
+    private String desert;
+
+    @Column(name = "ANGELEGTUM",length = 6)
+    private Timestamp createdAt;
+
+    @Column(name = "ANGELEGTVON",length = 32)
+    private String createdBy;
+
+    @Column(name = "GEAENDERTUM",length = 6)
+    private Timestamp changedAt;
+
+    @Column(name = "GEAENDERTVON",length = 32)
+    private String changedBy;
+
+    @Column(name = "CATEGORIES",length = 255)
+    private String categories;
+
+    @ManyToOne
+    @JoinColumn(name = "KANTINE_ID")
+    private Kantine kantine;
+\end{lstlisting}
+
+\subsection{Oeffnungszeit}
+
+Die Entitäten Oeffnungszeit zeigt an, ob ein Kantinenraum in Verwendung ist und ob die Maximale Anzahl an Sitzplätzen schon belegt ist. Das Zeitfenster welches beschreibt wann gegessen wird, wird ebenso mitgespeichert. \\*
+
+Um zu wissen welcher Kantinenraum gemeint wird,  wird auch die verwendete Kantine mitgespeichert. \\*
+
+\begin{lstlisting}
+    @Id
+    @Column(name = "OEFFNUNGSZEIT_ID")
+    private Long id;
+
+    @Column(name = "STATUSKZ", length = 1)
+    private char status;
+
+    @Column(name = "ZEITFENSTERVON", length = 5)
+    private String timeWindowFrom;
+
+    @Column(name = "ZEITFEnSTERBIS", length = 5)
+    private String timeWindowTo;
+
+    @Column(name = "MAXPLAETZE", nullable = true)
+    private Integer maxPositions;
+
+    @Column(name = "ANGELEGTUM",length = 6)
+    private Timestamp createdAt;
+
+    @Column(name = "ANGELEGTVON",length = 32)
+    private String createdBy;
+
+    @Column(name = "GEAENDERTUM",length = 6)
+    private Timestamp changedAt;
+
+    @Column(name = "GEAENDERTVON",length = 32)
+    private String changedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "KANTINE_ID")
+    private Kantine kantine;
+\end{lstlisting}
 
 \section{REST-Schnittstellen}
+
+\subsection{Bestellung}
+
+\paragraph{Bestellungen von allen Mitarbeitern}
+
+\paragraph{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
+
+\paragraph{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
+
+\paragraph{Alle Kategorien von einem bestimmten Mitarbeiter}
+
+\paragraph{Alle Kategorien}
+
+\paragraph{Alle Bestellungen an einem bestimmten Tag}
+
+\paragraph{Bestellung erstellen}
+
+\paragraph{Bestellung stornieren}
+
+
+
+\subsection{Menue}
+
+\paragraph{Alle Menüs}
+
+\paragraph{Menü erstellen}
+
+\paragraph{Menü verändern}
+
+\paragraph{Menü-Vorschlag (Recomendation)}
+
+\paragraph{Alle Menüs an einem bestimmten Tag}
+
+
+\subsection{Oeffnungszeiten}
+
+\paragraph{Alle Aktiven Essenszeiten}
+
+\paragraph{Freien Tische}
+
 
 \section{Authentifizierung}
 
