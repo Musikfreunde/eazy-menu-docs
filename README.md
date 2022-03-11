@@ -13,4 +13,4 @@ EazyMenu ist eine Webanwendung, die für Mitarbeiter entwickelt wird, um essen b
 
 ## Documentation
 
-[https://musikfreunde.github.io/eazy-menu-docs/]()
+[https://musikfreunde.github.io/eazy-menu-docs/](https://musikfreunde.github.io/eazy-menu-docs/)
