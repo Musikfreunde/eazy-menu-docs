@@ -15,9 +15,11 @@ unterstützten unsere Entscheidung enorm.
 \section{Android Studio}
 \author{Bozidar Spasenovic}
 Android Studio ist eine Entwicklungsumgebung für Android-Anwendungen.
-\\* Neben dem leistungsstarken Code Editor werden noch mehr Funktionen, für die Produktivität, bereitgestellt. 
+\\* 
+Neben dem leistungsstarken Code Editor werden noch mehr Funktionen, für die Produktivität, bereitgestellt. 
 Android Studio funktioniert auf Windows, GNU/Linux, macOS und Chrome OS. Die erste Version kam, nach zwei Jahren Entwicklungsdauer, am 8. Dezember 2014 raus.
 Weiters beinhaltet es ein Gradle-build-system, viele verschiedene Android Emulatoren, ein Vorschaufenster mit der Anwendung was bedeutet, dass es konstant aktualisiert wird. 
+Es funktioniert mit den Programmiersprachen Java, Kotlin und C++. 
 
 \section{Git}
 \author{Benjamin Besic}
@@ -603,16 +605,36 @@ Damit ist der Absender verifiziert, die Nachricht authentisch und der Payload is
 \author{Bozidar Spasenovic}
 Jetpack Compose ist seit Juli 2021 in der ersten stabilen Version verfügbar. Es ist ein "Werkzeugkasten" zum Bauen von Android Applikationen.
 Es vereinfacht und beschleunigt den Anwendungsentwicklungsprozess. Da man mit wenig Code schnell viele Ansichten erstellen kann, ist die Fehlerqoute dementsprechend niedrig.
-Jetpack Compose basiert 100 Prozent auf Kotlin.
+Jetpack Compose basiert 100 Prozent auf Kotlin. Man kann zwischen drei Ansichten auswählen, die da Code, Split oder Design wären die das parallele arbeiten sehr vereinfacht. 
+Das App wird aber nicht nach jeder änderung neu gebaut, was wiederum die Schnelligkeit des Arbeiten beeinflusst. Damit die Applikation eine schöne Oberfläche hat, bietet
+Jetpack Compose mehrere Themes zu Verfügung. Noch dazu kann man diese dann auch selbst konfigurieren indem man Items hinzufügt oder löscht.
+Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu starten, damit man Desktop Anwendungen genau so schnell und einfach erstellen kann. 
 
 \section{Kotlin}
 \author{Bozidar Spasenovic}
 Kotlin ist eine universelle und statisch typisierte Open-Source-Programmiersprache, die ursprünglich für die Java Virtual Machine und Android entwickelt wurde.
-Es konzentriert sich auf Interoperabilität, Sicherheit, Übersichtlichkeit und Werkzeugunterstützung.
+Es konzentriert sich auf Interoperabilität, Sicherheit, Übersichtlichkeit und Werkzeugunterstützung. Als build-script wird Gradle verwendet.
+\\*
+2017 wurde sie zu einer offiziellen Sprache zur Entwicklung von Android-Applikationen. Deswegen wird Kotlin auch Programmiersprache der Zukunft betitelt wenn man sie mit Java vergleicht.
+Lambdafunktionen werden deutlich reduziert und somit auch leichter in der Praxis als in Java. 
+Da Kotlin sehr gut mit Java arbeiten kann, können beim Testen die Frameworks und Bibliotheken von Java sehr weiterhelfen.  
+Ursprünglich hat man den Kotlin Code in Bytecode übersetzt und diesen dann in edr JVM laufen gelassen. 
+Aber den Code kann man aber auch in Javascript umschreiben lassen und somit für Web Anwendungen verwenden.
 
 \section{XML}
 \author{Bozidar Spasenovic}
-XML steht für eXtensible Markup Language. Es wird in Android verwendet um das Layout jeder Aktivität des Android zu entwerfen und erleichtert die Datenübertragung zwischen Anwendungen.
+XML steht für eXtensible Markup Language und ist ein textformbasiertes Datenformat.
+Das Wort eXtensible beschreibt die erweiterungsmöglichkeiten der Sprache.
+Sie wurde im Jahre 1996 entwickelt und wurde zwe Jahre später zum W3C-Standart. 
+Sie ist sehr leicht einsetzbar in verschiedene Anwendungen da sie keine Lizenz benötigt.
+Viele Tools heutzutage erleichtern aber auch die bearbeitung von XML-Dateien.
+Ein Vorteil ist, dass man die Daten im XML als Textformat abspeichert, was heisßt das XML auch plattformunabhängig ist.
+Wie in HTML, gibt es auch hier sogenannte Tags, die aber selbst zu kofigurieren sind. 
+Der große Vorteil von XML ist das es sehr leicht lesbar ist, sowohl von Mensch als auch von Machine.
+Es wird in Android verwendet um das Layout jeder Aktivität des Android zu entwerfen und erleichtert die Datenübertragung zwischen Anwendungen.
+
+
+
 
 \section{Docker}
 \author{Bozidar Spasenovic}
@@ -631,9 +653,16 @@ OkHttp hilft bei Verbindungsproblemen indem man alternative Adressen benutzt.
 
 \section{Gradle}
 \author{Bozidar Spasenovic}
-Gradle ist ein, in 2007 entwickeltes, Build-Management-Automatisierungs-Tool welches auf Java basiert. Man kann es mit Apache Maven vergleichen.
-Der unterschied zu den  Maven-Projektdefinitionen ist, dass man Gradle-Scripts gleich ausführen kann. Gradle unterstütz neben Java noch die Programmiersprachen Groovy und Kotlin.
-\\* Seit Mitte 2013 ist Android hinzugekommen. Seitdem wurde das Tool weitgehend erweitert, um den Aufbau sogenannter „nativer“ Systeme zu unterstützen, welche nicht auf Java basieren.
+Gradle ist ein, in 2007 entwickeltes, Build-Management-Automatisierungs-Tool welches auf Java basiert.
+Man kann es mit Apache Maven und Ant vergleichen.
+Es hat die Flexibilität von Apache Ant und die simple Bediunungsmöglichkeit von Maven.
+Der unterschied zu den  Maven-Projektdefinitionen ist, dass man Gradle-Scripts gleich ausführen kann.
+ Gradle unterstütz neben Java noch die Programmiersprachen Groovy und Kotlin.
+DAG wird verwendetr um die Tasks in richtiger Reihenfolge zu dirigieren.
+Heutzutage hat Gradle eine eigene Maschiene für das verwalten der einzelnen Abhängigkeiten, aber es begann mit Apache Ivy.
+\\* 
+Seit Mitte 2013 ist Android hinzugekommen. Seitdem wurde das Tool weitgehend erweitert, um den Aufbau sogenannter „nativer“ Systeme zu unterstützen, welche nicht auf Java basieren.
+Gradle wird von sehr großen Unternehmen verwendet wie zum Beispiel LinkedIn, Netflix, Adobe und vielen weiteren.
 
 
 \section{Retrofit}
