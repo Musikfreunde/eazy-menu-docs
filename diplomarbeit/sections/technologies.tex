@@ -602,10 +602,14 @@ Damit ist der Absender verifiziert, die Nachricht authentisch und der Payload is
 \section{Progressive Web App(PWA)}
 Webanwendung werden mit Hilfe von HTML, CSS und Javascript wntwickelt. 
 Das in Verbindung mit dem Progressive Enhancement, was für die Lauffähigkeit einer Webseite in jedem Browser verantwortlich ist, wird eine PWA genannt. 
-\\*
+
 Der Service-Worker arbeitet mit HTTPS und führt konstant einen Web-Browser im Hintergrund.
 Dank ihm hat die PWA Zugriff auf Caching und kann Offline verwendet werden. 
 Weiter noch stellt der Service-Workerr die Funktionalität der Push-Notification bereit.  
+
+
+Vorteile sind die Kostenreduktion in der Entwicklung da man nur eine PWA benötigt, die man auf Android, IOS und Windows benützen kann.
+Weiters kann man die PWA so konfigurieren, dass sie wie eine echte Applikation ausschaut.
 
 
 \section{Google Charts}
@@ -623,7 +627,7 @@ Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu st
 \author{Bozidar Spasenovic}
 Kotlin ist eine universelle und statisch typisierte Open-Source-Programmiersprache, die ursprünglich für die Java Virtual Machine und Android entwickelt wurde.
 Es konzentriert sich auf Interoperabilität, Sicherheit, Übersichtlichkeit und Werkzeugunterstützung. Als build-script wird Gradle verwendet.
-\\*
+
 2017 wurde sie zu einer offiziellen Sprache zur Entwicklung von Android-Applikationen. Deswegen wird Kotlin auch Programmiersprache der Zukunft betitelt wenn man sie mit Java vergleicht.
 Lambdafunktionen werden deutlich reduziert und somit auch leichter in der Praxis als in Java. 
 Da Kotlin sehr gut mit Java arbeiten kann, können beim Testen die Frameworks und Bibliotheken von Java sehr weiterhelfen.  
@@ -654,11 +658,12 @@ Dies geschieht durch Virtualisierung des Betriebssystems, auf dem es installiert
 
 \section{OKHttp}
 \author{Bozidar Spasenovic}
-OkHttp ist ein HTTP-Client, der standardmäßig effizient ist. Dank der HTTP/2-Unterstützung ist es möglich alle Anfragen an einen Host zu schicken. 
- Response Caching hilft bei vermeidung von wiederholten Anfragen.
-OkHttp hilft bei Verbindungsproblemen indem man alternative Adressen benutzt.
- OkHttp unterstürzt weiters noch TLS-Funktionen. Es kann so konfiguriert werden, dass es für eine breite Konnektivität zurückgreift.
-
+OkHttp ist ein HTTP-Client, der standardmäßig effizient ist.
+ Dank der HTTP/2-Unterstützung ist es möglich alle Anfragen an einen Host zu schicken. 
+Response Caching hilft bei vermeidung von wiederholten Anfragen.
+OkHttp hilft bei Verbindungsproblemen indem man alternative Adressen benutzt und unterstürzt weiters noch TLS-Funktionen.
+ Es kann so konfiguriert werden, dass es auf eine breite Konnektivität zurückgreift.
+ Der Client ist sehr gut für die Verwendung von blockierte synchrone und nicht blockierte asynchrone Aufrufe 
 
 \section{Gradle}
 \author{Bozidar Spasenovic}
@@ -669,7 +674,6 @@ Der unterschied zu den  Maven-Projektdefinitionen ist, dass man Gradle-Scripts g
  Gradle unterstütz neben Java noch die Programmiersprachen Groovy und Kotlin.
 DAG wird verwendetr um die Tasks in richtiger Reihenfolge zu dirigieren.
 Heutzutage hat Gradle eine eigene Maschiene für das verwalten der einzelnen Abhängigkeiten, aber es begann mit Apache Ivy.
-\\* 
 Seit Mitte 2013 ist Android hinzugekommen. Seitdem wurde das Tool weitgehend erweitert, um den Aufbau sogenannter „nativer“ Systeme zu unterstützen, welche nicht auf Java basieren.
 Gradle wird von sehr großen Unternehmen verwendet wie zum Beispiel LinkedIn, Netflix, Adobe und vielen weiteren.
 
