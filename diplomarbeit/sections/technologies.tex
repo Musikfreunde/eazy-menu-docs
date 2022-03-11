@@ -597,7 +597,16 @@ Im Normalfall reicht es nur zu prüfen, ob die Daten vom richtigen Absender komm
 Es ist möglich zusätzlich zum JWS noch eine JWE (JSON Web Encryption) zu benützen. JWE verschlüsselt den Inhalt des Payloads, diese werden danach mit JWS signiert.
 Um die Inhalte dann zu entschlüsseln wird noch ein Kennwort oder ein privater Schlüssel angegeben. \\*
 Damit ist der Absender verifiziert, die Nachricht authentisch und der Payload ist nicht lesbar nach einer Base64-Entschlüsselung. \cite{JWTIONOS}
+
+
 \section{Progressive Web App(PWA)}
+Webanwendung werden mit Hilfe von HTML, CSS und Javascript wntwickelt. 
+Das in Verbindung mit dem Progressive Enhancement, was für die Lauffähigkeit einer Webseite in jedem Browser verantwortlich ist, wird eine PWA genannt. 
+\\*
+Der Service-Worker arbeitet mit HTTPS und führt konstant einen Web-Browser im Hintergrund.
+Dank ihm hat die PWA Zugriff auf Caching und kann Offline verwendet werden. 
+Weiter noch stellt der Service-Workerr die Funktionalität der Push-Notification bereit.  
+
 
 \section{Google Charts}
 
