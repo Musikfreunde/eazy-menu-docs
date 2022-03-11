@@ -1,0 +1,39 @@
+= Protokoll am 12.11.2021
+
+== Was wurde gezeigt
+
+=== Diagramme
+
+Diagramme wurden gezeigt mit dummy werten.
+
+* Diagramm für welche "Zutat" wurde am meisten ausgewählt.
+** Z.B. Fleisch mit Nudeln (2 Tags)
+* An welchen Wochentag habe ich am meisten bestellt
+** Option mit begrenzung für einen Monat
+
+Es besteht die möglichkeit, dass eine Mahlzeit mehr tags haben wird.
+
+== Food Recommender
+
+* Expertensystem
+* Regelbasiertes System
+
+== Wie man es machen könnte:
+
+* Expertensystem anwenden mit Java.
+
+== Android
+
+* Android app mittels Jetpack compose.
+
+== Schriftlicher Teil
+
+* Wurde weitergeschrieben.
+* Seiten: 26.
+
+== Was wird noch gemacht
+* weiter schreiben (Besic)
+* erste version der Android App (Spasenovic)
+* Recommender evt. fertig (Ignjatovic)
+
+*Nächstes Meeting 26.11.2021*

@@ -1,0 +1,30 @@
+= Protokoll 10.12.2021
+
+== Was wurde gemacht
+
+=== Jetpack compose
+
+Es wurde das neue Projekt gezeigt, welches von XML auf Jetpack compose umgeschrieben. +
+Die App ist zurzeit mit statischen werten befüllt. +
+Problem ist das Jetpack compose relativ neu ist, und wenig informationsquellen online zur verfügung stehen.
+
+=== Backend
+
+Backend ist im groben und ganzen fertig. Logic für die Statistiken wird noch erledigt.
+
+=== Recommender
+
+Frontend wurde fertiggestellt für den Recommender.
+
+== Was wird noch gemacht
+
+* Statistik (Backend/Frontend) wird fertiggestellt
+* Android App wird erweitert
+
+== Mehr Info
+
+Jetziger Stand der schriftlichen Arbeit wurde gezeigt.
+
+*Nächste Meeting 21.12.2021 16:00 Uhr*
+
+

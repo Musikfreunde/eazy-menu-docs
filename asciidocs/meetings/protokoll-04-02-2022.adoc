@@ -1,0 +1,40 @@
+= Protokoll 04.02.2022
+
+== Android / Spasenovic
+
+=== Wichtige Links:
+
+* https://guides.codepath.com/android/sending-and-managing-network-requests
+* https://www.toptal.com/android/android-threading-all-you-need-to-know
+
+
+=== Was geht nicht
+
+* Storno funktioniert nicht da im Backend ein Fehler ist.
+
+=== Was wurde gemacht
+
+* Login Bugs wurden gefixt
+
+== Backend / Ignjatovic
+
+=== Was geht nicht
+
+* Bug beim Stornieren
+
+=== Was wurde gemacht
+
+* Unit Tests für Entities und Repositories (Nicht ganz fertig)
+
+== Schriftlicher Teil / Ignjatovic, Besic
+
+* Verwendete Technologien / Ignjatovic
+* Implementierung / Besic
+
+== Was soll gemacht werden
+
+* Kotlin Login verbessern / Spasenovic
+* Backend Bug fixen / Ignjatovic
+* schriftlicher Teil (Implementierung) / evt (alle)
+
+*Nächste Meeting 23.02.2022 um 12:00 Uhr*

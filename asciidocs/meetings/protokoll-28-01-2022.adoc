@@ -1,0 +1,36 @@
+= Protokoll 06.01.2022
+
+== Android App / Spasenovic
+
+=== Was funktioniert
+
+* KeyCloak funktioniert jetzt
+* Bestellungen werden angezeigt
+
+=== Probleme
+
+* Beim Bestellen kommt ein fehler (unsupported mediatype).
+* Login button muss 2 mal gedrückt werden.
+** möglicher Fehler: api läuft asynchron
+* hartkodierte urls vermeiden
+
+== Projekt allgemein / Besic
+
+* Docker Compose file wurde erstellt für das Projekt (Alles is gedockert)
+
+== Schriftlich / Ignjatovic
+
+* Verwendete Technologien wurden erweitert.
+
+== Was wird gemacht bis zum nächsten mal
+
+* Schriftlich weiterschreiben / Beisc, Ignjatovic (evt. Spasenovic)
+** verwendete Technologien
+** implementierung
+* Android Projekt verschönern (Spasenovic)
+
+== Was wäre noch wichtig
+
+* Automatisierte Test
+
+*Nächste Meeting 04.02.2022 18 Uhr*

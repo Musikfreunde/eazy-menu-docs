@@ -1,0 +1,27 @@
+= Protokoll 26.11.2021
+
+== Was wurde gezeigt
+
+* erste Version Android
+* Recommender
+* schriftlicher Teil
+
+== Bis nächstes mal
+
+=== Android (Spasenovic)
+
+* restlichen Fragmente
+* logik
+
+=== Recommender (Ignjatovic)
+
+* "noch etwas mehr"
+
+=== andere Sachen
+
+* frontend mit backend verbinden
+* grafiken mit neuem backend
+* statistiken
+* versuchen den schriftlichen Teil für einen ersten Überblick fertigstellen
+
+*Nächstes Meeting 10.12.2021*

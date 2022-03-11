@@ -1,0 +1,43 @@
+= Protokoll 23.02.2022
+
+== Android / Spasenovic
+
+=== Was geht nicht
+
+* Probleme mit dem formbody in postBestellung
+** 403 MediaType not supported
+
+=== Was fehlt noch
+
+* Bestellung
+* eventuelle verschönerungen
+
+=== Was wurde gemacht
+
+* Login gefixt mit CountDownLatch()
+* Verlauf
+
+== Frontend und Backend / Besic
+
+=== Was wurde gemacht
+* Frontend Kategorien anzeigen lassen
+** Mitarbeiter haben die möglichkeit die Kategorien einer Mahlzeit zu sehen
+* Backend Recommender wurde optimiert
+** Bug wurde gefunden und gefixt
+
+== Schriftlich
+
+=== Was wurde gemacht
+* Verwendete Technologien / Spasenovic
+** Android Teil
+* Implementierung / Besic, Ignjatoivc
+** Views und Backend angefangen
+
+== Was wird noch gemacht
+
+* Schriftlicher Teil / alle
+** Implementierung / Verwendete Technologien
+* Bestellung fixen / Spasenovic
+** Android
+* Unit Test / Ignjatovic
+** Backend

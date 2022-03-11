@@ -1,0 +1,63 @@
+= Protokoll 25-10-2021
+
+== Was haben wir zurzeit?
+
+Das Programm ist lauffähig und erfüllt alle usecases.
+
+== Führung durch das Programm
+
+Das Programm besteht aus zwei Views. Eine View für die Mitarbeiter und eine View für die
+Kantine.
+
+=== Mitarbeiter View
+Der Mitarbeiter kann eine oder mehrere Mahlzeiten bestellen. Jeder Mitarbeiter kann für sich
+selbst oder für einen anderen Mitarbeiter etwas bestellen. +
+Man kann auswählen, wann die Mahlzeit fertig sein soll mit vorgegeben Zeitabschnitten. +
+Nach der Bestellung sieht der Mitarbeiter seine ganzen Bestellungen in einer Tabelle.
+
+=== Kantinen View
+
+Die Kantine kann Mahlzeiten hinzufügen oder auch bearbeiten. +
+Nach Wunsch der Kantine besteht die Möglichkeit den gewünschten Tag auszudrucken. Das heißt
+alle wichtigen Daten werden auf einem Blatt Papier angezeigt. +
+
+== Probleme
+
+Was noch gemacht werden kann, ist noch etwas Komplexes hinzuzufügen.
+
+=== Vorschläge:
+
+* Ernährungsberatung für Mitarbeiter mit AI.
+
+== Was gehört noch gemacht?
+
+* Schriftliche Diplomarbeit
+
+IMPORTANT: Jede Behauptung muss mit einem Zitat belegt sein.
+
+=== Aufbau:
+
+* Kapitel 1: Einleitung
+* Kapitel 2: State of Art
+** Unser Programm soll verglichen werden mit alternativen. (Warum unser Programm?)
+* Kapitel 3: Verwendete Technologien
+** Warum kein Quarkus oder kein Angular?
+** Warum doch Java EE und Vue.js
+* Kapitel 4:
+* Kapitel 5: Implementierung
+** Serverumgebung der Firma
+** Vor und Nachteile von Java EE oder Quarkus
+** Warum Panache?
+
+== Benotung
+
+Es muss ersichtlich sein, wer was gemacht hat egal ob Code oder Schriftlich.
+
+== Zusammenfassung
+
+* Diplomarbeiten werden zur verfügung gestellt.
+* Inhaltsverzeichnisse überlegen. (Einzelne Punkte gut überlegen.)
+* Kapitel 3 kann schon gemacht werden.
+* Gliederungen machen in dem Inhaltsverzeichnis und anfangen zu schreiben.
+* BibTex wurde angesprochen und erklärt.
+* Brainstorming was noch hinzugefügt werden kann.

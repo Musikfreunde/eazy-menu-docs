@@ -1,0 +1,46 @@
+= Protokoll 06.01.2022
+
+== Android App / Spasenovic
+
+=== Was funktioniert
+
+* Login noch nicht ganz fertig - KeyCloak fehlt
+* Logik hinter der App funktioniert
+
+=== Was geht leider noch nicht
+
+* Post funktioniert nicht ganz
+* Statistiken in der Android App gehen nicht
+
+=== Was wird noch gemacht? / Spasenovic
+
+* Statistiken werden eingebaut
+* KeyCloak anbindung
+
+== Statistiken / Ignjatovic & Besic
+
+=== Was funktioniert
+
+* Kreisdiagramm mit den Tags wird angezeigt und die Anzahl wie oft sie ausgewählt wurde
+* Balkendiagramm der anzeigt welcher Wochentag am öftesten vorkommt.
+
+== Schriftliche Arbeit / Besic
+
+=== Was wird noch gemacht? / Besic
+
+* OAuth2 erklären als subsection in KeyCloak
+
+== Was bis zum nächsten Mal gemacht werden soll
+
+=== Programm
+
+* Android app muss noch fertig gemacht werden. (Spasenovic)
+* KeyCloak mit JetPackCompose
+* Statistiken anzeigen
+* Recommender und Statistiken evt. erweitern (Ignjatovic und Besic)
+
+=== Schriftlich
+
+* Mehr schreiben (evt. Ignjatovic und Besic)
+
+*Nächste Meeting 14.01.2022 17:00*
