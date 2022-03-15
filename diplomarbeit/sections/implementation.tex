@@ -452,4 +452,154 @@ Dies dient dazu, dass sie einen Ausdruck auf Papier haben, der für die Kantine 
 \pagebreak
 
 \section {Interface Android-App}
+\author{Bozidar Spasenovic}
 
+
+\section{Login}
+\begin{figure}[htp]
+    \centering
+    \author{Bozidar Spasenovic}
+    \includegraphics[scale=0.1]{pics/LoginScreenAnndroid.png}
+    \caption{Loginscreen Android}
+    \label{fig:impl:LoginScreenAnndroid}
+\end{figure}
+
+\subsection{Authentification}
+Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie den Keycloak nach einem Token für den User zu fragen.
+Kriegt man einen Token zurück, so besteht der User.
+
+\begin{lstlisting}
+
+    Button(onClick = {
+        if (!name.isEmpty() && !password.isEmpty() && checkAccessToken()) {
+
+            InitMenues()
+            InitBestellungen(name)
+            Toast.makeText(
+                context,
+                "Logged in successfully",
+                Toast.LENGTH_SHORT
+            ).show()
+            isLoggedIn.value = true
+            navController.navigate("uebersicht")
+
+        }
+    }) {
+        Text(text = "Sign In")
+    }
+
+\end{lstlisting}
+
+\subsubsection{checkAccessToken()}
+
+Man schickt einen Request an http://10.0.2.2:8082/auth/realms/menuRealm/protocol/openid-connect/token mit einem passendem body.
+Im body stehen die Felder die für den Request nötig sind wie zum Beispiel:
+\begin{itemize}
+    \item die Client ID
+    \item der Grant Type 
+    \item der Client Secret
+    \item der Scope
+    \item das Passwort
+    \item der Username
+\end{itemize}
+
+Als Client wird ein OkHttpClient verwendet. Dieser erstellt einen neuen Aufruf mit dem erstelltem Request. 
+Er wartet auf einen Response und speichert bei einem erfolgreichem Response den Token. Da es zu Internet Problemen kommen kann haben wir
+einen countDownLatch eingebaut, der vor der Rückgabe der Methode darauf wartet, dass der Token gespeichert worden ist.  
+
+\begin{lstlisting}
+    client.newCall(request).enqueue(object : Callback {
+        override fun onResponse(call: Call, response: Response) {
+            response.use {
+                if (response.isSuccessful) {
+                    accessToken.value = response.body!!.string()
+                }
+                else{
+                    throw IOException("Unexpected code $response")
+                }
+            }
+            countDownLatch.countDown()
+        }
+        override fun onFailure(call: Call, e: IOException) {
+            e.printStackTrace()
+            countDownLatch.countDown()
+
+        }
+    })
+    countDownLatch.await()
+    return accessToken.value != ""
+\end{lstlisting}
+
+\subsection{Log out}
+Der Mitarbeiter hat eine Möglichkeit sich auch aus der App auszuloggen. Das erfolgt durch den Sign out Button.
+\begin{figure}[htp]
+    \centering
+    \author{Bozidar Spasenovic}
+    \includegraphics[scale=0.09]{pics/SignOutScreenAnndroid.png}
+    \caption{Signout Android}
+    \label{fig:impl:SignOutScreenAnndroid}
+\end{figure}
+
+Nach dem einloggen wird die Methode InitBestellungen() aufgerufen. Ihre Aufgabe ist es den derzeitigen Bestellungsverlauf des Mitarbeiters zu initialisieren.
+Den kann man dann auch in der Verlaufsansicht sehen. 
+
+
+
+
+\pagebreak
+
+\section{Verlauf}
+
+Der Verlauf ist eine einfache Liste von den ganzen Bestellungen des Users.
+Es wird der Menüname, das Bestelldatum und das Datum des Menüs angezeigt.
+Ist die Bestellung stornierbar, so wird eine Mülltonne als Icon angezeigt. 
+Durchs draufklicken auf die Mülltonne, wird die Bestellung storniert.
+
+\begin{figure}[htp]
+    \centering
+    \author{Bozidar Spasenovic}
+    \includegraphics[scale=0.09]{pics/VerlaufAndroid.png}
+    \caption{VerlaufAndroid Android}
+    \label{fig:impl:VerlaufAndroid}
+\end{figure}
+
+
+Es wird ein PUT auf die URL http://10.0.2.2:8080/menue/bestellung?id=\$menuId was im backend das löschen zur jeweiligen Menü Id ausübt.
+Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Methode zum neu laden des Verlaufes aufgerufen.
+
+\begin{lstlisting}
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            e.printStackTrace()
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+            response.use {
+                if (!response.isSuccessful){
+                    throw IOException("Unexpected code $response")
+                }
+
+                InitBestellungen(currUser.value)
+            }
+        }
+    })
+\end{lstlisting}
+
+
+\pagebreak
+
+
+\section{Bestellansicht}
+
+In der Bestellansicht werden dide Felder Menü, Von und das Datum automatisch in ein Readonly Text Field gespeichert.
+Man kann dann die Anzahl angeben, für wen man es bestellen möchte und auch zwischen vier Zeiten aussuchen. 
+
+\begin{figure}[htp]
+    \centering
+    \author{Bozidar Spasenovic}
+    \includegraphics[scale=0.09]{pics/BestellübersichtAndroid.png}
+    \caption{Bestellansicht Android}
+    \label{fig:impl:BestellübersichtAndroid}
+\end{figure}
+
+\subsection{postBestellung()}
