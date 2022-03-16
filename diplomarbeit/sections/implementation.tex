@@ -591,7 +591,7 @@ Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Me
 
 \section{Bestellansicht}
 
-In der Bestellansicht werden dide Felder Menü, Von und das Datum automatisch in ein Readonly Text Field gespeichert.
+In der Bestellansicht werden die Felder Menü, Von und das Datum automatisch in ein Readonly Text Field gespeichert.
 Man kann dann die Anzahl angeben, für wen man es bestellen möchte und auch zwischen vier Zeiten aussuchen. 
 
 \begin{figure}[htp]
@@ -603,3 +603,34 @@ Man kann dann die Anzahl angeben, für wen man es bestellen möchte und auch zwi
 \end{figure}
 
 \subsection{postBestellung()}
+Nach dem Abschließen wird die postBestellung()-Methode aufgerufen. Sie erstellt einen Requestbody mit den eingegebenen Werten
+und schickt es mittels POST an die "http://10.0.2.2:8080/menue/bestellung/" URL. Dieser Endpoint führt dann die Anfrage durch und schickt einen Response zurück.
+Wichtig dabei ist es den richtigen Media-Type zu definieren. 
+
+Die Anfrage und Antwort:
+\begin{lstlisting}
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            e.printStackTrace()
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+            response.use {
+                if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+                val gson = GsonBuilder().create()
+
+                val collectionType: Type =
+                    object : TypeToken<Collection<Bestellung?>?>() {}.type
+                bestellungen = gson.fromJson(response.body!!.string(), collectionType)
+            }
+        }
+    })
+\end{lstlisting}
+
+Der Response wird so benutzt, dass man als erstes mit dem GsonBuilder ein Gson-Objekt erstellt.
+Dieses Objekt wird verwendet um ein JSON-Objekt in ein Kotlin-Objekt umzuwandeln. 
+Damit man Gson verwendetn kann, benötigt man die abhängigkeit com.google.code.gson:gson:2.8.9.
+abschliesend wird vom Responsebody eine Collection von allen mitgegebenen Bestellungen erstellt und gespeichert.
+
+
