@@ -115,8 +115,6 @@ was es erleichtert innerhalb eines Teams, Probleme besser lösen zu können. \\*
 Es gibt ebenfalls bezahlte Pläne, die es vor allem Organisationen und Unternehmen leichter macht Unternehmensprojekte zu verwalten durch zusätzliche Funktionen.
 \cite{GitKinsta}
 
-
-
 \section{Java}
 \author{David Ignjatovic} 
 
@@ -128,13 +126,13 @@ Die Programmiersprache selbst sollte aber nicht gleichgesetzt werden mit der Jav
 \subsection{Hello World}
 \author{David Ignjatovic} 
 \begin{lstlisting}[language=Java,caption=Java File HelloWorld,label=lst:impl:foo]
-    public class HelloWorld {
-        public static void main (String[] args){
-                // Ausgabe Hello World!
-                System.out.println("Hello World!");
-        }
+public class HelloWorld {
+    public static void main (String[] args){
+            // Ausgabe Hello World!
+            System.out.println("Hello World!");
     }
-    \end{lstlisting}
+}
+\end{lstlisting}
 
 \subsection{Java Runtime Environment }
 \author{David Ignjatovic} 
@@ -210,6 +208,7 @@ Durch die Hilfe von JPA (Java Persistance API) wird der aufwand reduziert, welch
 JPA wurde von JSR 220 Expert Group entwickelt und im Mai 2006 erstmals veröffentlicht. 
 
 \subsection{Hibernate}
+\author{David Ignjatovic}
 
 Hibernate wird oft als Object Relational Mapping Tool bezeichnet. Es ist ein Framework zur Abildung von Objekten auf relationaler Datenbank für die Programmiersprache Java.
 Hibernate implementiert die Java Persistence API (JPA)und bietet Funktionalitäten wie zum Beispiel  Datenbankabfragen mit der sogennanten Hibernate Query Language (HQL). \\*
@@ -218,18 +217,20 @@ Es wurde von JBoss im Jahr 2001 entwickelt und veröffentlicht. Sommit ist auch 
 
 
 \section{JBoss}
+\author{David Ignjatovic}
 
 Red Hat JBoss Enterprise Application Platform (JBoss EAP) bietet Sicherheit und Performance. Der JBoss EAP ist eine Open-Source-Java EE-basierte Laufzeitplattform für Anwendungsserver.
 
 
 \subsection{Panache}
+\author{David Ignjatovic}
 
 Panache ist eine Quarkus-spezifische Bibliothek, welche die Entwicklung einer Hibernate-basierten Persistenzschicht vereinfacht. 
 Panache ersetzt den größten Teil des Boilerplate-Codes mit einfachen methoden die man in die Quarkus Anwendung implementieren kann. 
 Methoden wie create, update, and remove aber auch eigene Abfragen auf der Datenbank werden von Panache zur Verfügung gestellt. \\* \cite{Panache}
 
 \section{Maven}
-
+\author{David Ignjatovic}
 
 Apache Maven ist ein leistungsfähiges Werkzeug, welches immer weider vorkommende Prozeduren automatisiert und vereinfacht. 
 Es wird oft als "Build Management System" bezeichnet und ist Teil vom "Software Configuration Management (SCM)".  \\* \cite{Maven}
@@ -385,6 +386,47 @@ Dieser identifiziert sich durch den Client und seine Rollen im Realm werden der 
 
 
 \section{Oracle Datenbank}
+\author{David Ignjatovic}
+
+Oracle Database ist ein relationales Datenbankmanagementsystem, auch gennant RDBMS, welche von der Firma Oracle hergestellt wurde. 
+Oracle ist einer der bekanntesten und auch meist verwendet Datenbanken. Die Firma Oracle wurde am 17. August 1977 Lawrence  Joseph Ellison in der Bronx, New York City, gegründet.
+Die erste Version von Oracle Database kam 1979 auf den Markt. \cite{OracleDB} \\*
+
+Die Oracle Database nutzt wie die meisten relationale Datenbanken, SQL als Programmiersprache (Structured Query Language).
+SQL wird in der Oracle Database verwendet um Aktionen durchzuführen, Datenbankstrukturen zu schaffen, Datensätze zu verwalten oder enthaltene Daten abzurufen. 
+PL/SQL, welche eine Oracle-eigen sprache ist, ist wiederum eng verknüpft mit SQL und bietet die Möglichkeit, SQL um Oracle-Programmiererweiterungen zu ergänzen. 
+Oracle verwendet Zeilen- und Spaltentabellen zur strukturierung der Datenbanken, in denen Datenpunkte über Attribute verbunden sind \cite{OracleDB} \\*
+
+Wichtige Oracle-Database-Werkzeuge währen Oracle SQL Developer und Oracle Data Modeler. \\*
+
+Mit dem Oracle SQL Developer kann man leicht Datenbankabfragen auf einer Graphischen oberfläche tätigen. Noch dazu kann man PL/SQL Prozeduren erstellen oder generieren lassen.
+Der Oracle Data Modeler wird hauptsächlich zum erstellen von Datenbankmodellen oder Entity-Relationship-Modellen verwendet.
+
+
+
+\section{SQL}
+\author{David Ignjatovic}
+
+SQL steht für Structured Query Language und ist eine Datenbanksprache zur Erstellung von Datenbankstrukturen in relationalen Datenbanken 
+aber auch zum Bearbeiten und Abfragen von Daten. Die Datenbanksprache basiert auf der relationalen Algebra. Die Syntax ist einfach und an die englische Sprach angelehnt. 
+
+Mit abfragen werden Daten in einer Datenbank abgerufen. \cite{SQL}
+
+\subsection{SQL - Select}
+
+Der Select befehl in der Datenbanksprache, ist sozusagen der Grundstein für SQL-Abfragen.  \\*
+
+\begin{lstlisting}[language=SQL,caption=Sql Select,label=lst:impl:foo]
+SELECT t.Spaltenname1, t.Spaltenname2 FROM Tabellenname t
+\end{lstlisting}
+
+Wenn man den Select Befehl mit einem "WHERE" erweiter, kann man die Datenbank abfrage umso genauer gestallten. Es werden sommit nur sezielle Daten abgefragt. \\*
+
+\begin{lstlisting}[language=SQL,caption=Sql Select Where,label=lst:impl:foo]
+SELECT t.Spaltenname1, t.Spaltenname2 FROM Tabellenname t WHERE t.Spaltenname1 = 1
+\end{lstlisting}
+    
+
 \section{Vue.js}
 \author{Benjamin Besic}
 Vue.js ist ein JavaScript-Webframework, das zum Erstellen von Single-Page-Webanwendungen dient. 
@@ -684,3 +726,6 @@ Gradle wird von sehr großen Unternehmen verwendet wie zum Beispiel LinkedIn, Ne
 Retrofit ist ein REST-Client für Java und Android.
 Es wird verwendet, um Requests zu Empfangen, Senden und Erstellen von HTTP-Anforderungen sowie Antworten.
 Noch dazu wird die IP-Adressen ausgewechselt, wenn eine Verbindung zu einem Webdienstfehler besteht.
+
+\section{Asciidoctor}
+\author{David Ignjatovic}
