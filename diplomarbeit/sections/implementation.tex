@@ -428,7 +428,7 @@ Damit die Kantine sehen kann, welche Bestellungen an welchen Tagen zugewissen wo
 
 Es kann aber auch sein, das es an bestimmten Tagen keine bestellungen gibt. Deshalb werden auch keine Ergebnisse zurückgegeben.
 
-Um aber zu veranschaulichen, wie manche Bestellungen an einem bestimmten zurückgegeben werden, verwenden wir das den 16.03.2022.
+Um aber zu veranschaulichen, wie manche Bestellungen an einem bestimmten Zeitpunkt zurückgegeben werden, verwenden wir das den 16.03.2022.
 
 URL: GET \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/bestellung?date=2022-03-16|}
 
@@ -461,13 +461,58 @@ Output:
 
 \paragraph{Bestellung erstellen}
 
-Damit eine Bestellung erstellt wird, muss ein POST-Request auf den Pfad bestellung/ geschickt werden.
+WIP
+
+
+\paragraph{Bestellung stornieren}
+
+WIP
+
+\subsection{Menue}
+
+\paragraph{Alle Menüs}
+
+Um sehen zu können, welche Menüs es überhapt schon gab, muss der Pfad /menues aufgerufen werden. 
+
+Ein Beispiel für ein Menue sieht folgendermassen aus:
+
+URL: GET \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues|}
+
+
+\begin{lstlisting}[language=json,firstnumber=1]
+[
+    {
+        "appetizer": "Suppe",
+        "categories": "Vegan;Vegetarisch;Salat",
+        "code": "C",
+        "date": "2022-03-22",
+        "dessert": "Milka",
+        "id": 706,
+        "mainDish": "Kartofell Salat"
+    },
+    {
+        "appetizer": "Suppe",
+        "categories": "Vegan;Vegetarisch;Salat",
+        "code": "C",
+        "date": "2022-03-22",
+        "dessert": "Milka",
+        "id": 705,
+        "mainDish": "Kartofell Salat"
+    },
+    ...
+]
+\end{lstlisting}
+
+\paragraph{Menü erstellen}
+
+Damit die Kantine ein Menü erstellen kann, wird ein POST-Request an den Pfad PFAD ÄNDERN geschickt.
 
 Da eine Bestellung aus genau 3 Menues besteht, werden auch 3 POST-Requests abgeschickt. Die werte werden in Form eines JSON Objekt abgeschickt.
 
 Ein Beispiel für eine Bestellung sieht folgendermassen aus:
 
-URL: POST \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/bestellung?date=2022-03-16|}
+URL: POST \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/...|}
+
 
 JSON Objekt für Menue A:
 
@@ -512,16 +557,6 @@ JSON Objekt für Menue C:
 \end{lstlisting}
 
 Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Kategorien werden aber dann in getrennt und als Enum gespeichert.
-
-\paragraph{Bestellung stornieren}
-
-
-
-\subsection{Menue}
-
-\paragraph{Alle Menüs}
-
-\paragraph{Menü erstellen}
 
 \paragraph{Menü verändern}
 
