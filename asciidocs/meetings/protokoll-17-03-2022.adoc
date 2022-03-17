@@ -1,0 +1,37 @@
+= Protokoll 17.03.2022
+
+== Android / Spasenovic
+
+=== Was funktioniert
+
+* bestellung funktioniert jetzt
+** fehler war falscher name des Atributes
+** personalnummer und orderFor war null
+
+== Feedback
+
+=== Android
+
+* bessere package namen verwenden
+* Ip Addressen nicht hardcoden
+
+=== Schriftlich
+
+==== Planung
+
+* liegt verloren
+* sagt wenig aus
+* Datenmodel Diagramme
+* Datenmodel Diagramme zur Implementierung verschieben.
+* Eventuell Planung zur Implementierung.
+* Mockups erweitern mit Text.
+* UseCases zur Implementierung
+
+==== Backend
+
+* Swagger wäre nicht schlecht und dann im schriftlichen Teil einbauen
+* Im schriftlichen Teil
+** Weniger Code bei attribute
+
+== Nächte Meeting 24.03.2022
+
