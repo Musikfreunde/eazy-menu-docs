@@ -9,13 +9,67 @@
     \label{fig:impl:SysArc}
 \end{figure}
 
+Der Systemarchitektur kann man entnehmen, dass das Quarkus Backend die zentrale Stelle für alle anderen Technologien bildet.
+Das Backend stellt mit Hilfe der Datenbank alle Daten zur Verfügung mittels REST. \\*
+Der Keycloak Server sichert die beiden Frontends ab und sorgt dafür, dass keine ungewollten Zugriffe entstehen.
+Vue.js benützt dafür ein Keycloak Package, dass eine leichte Integration erlaubt. Die Android App hingegen arbeitet mittels REST Requests mit Keycloak zusammen,
+da es zum jetzigen Zeitpunkt keine offizielle Erweiterung für Jetpack Compose gibt.
+
+\subsection{Technologien}
+
+Beim Entwickeln wurden folgende Technologien verwendet:
+\begin{itemize}
+    \item docker 3.1
+    \item Vue.js 2.6.14
+    \item quarkus 2.5.0.Final
+    \item Jetpack Compose 1.0.1
+    \item Keycloak 14.0.0
+    \item Java OpenJDK-11
+    \item Java EE 8
+    \item JBoss Wildfly 7.3.4.GA
+\end{itemize}
+
 \section{Datenmodell}
 \author{David Ignjatovic}
 
 Ein Datenmodell wird als Darstellung der relevanten Objekte eines Projektes verwendet. 
 Unser Datenmodell ist im Großen und Ganzen immer gleichgeblieben. Für den Algorithmus aber haben wir es aber erweitern müssen.
 
+\subsection{Planung}
+\author{Benjamin Besic}
+Einer der ersten Arbeitsschritte war die Entwicklung eines Datenmodells, welches die Basis der Programmlogik sein soll. Dieses wurde mit einem ERD-Diagramm erstellt.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.4]{pics/erd-alt.png}
+    \caption{Erste Version des Datenmodells}
+    \label{fig:impl:ERDold}
+\end{figure}
+
+Die erste Version wurde von unserem Team entwickelt, aus den Erfahrungen und Informationen, die wir im Unterricht gesammelt haben. \\*
+An dieser Version merkt man, dass die meisten Teile in einzelne Tabellen aufgeteilt wurden. Dies sorgt für Flexibilität und Wiederverwendung von einem Menü, da die einzelnen
+Speisen aufgeteilt sind.
+Am Anfang war geplant, dass jede Speise auch ein Bild hat, damit der Mitarbeiter weiß, wie die Speise auch wirklich aussieht.\\*
+Ebenfalls erkennt man, dass es eine User-Klasse gibt, da Mitarbeiter, Personal und Kantine gleiche Eigenschaften miteinander teilen wie zum Beispiel Vor- und Nachname.\\*
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.5]{pics/erd-aktuell.png}
+    \caption{Finale Version des Datenmodells}
+    \label{fig:impl:ERDnew}
+\end{figure}
+
+Die finale Version des Datenmodells übernimmt das meiste der ersten Version, jedoch wurde es nach Absprache mit unserer Partnerfirma überarbeitet, um deren Anforderungen mehr zu entsprechen.\\*
+Eine wichtige Änderung ist, dass die Menue-Klasse alle Speisen enthält und diese als einfacher Text gespeichert werden. Der Grund dafür ist, dass die Kantine
+immer die Menüs händisch eingibt und eine Auswahl von vorhandenen Speisen würde nur den Speicheraufwand unnötig erhöhen. Es kommt eher selten vor, dass die selben Speisen nacheinander kommen.\\*
+Was vorher gefehlt hat war der Kommentar und die Möglichkeit die Stornierung eines Menüs nachzuvollziehen. Wenn ein Menü storniert wird, wird es nicht gelöscht, sondern es wird nur 
+das Stornodatum gesetzt. Es ist wichtig, dass auch stornierte Bestellungen in der Datenbank bleiben. \\*
+Ebenfalls wurde die Abrechnung eines Menüs in der ersten Version nicht berücksichtigt. Die Kosten für das Menü werden dem Mitarbeiter vom Gehalt abgezogen und dies erfolgt anhand 
+von den Daten in der Datenbank.
+
+
 \subsection{Entitäten}
+\author{David Ignjatovic}
 
 Eine Entität ist ein bestimmtes Objekt mit den jeweiligen Atributen. Atribute sind die Eigenschaften eins Objektes.
 Unser Projektes beinhaltet 5 Entitäten:
@@ -27,6 +81,8 @@ Unser Projektes beinhaltet 5 Entitäten:
   \item Menue
   \item Oeffungszeit
 \end{itemize}
+
+\pagebreak
 
 \subsection{Bestellung} 
 
@@ -576,6 +632,43 @@ Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Katego
 
 \section {Interface Webapp}
 \author{Benjamin Besic}
+\subsection{Planung}
+
+Nachdem das Datenmodell feststand wurden UI-Prototypen entwickelt, die das Aussehen der Vue-App darstellen sollen.
+
+\begin{figure}[htp]
+    \author{Benjamin Besic}
+    \centering
+    \includegraphics[scale=0.3]{pics/UI-Bestellung-Prototyp.png}
+    \caption{UI-Prototypen für den Bestellvorgang}
+    \label{fig:impl:UIPlanningBest}
+\end{figure}
+
+\subsubsection{Bestellvorgang}
+Beim Entwickeln stehen die Benutzerfreundlichkeit und das Aussehen auf mobilen Geräten an erster Stelle. Anhand dessen ist die Navigationsleiste am Wichtigsten.
+Diese soll den Benutzer auf alle Sichten führen können und dem Benutzer ermöglichen, sich auszuloggen. \\*
+Der Kalender muss übersichtlich sein und die Tage, an denen Bestellungen nicht möglich sind, sollten ausgeblendet sein. Ebenfalls soll auch in die Vergangenheit geschaut werden können.\\*
+Um den Rest des Platzes auszunutzen wurde eine Menüauswahlt geplant, die soviel wie möglich Information darstellen kann, ohne den Benutzer zu überfordern.
+Nach langem Überlegen wurden die drei Menüs groß als Kästen dargestellt, um soviel wie möglich innerhalb dieser darstellen zu können.
+Die Vor- und Nachspeise ist kleiner dargestellt, da man keine Entscheidung darüber machen kann.\\*
+Die Sicht nachdem man sich ein Menü ausgewählt hat, soll so kompakt wie möglich sein, da auch die mobile Ansicht ohne Probleme nutzbar sein soll.
+Alle Informationen, die vom Benutzer eingegeben werden müssen, sollen in der Form eines Formulars angezeigt werden und andere Informationen wie Ersteller und Gericht 
+werden automatisch eingesetzt.
+\begin{figure}[htp]
+    \author{Benjamin Besic}
+    \centering
+    \includegraphics[scale=0.36]{pics/UI-Login-Uebersicht-Prototyp.png}
+    \caption{UI-Prototypen für den den Login und die Übersicht}
+    \label{fig:impl:UIPlanningLogUebersicht}
+\end{figure}
+
+\subsubsection{Login und Übersicht}
+Der Login soll einladend sein, hat aber keinen besonderen Anforderungen zu entsprechen \\*
+Die Übersicht über die bereits bestellten Menüs soll dem Benutzer alle wichtigen Informationen auf einen Blick geben.
+Das Stornieren soll ebenfalls simpel gehalten werden, damit der Benutzer nicht darüber nachdenken muss.
+Der Benutzer soll auch eine Möglichkeit haben die Bestellungen zu filtern, um bestimmte Zeitpunkte bzw. Menüs einfacher zu finden.
+
+
 \subsection{Login}
 Beim Aufrufen der Webapp wird man zunächst zu der Login-Seite weitergeleitet. Wie diese fungiert, sieht man in der nächsten Abbildung. \\*
 Der Login dient in erster Hinsicht dazu, um festzustellen ob der Benutzer ein Mitarbeiter oder Kantinenmitarbeiter ist.
@@ -587,6 +680,9 @@ Denn nach dem Login wird man entweder zur Mitarbeiter-Ansicht oder Kantinenmitar
     \caption{Login Screen}
     \label{fig:impl:LoginVue}
 \end{figure}
+
+
+\pagebreak
 
 \subsection {Mitarbeiter-Ansicht}
 
@@ -644,7 +740,7 @@ Nach einer erfolgreichen Stornierung verschwindet die Bestellung aus dem Verlauf
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[scale=0.4]{pics/mitarbeiter-bestellen-übersicht.JPG}
+    \includegraphics[scale=0.3]{pics/mitarbeiter-bestellen-übersicht.JPG}
     \caption{Bestellungsübersicht}
     \label{fig:impl:BestellenMitarbeiterUebersicht}
 \end{figure}
@@ -653,7 +749,8 @@ Nach einer erfolgreichen Stornierung verschwindet die Bestellung aus dem Verlauf
 \subsubsection {Statistiken}
 
 Der Benutzer kann in dieser Ansicht mehr Informationen über seine vergangenen Bestellungen bekommen.
-Durch das Wechseln des Tabs oben links wird entweder eine Statistik über die Kategorien oder über die Wochentage angezeigt.
+Durch das Wechseln des Tabs oben links wird entweder eine Statistik über die Kategorien oder über die Wochentage angezeigt. \\*
+Die Informationen der Statistiken beziehen sich auf alle Bestellungen, die der Nutzer bereits getätigt hat.
 
 \begin{figure}[htp]
     \centering
