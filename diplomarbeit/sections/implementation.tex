@@ -817,6 +817,28 @@ Dies dient dazu, dass sie einen Ausdruck auf Papier haben, der für die Kantine 
 \end{figure}
 \pagebreak
 
+\section{Android-App}
+Die Android App ist in verschieden Packages unterteilt. 
+
+\begin{itemize}
+    \item api
+    \item composable 
+    \item dataClasses
+\end{itemize}
+
+Im api Package sind gibt es ein ApiObject, welcher alle URL's beinhaltet. Dies erleichtert die Konfiguration der Android Anwendung im Bezug auf das Kommunizieren mit dem Backend.
+Noch dazu gibt es die ApiService Klasse, die alle Requests erledigt. 
+\\*
+Im composable Package sind jene Klassen mit einer View drinnen. Diese werden jeweils mit @Composable annotiert. Diese benutzen sich dann
+entweder gegenseitig oder die Methoden der ApiService Klasse.
+\\*
+Im dataClasses Package sind die gebrauchten Entitäten und DTO's (Data Transfer Object).
+ Hier werden den Menüs, Bestellungen, Öffnungszeiten und dem Acces Token die einzelnen Felder zugewiesen.
+\\*
+
+Die MainActivity Klasse ist die Hauptklasse über die die ganze Oberfläche der Android Applikation aufgerufen wird. 
+Sie zeigt auch noch die Bottom Nacigation Bar, welche zur navigierung zwischen Übersicht, Bestellansicht und Verlauf verwendet wird.
+
 \section {Interface Android-App}
 \author{Bozidar Spasenovic}
 
@@ -896,6 +918,69 @@ einen countDownLatch eingebaut, der vor der Rückgabe der Methode darauf wartet,
     return accessToken.value != ""
 \end{lstlisting}
 
+\pagebreak
+\section{Übersicht}
+\begin{figure}[htp]
+    \centering
+    \author{Bozidar Spasenovic}
+    \includegraphics[scale=0.1]{pics/ÜbersichtViewAndroid.png}
+    \caption{Übersicht Android}
+    \label{fig:impl:ÜbersichtViewAndroid}
+\end{figure}
+
+In der Übersicht kann man mit einem Datepicker ein Datum auswählen, was dazu führt das die jeweiligen Menüs an dem Tag 
+als Cards angezeigt werden. Noch dazu wird die jeweilige Vorspeise und Nachspeise angezeigt.
+
+\subsection{Datepicker}
+Der Datepicker in Kotlin wird als DatePickerDialog verwendet. Im Dialog wird das ausgewählte datum in eine temporäre Variable gespeichert
+und der Methode getMenuesForDate(date: String) übergeben. Anschließend wird der Wert in der Übersicht angezeigt und man wird wieder zurücknavigiert.
+
+\begin{lstlisting}
+    val datePickerDialog = DatePickerDialog(
+        context,
+        { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
+            var temp = month.inc()
+            if (dayOfMonth >= 1 && dayOfMonth <= 9) {
+
+                if (temp.toString().length == 1) {
+                    date.value = "$year-0${temp}-0$dayOfMonth"
+                } else {
+                    date.value = "$year-${temp}-0$dayOfMonth"
+                }
+            } else {
+                if (temp.toString().length == 1) {
+                    date.value = "$year-0${temp}-$dayOfMonth"
+                } else {
+                    date.value = "$year-${temp}-$dayOfMonth"
+                }
+            }
+            getMenuesForDate(date.value)
+            uebersichtDate.value = date.value
+            navController.navigate("uebersicht")
+        }, year, month, day
+    )
+\end{lstlisting}
+
+
+\subsubsection{getMenuesForDate}
+Die Methode beinhaltet den Filteralgorhytmus von Menüs für einen Tag. Es wird erstmals überprüft ob das jetzige Datum voor dem Datum des Menüs ist
+und ob die jetzige Zeit, falls man am selben Tag bestellt, vor neun Uhr ist. Sind die beiden Bedingungen erfüllt so wird es dem Mitarbeiter ermöglicht ein Menü auszuwählen.
+
+\begin{lstlisting}
+    if (date <= LocalDateTime.now().toString().take(10) && LocalDateTime.now().hour >= 9) {
+        menueIsInThePast.value = true
+    } else {
+        menueIsInThePast.value = false
+    }
+    menuesFilteredByDate = menuesFilteredByDate - menuesFilteredByDate
+    menues.sortedBy { menue -> menue.date }.sortedBy { menue -> menue.code }.forEach { menu ->
+        if (menu.date == date) {
+            menuesFilteredByDate = menuesFilteredByDate.plusElement(menu)
+        }
+    }
+\end{lstlisting}
+
+
 \subsection{Log out}
 Der Mitarbeiter hat eine Möglichkeit sich auch aus der App auszuloggen. Das erfolgt durch den Sign out Button.
 \begin{figure}[htp]
@@ -907,16 +992,45 @@ Der Mitarbeiter hat eine Möglichkeit sich auch aus der App auszuloggen. Das erf
 \end{figure}
 
 Nach dem einloggen wird die Methode InitBestellungen() aufgerufen. Ihre Aufgabe ist es den derzeitigen Bestellungsverlauf des Mitarbeiters zu initialisieren.
-Den kann man dann auch in der Verlaufsansicht sehen. 
+Den kann man dann auch in der Verlaufsansicht sehen. Noch dazu wird die Methode InitMenues() aufgerufen und somit alle erstellten Menüs geholt.
 
 
+\begin{lstlisting}
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            e.printStackTrace()
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+            response.use {
+                if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+                val gson = GsonBuilder().create()
+
+                val collectionType: Type =
+                    object : TypeToken<Collection<Menue?>?>() {}.type
+
+
+                menues = gson.fromJson(response.body!!.string(), collectionType)
+            }
+        }
+    })
+\end{lstlisting}
+
+
+Der Response wird so benutzt, dass man als erstes mit dem GsonBuilder ein Gson-Objekt erstellt
+ was das umwandeln von JSON-Objekten zu Kotlin Objekten ermöglicht. 
+Dieses Objekt wird verwendet um ein JSON-Objekt in ein Kotlin-Objekt umzuwandeln. 
+Damit man Gson verwendetn kann, benötigt man die abhängigkeit com.google.code.gson:gson:2.8.9.
+Mit dem collectionType wird definiert in was für ein Typ das JSON-Objekt umgewandelt werden soll.
+Abschliesend wird vom Responsebody eine Collection von allen mitgegebenen Bestellungen erstellt und gespeichert.
 
 
 \pagebreak
 
 \section{Verlauf}
 
-Der Verlauf ist eine einfache Liste von den ganzen Bestellungen des Users.
+Der Verlauf ist eine einfache Liste (LazyColumn) von den ganzen Bestellungen des Users.
 Es wird der Menüname, das Bestelldatum und das Datum des Menüs angezeigt.
 Ist die Bestellung stornierbar, so wird eine Mülltonne als Icon angezeigt. 
 Durchs draufklicken auf die Mülltonne, wird die Bestellung storniert.
@@ -975,7 +1089,7 @@ Wichtig dabei ist es den richtigen Media-Type zu definieren.
 
 Die Anfrage und Antwort:
 \begin{lstlisting}
-    client.newCall(request).enqueue(object : Callback {
+    client.newCall(requestDto).enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
             e.printStackTrace()
         }
@@ -984,19 +1098,11 @@ Die Anfrage und Antwort:
             response.use {
                 if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-                val gson = GsonBuilder().create()
-
-                val collectionType: Type =
-                    object : TypeToken<Collection<Bestellung?>?>() {}.type
-                bestellungen = gson.fromJson(response.body!!.string(), collectionType)
+                response.headers.get("orderedBy")?.let { it1 -> InitBestellungen(it1) }
             }
         }
     })
 \end{lstlisting}
 
-Der Response wird so benutzt, dass man als erstes mit dem GsonBuilder ein Gson-Objekt erstellt.
-Dieses Objekt wird verwendet um ein JSON-Objekt in ein Kotlin-Objekt umzuwandeln. 
-Damit man Gson verwendetn kann, benötigt man die abhängigkeit com.google.code.gson:gson:2.8.9.
-abschliesend wird vom Responsebody eine Collection von allen mitgegebenen Bestellungen erstellt und gespeichert.
 
 
