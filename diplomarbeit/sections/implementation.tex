@@ -828,19 +828,44 @@ Die Android App ist in verschieden Packages unterteilt.
 
 Im api Package sind gibt es ein ApiObject, welcher alle URL's beinhaltet. Dies erleichtert die Konfiguration der Android Anwendung im Bezug auf das Kommunizieren mit dem Backend.
 Noch dazu gibt es die ApiService Klasse, die alle Requests erledigt. 
-\\*
+
+
+ApiObject:
+\begin{lstlisting}
+    object ApiObject {
+    @JvmField
+    var initMenuesUrl = "http://10.0.2.2:8080/menue/menues/"
+
+    @JvmField
+    var bestellungUrl = "http://10.0.2.2:8080/menue/bestellung/"
+
+    @JvmField
+    var oeffnungszeiten = "http://10.0.2.2:8080/menue/oeffnungszeiten"
+
+    @JvmField
+    var keycloak = "http://10.0.2.2:8082/auth/realms/menuRealm/protocol/openid-connect/token"
+}
+\end{lstlisting}
+
+
+
 Im composable Package sind jene Klassen mit einer View drinnen. Diese werden jeweils mit @Composable annotiert. Diese benutzen sich dann
 entweder gegenseitig oder die Methoden der ApiService Klasse.
 \\*
 Im dataClasses Package sind die gebrauchten Entitäten und DTO's (Data Transfer Object).
- Hier werden den Menüs, Bestellungen, Öffnungszeiten und dem Acces Token die einzelnen Felder zugewiesen.
+Hier werden den Menüs, Bestellungen, Öffnungszeiten und dem Acces Token die einzelnen Felder zugewiesen.
 \\*
 
 Die MainActivity Klasse ist die Hauptklasse über die die ganze Oberfläche der Android Applikation aufgerufen wird. 
-Sie zeigt auch noch die Bottom Nacigation Bar, welche zur navigierung zwischen Übersicht, Bestellansicht und Verlauf verwendet wird.
+Sie zeigt auch noch die Bottom Navigation Bar, welche zur navigierung zwischen Übersicht, Bestellansicht und Verlauf verwendet wird.
 
-\section {Interface Android-App}
-\author{Bozidar Spasenovic}
+
+
+
+
+
+
+\pagebreak
 
 
 \section{Login}
@@ -980,6 +1005,43 @@ und ob die jetzige Zeit, falls man am selben Tag bestellt, vor neun Uhr ist. Sin
     }
 \end{lstlisting}
 
+Dazu wird die Methode getOeffnungszeiten() aufgerufen die die notwendigen Zeiten mit freien Sitzplätzen aus dem Backend holt und anzeigt.
+
+
+\begin{lstlisting}
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {
+            e.printStackTrace()
+        }
+
+        override fun onResponse(call: Call, response: Response) {
+            response.use {
+                if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+                val gson = GsonBuilder().create()
+
+                val collectionType: Type =
+                    object : TypeToken<Collection<Oeffnungszeiten?>?>() {}.type
+                oeffnungszeiten = gson.fromJson(response.body!!.string(), collectionType)
+            }
+        }
+    })
+\end{lstlisting}
+
+\subsection{Card}
+
+Eine Card wird verwendet um mehrere Items schön beisammen zu halten. Man kann die Card konfigurieren indem man die erhöhung und den Schatten erhöht.
+Außerdem kann man Formen definieren wie zum Beispiel:
+
+\begin{itemize}
+    \item Rectangle Shape
+    \item Circle Shape
+    \item Rounded Corner Shape
+    \item Cut Corner Shape
+\end{itemize}
+
+Wie bei fast allen anderen Items, ist es auch hier möglich sowohl die Hintergrund- als auch die Vordergrundfarbe zu ändern.
+
 
 \subsection{Log out}
 Der Mitarbeiter hat eine Möglichkeit sich auch aus der App auszuloggen. Das erfolgt durch den Sign out Button.
@@ -988,7 +1050,7 @@ Der Mitarbeiter hat eine Möglichkeit sich auch aus der App auszuloggen. Das erf
     \author{Bozidar Spasenovic}
     \includegraphics[scale=0.09]{pics/SignOutScreenAnndroid.png}
     \caption{Signout Android}
-    \label{fig:impl:SignOutScreenAnndroid}
+    \label{fig:impl:SignOutScreenAndroid}
 \end{figure}
 
 Nach dem einloggen wird die Methode InitBestellungen() aufgerufen. Ihre Aufgabe ist es den derzeitigen Bestellungsverlauf des Mitarbeiters zu initialisieren.
@@ -1103,6 +1165,10 @@ Die Anfrage und Antwort:
         }
     })
 \end{lstlisting}
+
+
+
+
 
 
 
