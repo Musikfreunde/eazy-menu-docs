@@ -118,57 +118,34 @@ Das wichtigste in der Bestellung ist die Mahlzeit und für wann es bestellt wurd
 }
 
 \begin{lstlisting}
-    @SequenceGenerator(name = "bestellung_seq_gen", 
-                        sequenceName = "BESTELLUNG_SEQ",
-                        allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
-                        generator = "bestellung_seq_gen")
-    @Id
-    @Column(name = "BESTELLUNG_ID")
     private Long id;
 
-    @Column(name = "BESTELLTVON",length = 32)
     private String orderedBy;
 
-    @Column(name = "BESTELLTFUER",length = 32)
     private String orderedFor;
 
-    @Column(name = "KOMMENTAR",length = 4000)
     private String comment;
 
-    @Column(name = "PERSONALNUMMER")
     private Long personalNumber;
 
-    @Column(name = "ANZAHL")
     private int menueCounter;
 
-    @Column(name = "STORNIERTUM",length = 6)
     private Timestamp canceledAt;
 
-    @Column(name = "ABGERECHNETUM")
     private Timestamp settledAt;
 
-    @Column(name = "KOSTENSTELLE")
     private Integer moneyPool;
 
-    @Column(name = "ANGELEGTUM",length = 6)
     private Timestamp createdAt;
 
-    @Column(name = "ANGELEGTVON",length = 32)
     private String createdBy;
 
-    @Column(name = "GEAENDERTUM",length = 6)
     private Timestamp changedAt;
 
-    @Column(name = "GEAENDERTVON",length = 32)
     private String changedBy;
 
-    @ManyToOne
-    @JoinColumn(name = "OEFFNUNGSZEIT_ID")
     private Oeffnungszeit oeffnungszeit;
 
-    @ManyToOne
-    @JoinColumn(name = "MENUE_ID")
     private Menue menue;
 \end{lstlisting}
 
@@ -193,35 +170,28 @@ Die Entität Categories ist ein Enum, welches wir Hauptsächlich für unseren Al
 
 Die einzelnen Kategorien beschreiben eine Mahlezeit. Sommit kann man ganz einfach zwischen einzelnen Mahlezeiten unterscheiden und sie auch gruppieren.
 
+\pagebreak
+
 \subsection{Kantine}
 
 In der Entitäten Kantine befinden sich die wichtigsten Informationen über eine Kantine wie zum Beispiel ob eine Kantine offen ist oder zurzeit geschlossen ist. 
 Eine kleine Beschreibung über die Kantine und über das Service ist ebenso enthalten. \\*
 
 \begin{lstlisting}
-    @Id
-    @Column(name = "KANTINE_ID")
     private Long id;
 
-    @Column(name = "KANTINENBEZEICHNUNG", length = 200)
     private String canteenDesc;
 
-    @Column(name = "SERVICEBEZEICHNUNG", length = 200)
     private String serviceDesc;
 
-    @Column(name = "STATUSKZ", length = 1)
     private char status;
 
-    @Column(name = "ANGELEGTUM",length = 6)
     private Timestamp createdAt;
 
-    @Column(name = "ANGELEGTVON",length = 32)
     private String createdBy;
 
-    @Column(name = "GEAENDERTUM",length = 6)
-    private Timestamp changedAt;
+   private Timestamp changedAt;
 
-    @Column(name = "GEAENDERTVON",length = 32)
     private String changedBy;
 
 \end{lstlisting}
@@ -239,47 +209,29 @@ Diese werden verwendet, um einzelne Menüs zu unterscheiden und mit Hilfe der Ka
 Für jedes Menü wird auch die dazu ausgewählte Kantine mitgespeichert. So weiß man, zu welcher Kantine der Mitarbeiter gehen muss, um sein Menü zu bekommen. \\*
 
 \begin{lstlisting}
-    @SequenceGenerator(name = "menue_seq_gen", 
-                        sequenceName = "MENUE_SEQ",
-                        allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
-                    generator = "menue_seq_gen")
-    @Id
-    @Column(name = "MENUE_ID")
+
     private Long id;
 
-    @Column(name = "MENUEDATUM")
     private LocalDate date;
 
-    @Column(name = "MENUECODE", length = 1)
     private char code;
 
-    @Column(name = "VORSPEISE", length = 2000)
     private String appetizer;
 
-    @Column(name = "HAUPTSPEISE", length = 2000)
     private String mainDish;
 
-    @Column(name = "NACHSPEISE", length = 2000)
     private String desert;
 
-    @Column(name = "ANGELEGTUM",length = 6)
     private Timestamp createdAt;
 
-    @Column(name = "ANGELEGTVON",length = 32)
     private String createdBy;
 
-    @Column(name = "GEAENDERTUM",length = 6)
     private Timestamp changedAt;
 
-    @Column(name = "GEAENDERTVON",length = 32)
     private String changedBy;
 
-    @Column(name = "CATEGORIES",length = 255)
     private String categories;
 
-    @ManyToOne
-    @JoinColumn(name = "KANTINE_ID")
     private Kantine kantine;
 \end{lstlisting}
 
@@ -290,36 +242,25 @@ Die Entitäten Oeffnungszeit zeigt an, ob ein Kantinenraum in Verwendung ist und
 Um zu wissen welcher Kantinenraum gemeint wird,  wird auch die verwendete Kantine mitgespeichert. \\*
 
 \begin{lstlisting}
-    @Id
-    @Column(name = "OEFFNUNGSZEIT_ID")
+
     private Long id;
 
-    @Column(name = "STATUSKZ", length = 1)
     private char status;
 
-    @Column(name = "ZEITFENSTERVON", length = 5)
     private String timeWindowFrom;
 
-    @Column(name = "ZEITFEnSTERBIS", length = 5)
     private String timeWindowTo;
 
-    @Column(name = "MAXPLAETZE", nullable = true)
     private Integer maxPositions;
 
-    @Column(name = "ANGELEGTUM",length = 6)
     private Timestamp createdAt;
 
-    @Column(name = "ANGELEGTVON",length = 32)
     private String createdBy;
 
-    @Column(name = "GEAENDERTUM",length = 6)
     private Timestamp changedAt;
 
-    @Column(name = "GEAENDERTVON",length = 32)
     private String changedBy;
 
-    @ManyToOne
-    @JoinColumn(name = "KANTINE_ID")
     private Kantine kantine;
 \end{lstlisting}
 
@@ -366,7 +307,7 @@ Server erreicht werden kann, ist: http://localhost:8080/menue.
 
 \subsection{Bestellung}
 
-\paragraph{Bestellungen von einem Mitarbeiter}
+\subsubsection{Bestellungen von einem Mitarbeiter}
 
 Um zu sehen welche Bestellungen ein Mitarbeiter gemacht hat, muss der Pfad /bestellung/{username} aufgerufen werden. 
 Hierbei handelt es sich um eine GET-Methode die mittels Path parameter die Bestellungen eines bestimmten Mitarbeiters zurück gibt.
@@ -393,7 +334,7 @@ Output:
 
 Die Bestellungen wird nach dem Datum, an dem eine Bestellungen angelegt wurde, sortiert. Somit werden immer die neusten Bestellungen gleich am Anfgang angezeigt.
 
-\paragraph{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
+\subsubsection{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
 
 Wenn man sehen will wie oft ein Mitarbeiter pro Wochentag ein Menue bestellt hat, muss der Pfad /bestellung/stats/{username} aufgerufen werden.
 Es werden alle Wochentage angezeigt an denen ein Mitarbeiter eine bestellung getätigt hat. Wenn mindestens ein Wochentag mit einer bestellung zur verfügung steht, wird der Status 200 zurückgegeben.
@@ -427,7 +368,9 @@ Output:
 ]
 \end{lstlisting}
 
-\paragraph{Alle Kategorien}
+\pagebreak
+
+\subsubsection{Alle Kategorien}
 
 Damit man alle Kategorien sieht, welche eine Mahlzeit haben kann, muss der Pfad bestellung/categories aufgerufen werden.
 Wichtig ist es, dass man hier keinen namen als Parameter übergibt. \\*
@@ -455,7 +398,9 @@ Output:
 ]
 \end{lstlisting}
 
-\paragraph{Alle Kategorien von einem bestimmten Mitarbeiter}
+\pagebreak
+
+\subsubsection{Alle Kategorien von einem bestimmten Mitarbeiter}
 
 Um zu sehen welche Kategorien ein Mitarbeiter bestellt hat, muss der Pfad /bestellung/categories/{username} aufgerufen werden.
 
@@ -478,7 +423,7 @@ Output:
 \end{lstlisting}
 
 
-\paragraph{Alle Bestellungen an einem bestimmten Tag}
+\subsubsection{Alle Bestellungen an einem bestimmten Tag}
 
 Damit die Kantine sehen kann, welche Bestellungen an welchen Tagen zugewissen worden sind, muss der Pfad /bestellung?date=datum aufgerufen werden.
 
@@ -515,18 +460,18 @@ Output:
 \end{lstlisting}
 
 
-\paragraph{Bestellung erstellen}
+\subsubsection{Bestellung erstellen}
 
 WIP
 
 
-\paragraph{Bestellung stornieren}
+\subsubsection{Bestellung stornieren}
 
 WIP
 
 \subsection{Menue}
 
-\paragraph{Alle Menüs}
+\subsubsection{Alle Menüs}
 
 Um sehen zu können, welche Menüs es überhapt schon gab, muss der Pfad /menues aufgerufen werden. 
 
@@ -559,7 +504,7 @@ URL: GET \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
 ]
 \end{lstlisting}
 
-\paragraph{Menü erstellen}
+\subsubsection{Menü erstellen}
 
 Damit die Kantine ein Menü erstellen kann, wird ein POST-Request an den Pfad PFAD ÄNDERN geschickt.
 
@@ -614,18 +559,18 @@ JSON Objekt für Menue C:
 
 Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Kategorien werden aber dann in getrennt und als Enum gespeichert.
 
-\paragraph{Menü verändern}
+\subsubsection{Menü verändern}
 
-\paragraph{Menü-Vorschlag (Recomendation)}
+\subsubsection{Menü-Vorschlag (Recomendation)}
 
-\paragraph{Alle Menüs an einem bestimmten Tag}
+\subsubsection{Alle Menüs an einem bestimmten Tag}
 
 
 \subsection{Oeffnungszeiten}
 
-\paragraph{Alle Aktiven Essenszeiten}
+\subsubsection{Alle Aktiven Essenszeiten}
 
-\paragraph{Freien Tische}
+\subsubsection{Freien Tische}
 
 
 \section{Authentifizierung}

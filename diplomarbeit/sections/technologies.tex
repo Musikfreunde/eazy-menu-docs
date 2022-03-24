@@ -155,6 +155,29 @@ Der Compiler wandelt den Quelltext, also die .java-Dateien, in einen sogennanten
 Bytecode in Java ist der Grund dafür, dass Java plattformunabhängig ist. Sobald ein Java-Programm kompiliert wird, wird der Bytecode generiert. 
 Genauer gesagt ist ein Java-Bytecode der Maschinencode in Form einer .class-Datei.
 
+\section{JUnit}
+\author{David Ignjatovic} 
+
+Um ganz einfach einen beliebigen Java Code zu überprüfen und zu testen, verwenden wir JUnit. JUnit ein ein Test Framework welches von Erich Gamma und Kent Beck
+entwickelt wurde. \\*
+
+Um JUnit zu verwenden wird brauchen wir, wie schon erwähnt, einen beliebigen Java Code welcher der Programmierer geschrieben hat. Mithilfe von sogennanten Unit Test 
+werden dann einzelne Testfälle von verschiedenen Klassen getestet. In JUnit verwendet man assertEquals(Parameter1,Parameter2). Parameter1 gibt den Aktuellen Wert, welchen zum Beispel 
+ein Objekt hat, an. Parameter2 gibt den Wert an, welcher erwartet wird. Natürlich gibt es dann auch noch assertNotEquals(Parameter1,Parameter2) welches schaut das die übergebenen 
+Parameter nicht übereinstimmen. \\*
+
+Die Akuelle JUnit Version, welche wir verwenden, heißt JUnit 5. Diese Version setzt sich auch mehreren Modulen zusammen. JUnit 5 besteht aus JUnit Platform + JUnit Jupiter + JUnit Vintage.
+
+\section{Karate}
+\author{David Ignjatovic} 
+
+Karate wird verwendet, um Enpoints testen zu können. Die Syntax ist sehr einfach lesserlich für Menschen, die wenig bis keine Programmierkenntnisse haben.
+Karate selbst enthält nicht nur Testen von Enpoints, sondern auch HTML Reports, welche alle Testfälle Dokumentiert und anzeigt. \\*
+
+Einzelne Testfälle bezeichnet man in Karate als Scenarios. In diesen Scenarios werden dann CRUD Opperationen getestet. Den Path der Abfrage und die einzelnen 
+Parameter werden in den Scenarios mitgegeben, aber auch was für ein Response code zurückkommen soll.
+
+
 \section{Java EE}
 \author{David Ignjatovic} 
 
@@ -729,5 +752,31 @@ Retrofit ist ein REST-Client für Java und Android.
 Es wird verwendet, um Requests zu Empfangen, Senden und Erstellen von HTTP-Anforderungen sowie Antworten.
 Noch dazu wird die IP-Adressen ausgewechselt, wenn eine Verbindung zu einem Webdienstfehler besteht.
 
+\section{Asciidoc}
+\author{David Ignjatovic}
+
+AsciiDoc ist ein Textformat, welcher hauptsächlich für Dokumentationen, Webpages, Blog und vieles mehr verwendet mit.
+Da AsciiDoc ein plain-text Format ist und nicht wie die meisten Anwendungen für Textverarbeitungen Binärformate sind, wird es auch als Docs-as-Code bezeichnet.
+
+AsciiDoc wurde entwickelt, um Dokument so zu schreiben als währen sie normale Textdokumente. Da das Design von AsciiDoc schon inkludiert ist,
+muss man nicht einstellen wie die einzelnen Schriftgrößen für Überschriften sind. Somit ist man mit AsciDoc viel schneller als mit einer Anwendung,
+welche in Binärform ist.
+
 \section{Asciidoctor}
 \author{David Ignjatovic}
+
+Asciidoctor ist eine open source Textverarbeitung, welche AsciiDoc Text in Formate wie HTML 5, PDF und weiter, umwandelt.
+
+Asciidoctor selbst ist in Ruby entwickelt worden. Um aber Asciidoctor zu verwenden braucht man kein Ruby. Mittels AsciidoctorJ
+kann man ganz einfach Asciidoctor auf einer JVM ausführen.
+
+\section{Swagger}
+\author{David Ignjatovic} 
+
+Swagger ist ein Open-Source Werrkzeug welches verwendet wird um HTTP-Webservices zu entwerfen, dokumentierten aber auch zum benutzen. Um eine  leichten überblick über seine 
+ganzen Endpoints zu haben würd Swagger verwendet, da es ganz schnell und einfach zum verwenden ist. \\*
+
+wip
+
+
+
