@@ -115,7 +115,134 @@ was es erleichtert innerhalb eines Teams, Probleme besser lösen zu können. \\*
 Es gibt ebenfalls bezahlte Pläne, die es vor allem Organisationen und Unternehmen leichter macht Unternehmensprojekte zu verwalten durch zusätzliche Funktionen.
 \cite{GitKinsta}
 
-\subsection{GitHub Actions}
+\section{GitHub Actions}
+\label{sec:GHAction}
+\author{Benjamin Besic}
+
+GitHub Actions ist ein von GitHub entwickelte Plattform, die das Automatisieren von verschiedenen Aspekten eines Softwareprojekts in Form von Pipelines ermöglicht.
+Dabei handelt es sich um das Kompilieren, Testen und das Deployment eines Projekts. \\*
+Es implementiert die beiden Methoden \hyperref[sec:CI]{CI} und \hyperref[sec:CD]{CD}. \cite{GHAction}
+
+\subsection{CI und CD}
+CI und CD sind zwei zusammenhängende Methoden, um Entwickler das Programmieren an einem Projekt zu vereinfachen. Ebenfalls wird die Bereitstellung 
+an den Kunden vereinfacht. \\*
+
+\begin{figure}[htp]
+    \centering
+    \author{RedHat}
+    \includegraphics[scale=0.5]{pics/ci_cdi_grafik.png}
+    \caption{Zusammenhang zwischen CI und CD}
+    \small \url{https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_edited_0.png} 
+    \label{fig:impl:CICD}
+\end{figure}
+
+\subsubsection{CI (Continuous Integration)}
+\label{sec:CI}
+CI steht für "Continuous Integration", dies stellt den Prozess der Automatisierung in der Sicht der Programmierers da. \\*
+Wenn mehrere Entwickler gleichzeitig an einem neuen Feature arbeiten, kann es passieren, dass der Code beim Zusammenführen oft die Funktionsfähigkeit des Programms beeinträchtigt.
+CI soll dies verhindern, indem es einen automatisierten Prozess bereitstellt, der das Programm auf bestimmte Validierungen (Tests) prüft nach jeder Zusammenführung.\\* Dies erlaubt 
+es den Entwicklern, den Code öfter zusammenzuführen, sogar eine tägliche Zusammenführung ist dadurch manchmal möglich \cite{RHatCICD}
+
+\subsubsection{CD (Continuous Delivery/Deployment)}
+\label{sec:CD}
+CD steht für "Continuous Delivery" bzw. "Continuous Deployment", dies sind zwei Konzepte die immer gemeinsam genutzt werden. \\*
+Continuous Delivery sorgt dafür, dass Änderungen eines Entwicklers automatisch in ein Repository veröffentlicht werden. Danach können diese Änderungen sofort in einer Produktionsumgebung
+dargestellt werden. \\*
+Nach der Delivery kommt das Continuous Deployment, dies stellt dem Kunden finale Änderungen am Programm, in einem automatisiertem Prozess, zur Verfügung.
+Das heißt, nachdem die Entwickler zufrieden sind mit einer Version, können sie diese veröffentlichen und der Kunde kann das Programm dann benutzen.\cite{RHatCICD}
+\pagebreak
+
+\begin{figure}[htp]
+    \centering
+    \author{Percy Bolmer}
+    \includegraphics[scale=0.4]{pics/gh_actions_grafik.png}
+    \caption{Ablauf von Github Actions}
+    \small \url{https://miro.medium.com/max/1400/1*8Agtv-SaM-zw_GLzPI7p5w.png} 
+    \label{fig:impl:GHActionAb}
+\end{figure}
+
+\subsection{Workflows}
+GitHub Actions benutzt Workflows, um Arbeitsschritte, die zusammenhängen, gemeinsam auszuführen. Zum Beispiel gibt es Workflows zum Deployen, nur zum Testen oder um eine Dokumentation hochzuladen.\\*
+Ein Workflow ist ein automatisierter Prozess, der einen oder mehrere Jobs ausführt.
+Diese werden mittels eines .yaml-File beschrieben. Ein Workflow wird durch ein bestimmtes Event ausgeführt, z.B. ein Push auf die main-Branch. Mann kann es aber auch manuell ausführen oder nach einem
+bestimmten Zeitplan. \cite{GHAction}
+
+\begin{lstlisting}[language=yaml,caption=Ausschnitt eines Workflow Files]
+# Workflow Bezeichnung
+name: Publish EazyMenue Frontend and Backend
+
+# Definiert wann der Workflow ausgefuehrt wird 
+on:
+  # Trigger wenn ein Push auf den main Branch erfolgt
+  push:
+    branches: ['main']
+
+# Jobs die nacheinander oder parallel ausgefuehrt werden
+jobs:
+  build_backend:
+    name: Build backend
+\end{lstlisting}
+
+\subsection{Event}
+Ein Event ist eine Aktivität, die einen Workflow ausführt. Er dient als sogenannter Trigger.
+Ein Event könnte z.B. ein Push auf eine Branch sein oder ein Pull Request etc.\cite{GHAction}
+
+\subsection{Jobs}
+Ein Job hat mehrere Steps (Stufen), die nacheinander ausgeführt werden. Ein Step kann z.B. ein Shellscript File sein, ein
+Login in ein anderes Repository oder eine vordefinierte Action. Der Jobs fasst diese Steps zusammen und die Steps können untereinander die selben Ressourcen nutzen.\cite{GHAction}
+
+\begin{lstlisting}[language=yaml,caption=Ausschnitt eines Jobs]
+    build_backend:
+    name: Build backend
+    # Der Job wird in einem Ubuntu Container ausgefuehrt
+    runs-on: ubuntu-latest
+    env:
+    # Unter env kann man sich Variablen definieren
+      IMAGE_NAME: eazy-menue-backend
+    defaults:
+      run:
+      # Es wird der backend-Ordner aus dem Repo genommen
+        working-directory: ./eazy-menue-backend
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Package
+        run: mvn package -DskipTests
+      - name: Build image
+        run: docker build . -f src/main/docker/Dockerfile.jvm --tag $IMAGE_NAME
+\end{lstlisting}
+
+\subsection{Actions}
+Die GitHub Actions Plattform stellt verschiedene vordefinierte Actions zur Verfügung.
+Eine Action führt eine bestimmte komplexe Aufgabe aus, die auch oft benutzt wird in Workflows. Diese Actions helfen dabei,
+um die Wiederverwendung von bestimmtem Code bzw. Codeblöcken zu vermeiden.
+Actions umfassen z.B.: ein Repository pullen oder sich bei einem Dienst zu authentifizieren.\\*
+Es ist auch möglich selber Actions zu schreiben, falls man keine passende auf dem GitHub Marketplace findet.\cite{GHAction}
+
+\section{Github Packages}
+\author{Benjamin Besic}
+GitHub Packages, entwickelt von GitHub, ist ein Dienst, der es ermöglicht Software-Pakete hochzuladen und diese privat oder öffentlich zu nutzen.
+Dies beinhaltet Softwarecontainer und Dependencies. \\*
+Das Ziel von GitHub Packages ist es den Code und die Software selbst auf einer Plattform zusammen zu Verfügung stellen zu können.
+Der ganze Entwicklungsprozess ist somit auf GitHub zentralisiert. Zusammen mit \hyperref[sec:GHAction]{GitHub Actions} kann man die Veröffentlichung
+komplett automatisieren. \\*
+Es stellt Package Registries (Sammlungen) für die meist benutzten Package Manager wie npm, RubyGems, Apache Maven, Docker (Docker Images), 
+NuGet und Gradle zur Verfügung. \cite{GHPack}
+
+Nützliche Funktionen von GitHub Packages sind:
+\begin{itemize}
+    \item Rechte: Man kann bestimmen, wer die Packages ändern bzw. wer diese sehen und benutzen darf.
+    \item Sichtbarkeit: Man kann einstellen ob das Package nur privat oder öffentlich nutzbar ist.
+\end{itemize}
+
+\subsection{Github Container Registry (ghcr.io)}
+Das GitHub Container Registry (ghcr) ist aus den Packages entstanden, um eine eigene Plattform für Softwarecontainer zu haben, die zu GitHub gehört.
+Somit wird GitHub noch mehr in die Entwicklung integriert. \\*
+Man kann es mit DockerHub vergleichen, eine Plattform um Docker Images hochzuladen und an einem Ort zu sammeln. 
+Es besteht ebenfalls die Möglichkeit Docker Images auf das ghcr hochzuladen, anstatt DockerHub zu benutzen. \\*
+Es hat die selben Rechte- und Sichtbarkeitsfunktionen wie oben genannt. Darüber hinaus kann man auch verschiedene Versionen eines Images und Statistiken
+über die Nutzung einsehen.\cite{GHContReg} 
+
 
 \section{Java}
 \author{David Ignjatovic} 
