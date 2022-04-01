@@ -203,6 +203,8 @@ Noch dazu findet man in der Entität ein Datum, um zuzuordnen wann das Menü bes
 Neben dem Bestelldatum beinhaltet die Entität Menue auch noch weiter Timestamps.
 Die verwendeten Timestamps werden verwendet, um zu speichern, wann ein Menue erstellt wurde oder wann ein Menue geändert wurde. Natürlich wird auch mitgespeichert von wem diese Änderungen durchgeführt wurden. \\*
 
+\pagebreak
+
 Die bereits oben genannten Kategorien finden wir in der Entität Menue. 
 Diese werden verwendet, um einzelne Menüs zu unterscheiden und mit Hilfe der Kategorien und unserem Algorithmus kann man einfach hervorwagen welche Mahlzeit zu welchem Mitarbeiter am besten passt. \\*
 
@@ -234,6 +236,8 @@ Für jedes Menü wird auch die dazu ausgewählte Kantine mitgespeichert. So wei�
 
     private Kantine kantine;
 \end{lstlisting}
+
+\pagebreak
 
 \subsection{Oeffnungszeit}
 
@@ -303,13 +307,15 @@ Um zu wissen welcher Kantinenraum gemeint wird,  wird auch die verwendete Kantin
 \subsection{Allgemein}
 
 In den folgenden Beispielen läuft unser Server lokal auf den Port 8080. Die URL uber die unser
-Server erreicht werden kann, ist: http://localhost:8080/menue.
+Server erreicht werden kann, ist: \textbf{\textit{http://localhost:8080/menue}}.
+
+\pagebreak
 
 \subsection{Bestellung}
 
 \subsubsection{Bestellungen von einem Mitarbeiter}
 
-Um zu sehen welche Bestellungen ein Mitarbeiter gemacht hat, muss der Pfad /bestellung/{username} aufgerufen werden. 
+Um zu sehen welche Bestellungen ein Mitarbeiter gemacht hat, muss der Pfad \textbf{\textit{/bestellung/<username>}} aufgerufen werden. 
 Hierbei handelt es sich um eine GET-Methode die mittels Path parameter die Bestellungen eines bestimmten Mitarbeiters zurück gibt.
 Wenn ein Mitarbeiter gefunden wurde und dieser auch mindestens eine Bestellung hat wird der Status 200 zurückgegeben. \\*
 
@@ -334,9 +340,11 @@ Output:
 
 Die Bestellungen wird nach dem Datum, an dem eine Bestellungen angelegt wurde, sortiert. Somit werden immer die neusten Bestellungen gleich am Anfgang angezeigt.
 
+\pagebreak
+
 \subsubsection{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
 
-Wenn man sehen will wie oft ein Mitarbeiter pro Wochentag ein Menue bestellt hat, muss der Pfad /bestellung/stats/{username} aufgerufen werden.
+Wenn man sehen will wie oft ein Mitarbeiter pro Wochentag ein Menue bestellt hat, muss der Pfad \textbf{\textit{/bestellung/stats/<username>}} aufgerufen werden.
 Es werden alle Wochentage angezeigt an denen ein Mitarbeiter eine bestellung getätigt hat. Wenn mindestens ein Wochentag mit einer bestellung zur verfügung steht, wird der Status 200 zurückgegeben.
 
 Das Reslutat für den Mitarbeiter besbe sieht folgendermassen aus:
@@ -372,7 +380,7 @@ Output:
 
 \subsubsection{Alle Kategorien}
 
-Damit man alle Kategorien sieht, welche eine Mahlzeit haben kann, muss der Pfad bestellung/categories aufgerufen werden.
+Damit man alle Kategorien sieht, welche eine Mahlzeit haben kann, muss der Pfad \textbf{\textit{/bestellung/categories}} aufgerufen werden.
 Wichtig ist es, dass man hier keinen namen als Parameter übergibt. \\*
 
 Anhand der Kategrien, wird mit hilfe eines Algorithmus enschieden, welche Mahlzeit am besten zu einem Mitarbeiter passt. 
@@ -402,7 +410,7 @@ Output:
 
 \subsubsection{Alle Kategorien von einem bestimmten Mitarbeiter}
 
-Um zu sehen welche Kategorien ein Mitarbeiter bestellt hat, muss der Pfad /bestellung/categories/{username} aufgerufen werden.
+Um zu sehen welche Kategorien ein Mitarbeiter bestellt hat, muss der Pfad \textbf{\textit{/bestellung/categories/<username>}} aufgerufen werden.
 
 Wenn ein User keine Bestellungen getätigt hast, werden auch keine Kategorien zurückgegeben. In dem folgenden Beispiel kann man aber sehen, wie das Reslutat
 für den Mitarbeiter spabo aussieht:
@@ -425,7 +433,7 @@ Output:
 
 \subsubsection{Alle Bestellungen an einem bestimmten Tag}
 
-Damit die Kantine sehen kann, welche Bestellungen an welchen Tagen zugewissen worden sind, muss der Pfad /bestellung?date=datum aufgerufen werden.
+Damit die Kantine sehen kann, welche Bestellungen an welchen Tagen zugewissen worden sind, muss der Pfad \textbf{\textit{/bestellung?date=datum}} aufgerufen werden.
 
 Es kann aber auch sein, das es an bestimmten Tagen keine bestellungen gibt. Deshalb werden auch keine Ergebnisse zurückgegeben.
 
@@ -473,7 +481,7 @@ WIP
 
 \subsubsection{Alle Menüs}
 
-Um sehen zu können, welche Menüs es überhapt schon gab, muss der Pfad /menues aufgerufen werden. 
+Um sehen zu können, welche Menüs es überhapt schon gab, muss der Pfad \textbf{\textit{/menues}} aufgerufen werden. 
 
 Ein Beispiel für ein Menue sieht folgendermassen aus:
 

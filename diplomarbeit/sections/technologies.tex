@@ -897,13 +897,43 @@ Asciidoctor ist eine open source Textverarbeitung, welche AsciiDoc Text in Forma
 Asciidoctor selbst ist in Ruby entwickelt worden. Um aber Asciidoctor zu verwenden braucht man kein Ruby. Mittels AsciidoctorJ
 kann man ganz einfach Asciidoctor auf einer JVM ausführen.
 
+\pagebreak
+
 \section{Swagger}
 \author{David Ignjatovic} 
 
-Swagger ist ein Open-Source Werrkzeug welches verwendet wird um HTTP-Webservices zu entwerfen, dokumentierten aber auch zum benutzen. Um eine  leichten überblick über seine 
-ganzen Endpoints zu haben würd Swagger verwendet, da es ganz schnell und einfach zum verwenden ist. \\*
+Swagger ist ein Open-Source Werrkzeug welches verwendet wird um HTTP-Webservices zu entwerfen, dokumentierten aber auch zu benutzen. Um einen leichten überblick über seine 
+ganzen Endpoints zu haben, wird Swagger verwendet, da es ganz schnell und einfach zum verwenden ist. \\*
 
-wip
+Damit man Swagger in einem Quarkus Backend verwedet, muss mann in den Application.Properties folgende Zeile eintragen:
+
+\textbf{quarkus.swagger-ui.always-include=true}
+
+Die Sagger Page wird dann unter folgender URL abgerufen: 
+
+\textbf{\textit{http://localhost:8080/q/swagger-ui/ }}
+
+Wie schon erwähnt, kann man bei der Swagger Page alle Requests sehen die verwendet werden. 
+
+\begin{figure}[htp]
+    \author{David Ignjatovic}
+    \centering
+    \includegraphics[scale=0.60]{pics/swagger.jpg}
+    \caption{SwaggerUI}
+    \label{fig:impl:swagger}
+\end{figure}
+
+Noch dazu kann man mit Swagger auch einzelne Data Transfer Objects veranschaulichen, welche in den Requests verwendet wird.
+
+\begin{figure}[htp]
+    \author{David Ignjatovic}
+    \centering
+    \includegraphics[scale=0.40]{pics/swagger-schema.jpg}
+    \caption{SwaggerUI}
+    \label{fig:impl:swagger-schema}
+\end{figure}
+
+
 
 
 
