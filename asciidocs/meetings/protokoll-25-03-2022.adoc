@@ -1,0 +1,20 @@
+= Protokoll 25-03-2022
+
+== Android / Spasenovic
+
+=== Was wurde gemacht
+
+* Request in eigen File geschrieben
+* Component im schriftlichen Teil beschrieben
+
+
+== Schriftlich
+
+=== Was gehört gemacht
+
+* abstract
+* zusammenfassung
+* hinten ausführliche zusammenfassung könnte mehrere Seiten haben
+
+
+*Nächste Meeting *01.04.2022 18 Uhr*

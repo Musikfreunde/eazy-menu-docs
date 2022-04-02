@@ -3,13 +3,16 @@
 == Android / Spasenovic
 
 === Was wurde gemacht
+
 * Github Actions/Packages geschrieben
 * Implementierung geschrieben
 
 == Feedback
+
 * Feedback für Boki fürs Schreiben
 
 === Schriftlich
+
 * Abgabe muss fertig ausschauen
 * Alle Themen befüllen bis Montag
 * Verwendete Technologien erweitern

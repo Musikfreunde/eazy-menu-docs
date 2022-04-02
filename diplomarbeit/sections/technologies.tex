@@ -272,36 +272,37 @@ Denn bei Java benötigt der Computer im Vergleich zur Programmiersprache C eine 
 \subsection{Java Virtual Machine}
 \author{David Ignjatovic} 
 
-Java Virtual Machine (JVM) ist eine virtuelle Maschine, welche plattformunabhängige Anwendungen ermöglicht. Sommit lassen sich Systemweit Java-Programme ausführen.
+Java Virtual Machine (JVM) ist eine virtuelle Maschine, welche plattformunabhängige Anwendungen ermöglicht. Somit lassen sich Systemweit Java-Programme ausführen.
 Die Plattformunabhängigkeit wird in Java durch das Zusammenspiel zweier Programme gelöst: \\*
-Der Compiler wandelt den Quelltext, also die .java-Dateien, in einen sogennanten Java-Bytecode. Der Interpreter (Virtual Machine) führt dann den Java-Bytecode aus. \cite{JVM}
+Der Compiler wandelt den Quelltext, also die .java-Dateien, in einen sogenannten Java-Bytecode. Der Interpreter (Virtual Machine) führt dann den Java-Bytecode aus. \cite{JVM}
 
 \subsection{Java Byte-Code}
 \author{David Ignjatovic} 
 
 Bytecode in Java ist der Grund dafür, dass Java plattformunabhängig ist. Sobald ein Java-Programm kompiliert wird, wird der Bytecode generiert. 
-Genauer gesagt ist ein Java-Bytecode der Maschinencode in Form einer .class-Datei.
+Genauer gesagt ist ein Java-Bytecode welcher Maschinencode in Form einer .class-Datei.
 
 \section{JUnit}
 \author{David Ignjatovic} 
 
-Um ganz einfach einen beliebigen Java Code zu überprüfen und zu testen, verwenden wir JUnit. JUnit ein ein Test Framework welches von Erich Gamma und Kent Beck
-entwickelt wurde. \\*
+Um ganz einfach einen beliebigen Java Code zu überprüfen und zu testen, verwenden wir JUnit. JUnit ist ein Test Framework welches von Erich Gamma und Kent Beck
+entwickelt wurde. \cite{JUnit} \\*
 
-Um JUnit zu verwenden wird brauchen wir, wie schon erwähnt, einen beliebigen Java Code welcher der Programmierer geschrieben hat. Mithilfe von sogennanten Unit Test 
-werden dann einzelne Testfälle von verschiedenen Klassen getestet. In JUnit verwendet man assertEquals(Parameter1,Parameter2). Parameter1 gibt den Aktuellen Wert, welchen zum Beispel 
-ein Objekt hat, an. Parameter2 gibt den Wert an, welcher erwartet wird. Natürlich gibt es dann auch noch assertNotEquals(Parameter1,Parameter2) welches schaut das die übergebenen 
-Parameter nicht übereinstimmen. \\*
+Um JUnit zu verwenden, brauchen wir, wie schon erwähnt, einen beliebigen Java Code, welchen der Programmierer geschrieben hat. 
+Mithilfe von sogenannten Unit Tests werden dann einzelne Testfälle von verschiedenen Klassen getestet. In JUnit verwendet man 
+\textbf{\textit{assertEquals(Parameter1,Parameter2)}}. 
+\textbf{\textit{Parameter1}} gibt den Aktuellen Wert, welchen zum Beispiel ein Objekt hat, an. \textbf{\textit{Parameter2}} gibt den Wert an, welcher erwartet wird. 
+Natürlich gibt es dann auch noch \textbf{\textit{assertNotEquals(Parameter1,Parameter2)}} welches schaut das die übergebenen Parameter nicht übereinstimmen. \\*
 
 Die Akuelle JUnit Version, welche wir verwenden, heißt JUnit 5. Diese Version setzt sich auch mehreren Modulen zusammen. JUnit 5 besteht aus JUnit Platform + JUnit Jupiter + JUnit Vintage.
 
 \section{Karate}
 \author{David Ignjatovic} 
 
-Karate wird verwendet, um Enpoints testen zu können. Die Syntax ist sehr einfach lesserlich für Menschen, die wenig bis keine Programmierkenntnisse haben.
-Karate selbst enthält nicht nur Testen von Enpoints, sondern auch HTML Reports, welche alle Testfälle Dokumentiert und anzeigt. \\*
+Karate wird verwendet, um Enpoints testen zu können. Die Syntax ist sehr einfach und leserlich für Menschen, die wenig bis keine Programmierkenntnisse haben.
+Karate selbst enthält nicht nur Testen von Enpoints, sondern auch HTML Reports, welche alle Testfälle dokumentiert und anzeigt. \\*
 
-Einzelne Testfälle bezeichnet man in Karate als Scenarios. In diesen Scenarios werden dann CRUD Opperationen getestet. Den Path der Abfrage und die einzelnen 
+Einzelne Testfälle bezeichnet man in Karate als Scenarios. In diesen Scenarios werden dann CRUD Operationen getestet. Den Path der Abfrage und die einzelnen 
 Parameter werden in den Scenarios mitgegeben, aber auch was für ein Response code zurückkommen soll.
 
 
@@ -309,13 +310,13 @@ Parameter werden in den Scenarios mitgegeben, aber auch was für ein Response co
 \author{David Ignjatovic} 
 
 Die Enterprise Edition der Java Plattform (JEE), eine Spezifikation der Java-Plattform. 
-Der wichtigste bestandteil von Java EE sind die Webanwendungen. Um solch eine Anwendung ausführen zu können, wird eine Applikationsserver verwendet, welcher 
-in mehrere Systeme unterteilt wird, die auch Container gennant werden. Für eine Webanwendung reicht meistens reicht ein einzelner Web-Container aus. \\*
+Der wichtigste Bestandteil von Java EE sind die Webanwendungen. Um solch eine Anwendung ausführen zu können, wird eine Applikationsserver verwendet, welcher 
+in mehrere Systeme unterteilt wird, die auch Container genannt werden. Für eine Webanwendung reicht meistens reicht ein einzelner Web-Container aus. \\*
 
 Die erste Version von Java EE, welche damals noch Java2EE genannt wurde, erschien im Jahr 1990. Im Jahr 2003 wurde der Name der Plattform auf Java EE geändert.
 Die erste richtige Version von Java EE, welches wir bis heute noch kennen, erschien im Mai 2006 und trug die Versionsnummer 5. 2009 folgte die Version 6 und 2013 die Version 7.
 
-Wie schon berreit erwähnt, wird zum ausführen einer Java EE Webanwendung ein Applikationsserver verwendet. Die am meisten verwendeten Applikationsserver sind so gennante 
+Wie schon bereit erwähnt, wird zum Ausführen einer Java EE Webanwendung ein Applikationsserver verwendet. Die am meisten verwendeten Applikationsserver sind so genannte 
 Open-Source-Server wie zum Beispiel Apache Geronimo und GlassFish. 
 Als Alternative zu einem vollständigen Applikationsserver können auch Programme verwendet werden, welche nur einen Web-Container implementieren.
 Diese Web-Container werden oft auch als Servlet- oder JSP-Container bezeichnet und sind meistens dafür ausrecheichend. Der bekannteste Web-Container ist Apache Tomcat.
@@ -325,10 +326,10 @@ Diese Web-Container werden oft auch als Servlet- oder JSP-Container bezeichnet u
 \section{Quarkus}
 \author{David Ignjatovic} 
 
-Quarkus ist ein cloud-nativer Stack welcher von Red Hat entwickelt wurde. Es basiert auf den Jakarta EE- und MicroProfile-Standards. 
-Eine Quarkus-Applikation hat gegenüber ein Konkurrenzprodukt eine deutlich kürzere Startzeit und einen erheblich geringeren Speicherbedarf, was ein großer vorteil ist für das Serverless Computing.  \cite{Quarkus} \\*
+Quarkus ist ein Cloud-nativer Stack welcher von Red Hat entwickelt wurde. Es basiert auf den Jakarta EE- und Micro Profile-Standards. 
+Eine Quarkus-Applikation hat gegenüber ein Konkurrenzprodukt eine deutlich kürzere Startzeit und einen erheblich geringeren Speicherbedarf, was ein großer Vorteil ist für das Serverless Computing.  \cite{Quarkus} \\*
 
-Quarkus wurde für entwickelt um de entwicklern die möglichkeit zu geben, applicationen für die moderne, cloud-native welt zu erstellen. 
+Quarkus wurde für entwickelt um de Entwicklern die Möglichkeit zu geben, Applikationen für die moderne, Cloud-native Welt zu erstellen. 
 Es ist ein Kubernetes-natives Java-Framework, das auf GraalVM und HotSpot angepasst wurde. Noch dazu wurde es aus erstklassigen Java-Bibliotheken und Standards erstellt. \\*   
 
 Im März 2019 wurde Quarkus nach mehr als einem Jahr interner Entwicklung der Open-Source-Community vorgestellt
@@ -337,14 +338,21 @@ Im März 2019 wurde Quarkus nach mehr als einem Jahr interner Entwicklung der Op
 \author{David Ignjatovic} 
 
 Der größte Unterschied zwischen Java EE und Quarkus ist, dass man bei Quarkus keinen Application Server benötigt. 
-Ein weiter Vorteil währe, dass bei Quarkus keine war-File erstellt wird, sondern eine jar-File, welche dem entsrpechend sehr klein ist. 
+Ein weiter Vorteil wäre, dass bei Quarkus keine war-File erstellt wird, sondern eine jar-File, welche dem entsprechend sehr klein ist. 
 In diesem jar-File befinden sich auch noch die einzelnen Libaries, welche für die Webanwendung verwendet werden. \\*
 
-Im gegensatzt zu Java EE wird eine war-File erstellt. Noch dazu befinden sich auf dem JEE-Application Server schon viele Libraries die schon vorinstalliert sind. 
+Im Gegensatz zu Java EE wird eine war-File erstellt. Noch dazu befinden sich auf dem JEE-Application Server schon viele Libraries die schon vorinstalliert sind. 
 Der größte Nachteil von Java EE ist, dass man auch für kleine Anwendung einen ganzen Application Server braucht. \\*
 
-Im Großen und Ganzen kann man sagen, dass Quarkus hier dominanter ist, da es sehr praktisch und schnell ist. Noch dazu ist Quarkus relativ neu und kann sich im Laufe der Jahre noch umso mehr verbessern.
+Im Großen und Ganzen kann man sagen, dass Quarkus hier dominanter ist, da es sehr praktisch und schnell ist. 
+Noch dazu ist Quarkus relativ neu und kann sich im Laufe der Jahre noch umso mehr verbessern. \\*
 
+Am Anfang haben wir Java EE gewählt, da es so vorgesehen war. Mit Java EE haten wir einige Probleme wie zum Beispiel die Zeit zum deployen. 
+Mit Quarkus aber haben wir uns sehr viel zeit gespart und konnten dadurch auch mehr Zeit in andere Sachen investieren wie zum Beispiel in das Testen.
+
+Die Konfiguration bei Quarkus war auch um einiges einfacher als bei Java EE. Bei Quarkus findet die Konfiguration in den sogenannten \textbf{Application.Properties} statt.
+Bei Java EE war die Konfiguration auf dem Application Server. Hier war nicht nur eine File sondern mehrere .xml Files. Das war ebenso noch ein Grund warum wir uns 
+zum Schluss doch noch für Quarkus entschieden haben.
 
 
 \subsection{JPA}
@@ -353,43 +361,48 @@ Im Großen und Ganzen kann man sagen, dass Quarkus hier dominanter ist, da es se
 Java Persistence API (JPA) ist eine API welche für Datenbankzugriffe und für das objektrelationales Mapping verwendet wird. 
 Objektrelationales Mapping (ORM) zeigt eine objektorientierte Sicht auf Tabellen und Beziehungen in relationalen Datenbank-Management-Systemen an.  \\*
 
-Enterprise Applikationen führern üblicherweise viele Operationen auf Datenbanken durch.
+Enterprise Applikationen Führern üblicherweise viele Operationen auf Datenbanken durch.
 Um aber eine Datenbankanbindung zu haben, müsste man sehr viel Code schreiben.
-Durch die Hilfe von JPA (Java Persistance API) wird der aufwand reduziert, welcher benötigt wird, um mit der Datenbank zu komunizieren. \\* \cite{JPA}
+Durch die Hilfe von JPA (Java Persistance API) wird der Aufwand reduziert, welcher benötigt wird, um mit der Datenbank zu kommunizieren. \\* \cite{JPA}
 
-JPA wurde von JSR 220 Expert Group entwickelt und im Mai 2006 erstmals veröffentlicht. 
+JPA wurde von JSR 220 Expert Group entwickelt und im Mai 2006 erstmals veröffentlicht.
+
 
 \subsection{Hibernate}
 \author{David Ignjatovic}
 
-Hibernate wird oft als Object Relational Mapping Tool bezeichnet. Es ist ein Framework zur Abildung von Objekten auf relationaler Datenbank für die Programmiersprache Java.
-Hibernate implementiert die Java Persistence API (JPA)und bietet Funktionalitäten wie zum Beispiel  Datenbankabfragen mit der sogennanten Hibernate Query Language (HQL). \\*
+Hibernate wird oft als Object Relational Mapping Tool bezeichnet. Es ist ein Framework zur Abbildung von Objekten auf relationaler Datenbank für die Programmiersprache Java.
+Hibernate implementiert die Java Persistence API (JPA)und bietet Funktionalitäten wie zum Beispiel Datenbank abfragen mit der sogenannten Hibernate Query Language (HQL). \\*
 
-Es wurde von JBoss im Jahr 2001 entwickelt und veröffentlicht. Sommit ist auch Hibernate in dem Boss Applikations-Server integriert .\cite{Hibernate}
-
+Es wurde von JBoss im Jahr 2001 entwickelt und veröffentlicht. Somit ist auch Hibernate in dem Boss Applikations-Server integriert .\cite{Hibernate}
 
 \section{JBoss}
 \author{David Ignjatovic}
 
-Red Hat JBoss Enterprise Application Platform (JBoss EAP) bietet Sicherheit und Performance. Der JBoss EAP ist eine Open-Source-Java EE-basierte Laufzeitplattform für Anwendungsserver.
+JBoss ist ein Tochterunternehmen von Red Hat, welches Unterstützung für die gleichnamige Server-Plattform (JBoss Application Server) 
+und zugehörige Services unter der Marke JBoss Enterprise Middleware Suite (JEMS) bietet. \cite{JBoss}
 
+\subsection{JBoss Application Server}
+
+Der JBoss Application Server ist eine J2EE-Plattform. Mithilfe von J2EE werden standardisierte, modulare Komponenten verwendet.
+JBoss ist ebenfalls innerhalb des Amazon Cloud-Services EC2 verfügbar. \cite{JBoss}
 
 \subsection{Panache}
 \author{David Ignjatovic}
 
-Panache ist eine Quarkus-spezifische Bibliothek, welche die Entwicklung einer Hibernate-basierten Persistenzschicht vereinfacht. 
-Panache ersetzt den größten Teil des Boilerplate-Codes mit einfachen methoden die man in die Quarkus Anwendung implementieren kann. 
+Panache ist eine Quarkus-spezifische Bibliothek, welche die Entwicklung einer Hibernate-basierten Persistenz Schicht vereinfacht. 
+Panache ersetzt den größten Teil des Boilerplate-Codes mit einfachen Methoden die man in die Quarkus Anwendung implementieren kann. 
 Methoden wie create, update, and remove aber auch eigene Abfragen auf der Datenbank werden von Panache zur Verfügung gestellt. \\* \cite{Panache}
+
 
 \section{Maven}
 \author{David Ignjatovic}
 
-Apache Maven ist ein leistungsfähiges Werkzeug, welches immer weider vorkommende Prozeduren automatisiert und vereinfacht. 
+Apache Maven ist ein leistungsfähiges Werkzeug, welches immer wieder vorkommende Prozeduren automatisiert und vereinfacht. 
 Es wird oft als "Build Management System" bezeichnet und ist Teil vom "Software Configuration Management (SCM)".  \\* \cite{Maven}
 
 Neben Maven gibt es auch noch ANT was eher kommandoorientiert arbeitet. Maven ist eher strategisch orientiert, realisiert mehr Abstraktionen, wird deklarativer gesteuert, 
 berücksichtigt Abhängigkeiten besser und ist besonders für aufwändigere Multimodulprojekte geeignet. \cite{Maven}
-
 
 \section{Cypress}
 
@@ -539,22 +552,20 @@ Dieser identifiziert sich durch den Client und seine Rollen im Realm werden der 
 
 \section{Oracle Datenbank}
 \author{David Ignjatovic}
-
-Oracle Database ist ein relationales Datenbankmanagementsystem, auch gennant RDBMS, welche von der Firma Oracle hergestellt wurde. 
-Oracle ist einer der bekanntesten und auch meist verwendet Datenbanken. Die Firma Oracle wurde am 17. August 1977 Lawrence  Joseph Ellison in der Bronx, New York City, gegründet.
+Oracle Database ist ein relationales Datenbankmanagementsystem, auch genannt RDBMS, welche von der Firma Oracle hergestellt wurde. 
+Oracle ist einer der bekanntesten und auch meist verwendet Datenbanken. Die Firma Oracle wurde am 17. August 1977 Lawrence Joseph Ellison in der Bronx, New York City, gegründet.
 Die erste Version von Oracle Database kam 1979 auf den Markt. \cite{OracleDB} \\*
 
 Die Oracle Database nutzt wie die meisten relationale Datenbanken, SQL als Programmiersprache (Structured Query Language).
-SQL wird in der Oracle Database verwendet um Aktionen durchzuführen, Datenbankstrukturen zu schaffen, Datensätze zu verwalten oder enthaltene Daten abzurufen. 
-PL/SQL, welche eine Oracle-eigen sprache ist, ist wiederum eng verknüpft mit SQL und bietet die Möglichkeit, SQL um Oracle-Programmiererweiterungen zu ergänzen. 
-Oracle verwendet Zeilen- und Spaltentabellen zur strukturierung der Datenbanken, in denen Datenpunkte über Attribute verbunden sind \cite{OracleDB} \\*
+SQL wird in der Oracle Database verwendet, um Aktionen durchzuführen, Datenbankstrukturen zu schaffen, Datensätze zu verwalten oder enthaltene Daten abzurufen. 
+PL/SQL, welche eine Oracle-eigen Sprache ist, ist wiederum eng verknüpft mit SQL und bietet die Möglichkeit, SQL um Oracle-Programmiererweiterungen zu ergänzen. 
+Oracle verwendet Zeilen- und Spaltentabellen zur Strukturierung der Datenbanken, in denen Datenpunkte über Attribute verbunden sind \cite{OracleDB} \\*
 
 Wichtige Oracle-Database-Werkzeuge währen Oracle SQL Developer und Oracle Data Modeler. \\*
 
 Mit dem Oracle SQL Developer kann man leicht Datenbankabfragen auf einer Graphischen oberfläche tätigen. Noch dazu kann man PL/SQL Prozeduren erstellen oder generieren lassen.
-Der Oracle Data Modeler wird hauptsächlich zum erstellen von Datenbankmodellen oder Entity-Relationship-Modellen verwendet.
-
-
+Der Oracle Data Modeler wird hauptsächlich zum Erstellen von Datenbankmodellen oder Entity-Relationship-Modellen verwendet. Zum Schluss hat man dann die Möglichkeit ein Skript 
+zu generieren welches dann alle Tabellen erstellt und auch die dazu modellierten Beziehungen erstellt.
 
 \section{SQL}
 \author{David Ignjatovic}
@@ -566,7 +577,7 @@ Mit abfragen werden Daten in einer Datenbank abgerufen. \cite{SQL}
 
 \subsection{SQL - Select}
 
-Der Select befehl in der Datenbanksprache, ist sozusagen der Grundstein für SQL-Abfragen.  \\*
+Der Select Befehl in der Datenbanksprache, ist sozusagen der Grundstein für SQL-Abfragen.  \\*
 
 \begin{lstlisting}[language=SQL,caption=Sql Select,label=lst:impl:foo]
 SELECT t.Spaltenname1, t.Spaltenname2 FROM Tabellenname t
@@ -577,7 +588,22 @@ Wenn man den Select Befehl mit einem "WHERE" erweiter, kann man die Datenbank ab
 \begin{lstlisting}[language=SQL,caption=Sql Select Where,label=lst:impl:foo]
 SELECT t.Spaltenname1, t.Spaltenname2 FROM Tabellenname t WHERE t.Spaltenname1 = 1
 \end{lstlisting}
-    
+
+
+Die wichtigsten SQL-Comands lauten:
+\begin{itemize}
+  \item SELECT - extrahiert Daten aus der Datenbank
+  \item UPDATE - aktualisiert Daten in der Datenbank
+  \item DELETE - löscht Daten aus einer Datenbank
+  \item INSERT INTO - fügt neue Daten in die Datenbank ein
+  \item CREATE DATABASE - erstellt eine neue Datenbank
+  \item ALTER DATABASE - modifizert eine neue Datenbank
+  \item CREATE TABLE - erstelt eine neue Tabelle
+  \item ALTER TABLE - modifiziert eine Tabelle
+  \item DROP TABLE - löscht eine Tabelle
+  \item CREATE INDEX - erstellt einen Index
+  \item DROP INDEX - löscht den Index
+\end{itemize}
 
 \section{Vue.js}
 \author{Benjamin Besic}
