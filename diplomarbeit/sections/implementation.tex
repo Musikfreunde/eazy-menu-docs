@@ -1228,7 +1228,47 @@ Außerdem kann man Formen definieren wie zum Beispiel:
     \item Cut Corner Shape
 \end{itemize}
 
-Wie bei fast allen anderen Items, ist es auch hier möglich sowohl die Hintergrund- als auch die Vordergrundfarbe zu ändern.
+Wie bei fast allen anderen Items, ist es auch hier möglich die Darstellung zu ändern.
+
+\begin{itemize}
+   \item modifier
+   \item shape
+   \item backgroundColor
+   \item contentColor
+   \item border
+   \item elevation
+   \item content
+\end{itemize}
+
+Dargestellt wird es mit einer einfachen Funktion.
+
+
+\begin{lstlisting}
+    Card {
+        Text(
+            text = "Card"
+        )
+    }
+\end{lstlisting}
+
+Um die einzelnen Modifizierungen einzubauen, gibt man der Funktion die jeweiligen Parameter mit.
+
+\begin{lstlisting}
+    Card(
+        modifier: Modifier = Modifier,
+        shape: Shape = RectangleShape(5.dp),
+        backgroundColor: Color = Color.Transparent,
+        contentColor: Color = Color.Red,
+        elevation: Dp = 10.dp
+    ) {
+        Text(
+            text = "Card"
+        )
+    }
+\end{lstlisting}
+
+
+
 
 
 \subsection{Log out}
