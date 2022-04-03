@@ -475,12 +475,34 @@ Output:
 
 \subsubsection{Bestellung erstellen}
 
-WIP
+Wenn ein User eine Bestellung bestellen will, muss der Pfad \textbf{\textit{/menue/bestellung}} aufgerufen werden. 
+Mithilfe der id, die man von dem vorherigen Request bekommen hat, kann man ganz einfach seine bestellung abgeben. \\*
+
+Ein Beispiel für eine Bestellung sieht folgendermassen aus:
+
+\begin{lstlisting}[language=json,firstnumber=1]
+    {
+        "orderedBy":"spabo",
+        "amount":"1",
+        "comment":"",
+        "menueId":707,
+        "orderedFor":"spabo",
+        "timeId":6,
+        "personalNummer":1023
+    }
+\end{lstlisting}
+
+Wenn die betellung erfolgreich war, wird der Status 200 zurückgegeben.
 
 
 \subsubsection{Bestellung stornieren}
 
-WIP
+Um eine bestellung zu stornieren, muss der Pfad \textbf{\textit{/menue/bestellung}} aufgerufen werden. Wie auch bei dem erstellen einer Bestellung wird 
+mit hilfe einer id die Bestellung zugeordnet. \\*
+
+In unserer Datenbank wird die Bestellung nicht direkt gelöscht sondern überschrieben. Sie wird also auf gelöscht gesetzt, jedoch nicht aus der Datenbank gelöscht.
+
+Wenn die Bestellung erfolgreich storniert wurde, wird die Antwort \textbf{Order with id <is> was cancelled!} zurückgegeben.
 
 \subsection{Menue}
 
@@ -519,13 +541,13 @@ URL: GET \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
 
 \subsubsection{Menü erstellen}
 
-Damit die Kantine ein Menü erstellen kann, wird ein POST-Request an den Pfad PFAD ÄNDERN geschickt.
+Damit die Kantine ein Menü erstellen kann, wird ein POST-Request an den Pfad \textbf{\textit{/menue/menues}} geschickt.
 
 Da eine Bestellung aus genau 3 Menues besteht, werden auch 3 POST-Requests abgeschickt. Die werte werden in Form eines JSON Objekt abgeschickt.
 
 Ein Beispiel für eine Bestellung sieht folgendermassen aus:
 
-URL: POST \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/...|}
+URL: POST \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues/|}
 
 
 JSON Objekt für Menue A:
@@ -574,27 +596,225 @@ Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Katego
 
 \subsubsection{Menü verändern}
 
-WIP
+Wie auch bei dem erstellen eines Menüs, wird der Pfad \textbf{\textit{/menue/menues}} aufgerufen. 
 
-\subsubsection{Menü-Vorschlag (Recomendation)}
+Wie schon erwähnt, besteht eine Bestellung aus genau 3 Menüs, deswegen werden auch 3 PUT-Requests abgeschickt.
 
-WIP
+Ein Beispiel für eine Bestellung sieht folgendermassen aus:
+
+URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues/|}
+
+JSON Objekt für Menue A:
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+    "id":null,
+    "date":"2022-03-22",
+    "code":"A",
+    "appetizer":"Suppe",
+    "mainDish":"Pasta",
+    "dessert":"Milka",
+    "categories":"Rind;Nudel"
+}
+\end{lstlisting}
+
+JSON Objekt für Menue B:
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+    "id":null,
+    "date":"2022-03-22",
+    "code":"B",
+    "appetizer":"Suppe",
+    "mainDish":"Lachs",
+    "dessert":"Milka",
+    "categories":"Fisch"
+}
+\end{lstlisting}
+
+JSON Objekt für Menue C:
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+    "id":null,
+    "date":"2022-03-22",
+    "code":"C",
+    "appetizer":"Suppe",
+    "mainDish":"Kartofell Salat",
+    "dessert":"Milka",
+    "categories":"Vegan;Vegetarisch;Salat"
+}
+\end{lstlisting}
+
+\subsubsection{Menü-Vorschlag (Recommendation)}
+
+Wenn ein Mitarbeiter nicht weiß, welche Mahlezeit er wählen soll, wird mithilfe eines Recommender entschieden, welche Mahlzeit am besten dem 
+User passt. Mithilfe eines Expertensystem wird entschieden welche Mahlzeit am besten wäre. 
+
+Um die passende Mahlezeit zu bekommen, muss der Pfad \textbf{\textit{/menue/menues/recommendation}} aufgerufen werden.
+
+Der Algorithmus sieht folgendermassen aus:
+
+URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues/recommendation|}
+
+\begin{lstlisting}
+    public Menue  getRecommendation(String name, String date){
+        List<String> categories = bestellungRepository.getALlCategoriesByUsername(name);
+        List<Menue> menues = getMenuesByDate(date);
+        Menue recommendedMenue = null;
+
+        for (String category : categories){
+            if(recommendedMenue != null){
+                break;
+            }
+            for (Menue m : menues){
+                if(recommendedMenue != null){
+                    break;
+                }
+
+                String[] categorieOfMenue = m.getCategories().split(";");
+
+                for (String c : categorieOfMenue){
+                    if (category.equals(c)){
+                        recommendedMenue = m ;
+                        break;
+                    }
+                }
+            }
+        }
+        return recommendedMenue;
+    }
+\end{lstlisting}
+
+Um herauszufinden zu können welche Mahlezeit optimal wäre, werden mit Hilfe des Algorithmus alle Kategorien des Users gehollt. 
+Jeder User der eine Bestellung getätigt hat, hatte die höglichkeit zu sehen, welche Kategorien die Mahlzeit auch besitzt. Sommit kann man leicht herauszufinden
+welche Kategorien auch am häufigsten in der Bestellhistorie vorkommen. \\*
+
+Unser Algorithmus würde nicht funktionieren, gäbe es keine Bestellungen. In anderen Worten, desto mehr Bestellungen man hat, umso genauer wird die recommendation. \\*
+
+Die Kategorien werden in der Datenbank als string gespeichert die mit einem Strichpunkt geteilt werden. Hat man also bei einer Mahlzeit mehr als eine Kategorie,
+so wird dieser als string mit einem oder mehreren Strichpunkten gespeichert. \\*
+
+Hier ein paar Beispiele:
+
+\textit{Schnitzel mit Pommes} = \textbf{"schwein"}
+
+\textit{Eisbergsalat} = \textbf{"Vegan;Vegetarisch"}
+
+\textit{Nudelsalat mit Hühnerfleisch} = \textbf{"Nudel;Salat;Huhn"}
 
 \subsubsection{Alle Menüs an einem bestimmten Tag}
 
-WIP
+Um alle Menüs an einem bestimmten Tag zu bekommen, wird der Pfad \textbf{\textit{/menue/menues/<date>}} aufgerufen.
 
-\subsection{Oeffnungszeiten}
+Ein Beispiel für paar Menüs, welche am 12.08.2021 bestellt worden sind, sieht folgendermassen aus:
 
-WIP
+URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues/2021-12-08|}
+
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+    [
+        {
+            "appetizer": "Nudelsuppe",
+            "categories": "Schwein",
+            "changedAt": "2021-12-07T19:29:08.840936Z[UTC]",
+            "changedBy": "IF170009:IF170009:beni",
+            "code": "A",
+            "createdAt": "2021-12-07T18:37:30.322514Z[UTC]",
+            "createdBy": "IF170009:beni",
+            "date": "2021-12-08",
+            "desert": "Obst",
+            "id": 499,
+            "kantine": {
+            "canteenDesc": "Betriebskueche",
+            "changedAt": "2021-11-25T21:29:47.471379Z[UTC]",
+            "changedBy": "IF170009:beni",
+            "createdAt": "2021-11-25T21:29:47.471196Z[UTC]",
+            "createdBy": "IF170009:beni",
+            "id": 3,
+            "serviceDesc": "Mittagstisch - CORONA LIGHT",
+            "status": "A"
+            },
+            "mainDish": "Schweineschnitzel"
+        },
+        {
+            "appetizer": "Nudelsuppe",
+            "categories": "Rind;Nudel",
+            "changedAt": "2021-12-07T19:29:08.995487Z[UTC]",
+            "changedBy": "IF170009:IF170009:beni",
+            "code": "B",
+            "createdAt": "2021-12-07T18:37:30.490055Z[UTC]",
+            "createdBy": "IF170009:beni",
+            "date": "2021-12-08",
+            "desert": "Obst",
+            "id": 500,
+            "kantine": {
+            "canteenDesc": "Betriebskueche",
+            "changedAt": "2021-11-25T21:29:47.471379Z[UTC]",
+            "changedBy": "IF170009:beni",
+            "createdAt": "2021-11-25T21:29:47.471196Z[UTC]",
+            "createdBy": "IF170009:beni",
+            "id": 3,
+            "serviceDesc": "Mittagstisch - CORONA LIGHT",
+            "status": "A"
+            },
+            "mainDish": "Lasagne"
+        },
+        ...
+    ]
+}
+\end{lstlisting}
+
+Hier sieht man die wichtigsten Daten wie zum Beispiel die Vorspeise, Hauptspeise, Nachspeise und Desert welche von  dem jeweiligem Mitarbeiter bestellt worden sind. 
+Auch Daten wie die Bestellzeit und in welcher Kantine gegessen wird wird auch mitgegeben.
 
 \subsubsection{Alle Aktiven Essenszeiten}
 
-WIP
+Um zu sehen ob noch freie Sitzplätze zur verfügung stehen, wird der Pfad \textbf{\textit{/menue/oeffnungszeiten}} aufgerufen. 
 
-\subsubsection{Freien Tische}
+In unserer Kantine gibt es 4 Zeiten an denen man essen gehen kann. Diese dauern immer eine halbe Stunde und haben einen zwischenpause vo n 15 min. 
+Pro Essenszeit können maximal 20 Personen in dem Saal essen.
 
-WIP
+Ein Beispiel für die Öffnungszeiten und für die freien Plätze sieht folgendermassen aus:
+
+URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues/2021-12-08|}
+
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+    [
+        {
+            "chosen": false,
+            "freeSeats": -1,
+            "id": 6,
+            "maxSeats": 20,
+            "time": "11:15 - 11:45"
+        },
+        {
+            "chosen": false,
+            "freeSeats": -1,
+            "id": 7,
+            "maxSeats": 20,
+            "time": "12:00 - 12:30"
+        },
+        {
+            "chosen": false,
+            "freeSeats": -1,
+            "id": 8,
+            "maxSeats": 20,
+            "time": "12:45 - 13:15"
+        },
+        {
+            "chosen": false,
+            "freeSeats": -1,
+            "id": 9,
+            "maxSeats": 20,
+            "time": "13:30 - 14:00"
+        }
+    ]
+}
+\end{lstlisting}
 
 \section{Authentifizierung}
 
