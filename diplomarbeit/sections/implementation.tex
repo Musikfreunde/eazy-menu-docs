@@ -1139,6 +1139,9 @@ Kriegt man einen Token zurück, so besteht der User.
 
 \end{lstlisting}
 
+
+
+
 \subsubsection{checkAccessToken()}
 
 Man schickt einen Request an http://10.0.2.2:8082/auth/realms/menuRealm/protocol/openid-connect/token mit einem passendem body.
@@ -1178,6 +1181,7 @@ einen countDownLatch eingebaut, der vor der Rückgabe der Methode darauf wartet,
     countDownLatch.await()
     return accessToken.value != ""
 \end{lstlisting}
+
 
 \pagebreak
 \section{Übersicht}
@@ -1444,6 +1448,14 @@ Die Anfrage und Antwort:
     })
 \end{lstlisting}
 
+
+\subsubsection{Interface Callback}
+Da Java keine \textit{Pointer} Konzepte verwendet, gibt es die Callbackfunktion nicht wie in C oder C++.
+Da hingegen gibt es das sogenannte Callback Interface.
+Jede Schnittstelle hat einen Speicherort. Diese wird dann, anstatt der Funktion selbst, übergeben und verwendet.
+\\*
+
+\subsubsection{onResponse}
 
 
 

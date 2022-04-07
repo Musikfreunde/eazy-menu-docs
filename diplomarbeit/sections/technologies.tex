@@ -13,6 +13,7 @@ Wir haben uns dafür entschieden, da wir damit viel Erfahrung hatten und die obe
 unterstützten unsere Entscheidung enorm.
 
 \section{Android Studio}
+\cite{Jetpack-Compose}
 \author{Bozidar Spasenovic}
 Android Studio ist eine Entwicklungsumgebung für Android-Anwendungen.
 \\* 
@@ -897,17 +898,67 @@ Es wird in Android verwendet um das Layout jeder Aktivität des Android zu entwe
 Docker ist eine in GO programmierte Softwareplattform, die den Prozess des Erstellens, Ausführens und Verwaltens von Apps umfasst.
 Dies geschieht durch Virtualisierung des Betriebssystems, auf dem es installiert ist und ausgeführt wird. 
 \subsection{Docker Compose}
+\cite{Docker-Compose}
+Compose ist ein Tool zum Definieren und Ausführen von Docker-Anwendungen mit mehreren Containern. 
+Um Container ausführen zu können, werden compose-files geschrieben um Docker-Anwendungen zu starten.
+Die Compose-File ist eine .YAML File, in der die konfiguration statt findet. 
+Anschließend erstellen und starten Sie mit einem einzigen Befehl alle Dienste aus Ihrer Konfiguration.
+
+\subsection{Verwendung}
+
+Man setzt die Umgebung der App mit einer Dockerfile.
+Danach wird die \textit{docker-compose.yaml} file erstellt, welche die einzelnen Dienste startet.
+
+Starten mit -> docker-compose update
+Killen/Beenden mit -> docker-compose down
+
+
 
 
 \section{OKHttp}
 \cite{OkHttp}
 \author{Bozidar Spasenovic}
 OkHttp ist ein HTTP-Client, der standardmäßig effizient ist.
- Dank der HTTP/2-Unterstützung ist es möglich alle Anfragen an einen Host zu schicken. 
+Dank der HTTP/2-Unterstützung ist es möglich alle Anfragen an einen Host zu schicken. 
 Response Caching hilft bei vermeidung von wiederholten Anfragen.
+\\*
 OkHttp hilft bei Verbindungsproblemen indem man alternative Adressen benutzt und unterstürzt weiters noch TLS-Funktionen.
- Es kann so konfiguriert werden, dass es auf eine breite Konnektivität zurückgreift.
- Der Client ist sehr gut für die Verwendung von blockierte synchrone und nicht blockierte asynchrone Aufrufe 
+Der Client wird sich lautlos von Verbindungsproblemen erholen, sprich er bleibt bei Verbindungsproblemen noch vorhanden.
+\\*
+Falls ein Dienst mehrere IP-Adressen verfügt, wird sich der Client automatisch alternative Adressen aussuchen und mit denen
+die Aufrufe noch einmal versuchen.
+Das braucht man häufig für IPv4 und IPv6, weil die in redundanten Rechenzentren behütet werden. 
+
+
+Es kann so konfiguriert werden, dass es auf eine breite Konnektivität zurückgreift.
+Der Client ist sehr gut für die Verwendung von blockierte synchrone und nicht blockierte asynchrone Aufrufe 
+
+\subsection{Was braucht man wenn man OKHttp benutzen will?}
+OkHttp funktioniert ab der Android 5.0 aufwärts und Java 8. 
+Es hängt von Okio und der Kotlin Standardbibliothek ab.   
+
+\subsubsection{Kotlin Standardbibliothek}
+\cite{Kotlin-Standartbibliothek}
+Damit man überhaupt mit Kotlin programmieren kann, bietet die Standartbibliothek \textit{kotlin-stdlib} viele Packages an.
+Standartgemäß bietet diese die einzelnen Datentypen wie zum Beispiel
+
+\begin{itemize}
+    \item String
+    \item Char
+    \item Boolean
+    \item Int
+    \item Any
+    \item etc.
+\end{itemize}
+
+Mit den mitgelieferten Packages wie zum Beispiel kotlin.io kann man ganz übliche Input/Output Funktionen verwenden.
+Mit dem Package kotlin.collection werden Schleifen zu verfügung gestellt.
+
+Wenn man die neueste Version von OkHttp sucht, ist man auf Maven Central genau richtig.
+Diese tragt man dann in dem build.gradle file ein und nach einem neu laden des scriptes kann man es auch schon verwenden.
+
+
+
 
 \section{Gradle}
 \cite{Gradle1}
@@ -922,6 +973,40 @@ DAG wird verwendetr um die Tasks in richtiger Reihenfolge zu dirigieren.
 Heutzutage hat Gradle eine eigene Maschiene für das verwalten der einzelnen Abhängigkeiten, aber es begann mit Apache Ivy.
 Seit Mitte 2013 ist Android hinzugekommen. Seitdem wurde das Tool weitgehend erweitert, um den Aufbau sogenannter „nativer“ Systeme zu unterstützen, welche nicht auf Java basieren.
 Gradle wird von sehr großen Unternehmen verwendet wie zum Beispiel LinkedIn, Netflix, Adobe und vielen weiteren.
+
+Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
+\begin{itemize}
+    \item Plugins
+    \begin{figure}[htp]
+        \author{Bozidar Spasenovic}
+        \centering
+        \includegraphics[scale=0.80]{pics/gradle-plugins.PNG}
+        \caption{Gradle-Plugin}
+        \label{fig:impl:gradle-plugin}
+    \end{figure}   
+    \item Default Android
+    \begin{figure}[htp]
+        \author{Bozidar Spasenovic}
+        \centering
+        \includegraphics[scale=0.80]{pics/gradle-android.PNG}
+        \caption{Gradle-Android}
+        \label{fig:impl:gradle-android}
+    \end{figure}   
+    \item Dependencies
+    \begin{figure}[htp]
+        \author{Bozidar Spasenovic}
+        \centering
+        \includegraphics[scale=0.50]{pics/gradle-dependencies.PNG}
+        \caption{Gradle-Dependencies}
+        \label{fig:impl:gradle-Dependencies}
+    \end{figure}   
+\end{itemize}
+
+
+
+
+
+\pagebreak
 
 
 \section{Retrofit}
