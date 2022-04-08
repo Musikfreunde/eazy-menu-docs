@@ -2,15 +2,15 @@
 \author{Benjamin Besic}
 
 IntelliJ IDEA ist eine der führenden Entwicklungsumgebungen für die Programmiersprache Java. Sie wurde vom Unternehmen Jetbrains im Jahre 2000 entwickelt.
-\\* Außerdem bietet sie ebenfalls Entwicklungsmöglichkeiten für Kotlin, Groovy, Scala und auch Android.
+\\* Außerdem bietet sie ebenfalls eine Programmierumgebung für Kotlin, Groovy, Scala und auch Android.
  Sie ist immer auf dem neusten Entwicklungsstand, wird laufend mit Updates versorgt und unterstützt die derzeit gängigen Programmiertools
 wie Docker, Kubernetes, Maven, Datenbank-Tools, Git, Jakarta EE und viele weitere.
 Es gibt eine kostenpflichtige Ultimate Version und eine Community Version, die kostenfrei zur Verfügung gestellt wird.
 \\* IntelliJ zeichnet auch die Anzahl an Erweiterungen mittels Plugins aus. Die Umgebung besitzt auch eine
-sehr intuitive Intelligenz, die es dem Entwickler sehr einfach macht damit zu programmieren.
+sehr intuitive Intelligenz, die es dem Entwickler sehr einfach macht damit zu programmieren. Diese Intelligenz beinhaltet z.B. Codevorschläge oder Vorschläge, um die Codequalität zu verbessern.
 \cite{IntJ} \\*
-Wir haben uns dafür entschieden, da wir damit viel Erfahrung hatten und die oben genannten Punkte
-unterstützten unsere Entscheidung enorm.
+Wir haben uns für die Verwendung entschieden, da wir damit viel Erfahrung hatten und die oben genannten Punkte
+unterstützten unsere Entscheidung dabei.
 
 \section{Android Studio}
 \cite{Jetpack-Compose}
@@ -45,16 +45,16 @@ wird sofort vorgeschlagen die App mittels \textit{Run} zu starten.
 Git ist ein Versionskontrollsystem (oft abgekürzt durch VCS) für Entwickler. Es ist ein Open-Source System, das im Jahre 2005
 von Linus Torvald entwickelt wurde. Laut einer Stack Overflow-Umfrage von Entwicklern nutzen über 87 \% der Entwickler Git.
 \cite{GitKinsta}
-\\* Zu aller erst muss man den Begriff Versionskontrolle erklären, um Git zu verstehen.
+\\* Zuallererst muss man den Begriff Versionskontrolle erklären, um Git zu verstehen.
 \subsection{Versionskontrolle}
 Diese dient dazu, um den originalen Quellcode effizient mit mehreren Personen editieren bzw. entwickeln zu können. 
 \\* Die Entwickler arbeiten mit Verzweigungen und Zusammenführungen. Jeder Entwickler kann Änderungen sicher durchführen, ohne seine Kollegen dabei 
 zu behindern. Diese Änderungen können dann, sobald sie funktionsfähig sind, wieder in den Hauptquellcode eingebunden werden.
-Alle Änderungen sind zurückzuverfolgen und bei Bedarf kann man sie dann wieder zurücksetzen.
+Alle Änderungen sind nachvollziehbar und bei Bedarf kann man sie dann wieder zurücksetzen.
 \cite{GitKinsta} \\*
 
 \subsection{Git Funktionsweise}
-Jeder Entwickler hat seine eigene Version des Projekts (Working Directory), die er frei bearbeiten kann. Diese bekommt man durch einen Klon des Projekts (\hyperref[sec:Clone]{Clone}). \\* Diese Änderungen kann man aufteilen und 
+Jeder Entwickler hat seine eigene Version des Projekts (Working Directory), die er frei bearbeiten kann. Diese bekommt man durch einen Klon des Projekts (\hyperref[sec:Clone]{Clone}). \\* Änderungen kann man aufteilen und 
 in Paketen bereitstellen, nach dem man diese durch Commits trennt. Einen \hyperref[sec:Commit]{Commit} kann man benennen. \\*
 Diese Commits kann man dann online veröffentlichen durch einen \hyperref[sec:Push]{Push}. Ein Push ist nur möglich, wenn man die aktuellste Version des Projekts
 auf seinen Rechner gezogen hat (\hyperref[sec:Pull]{Pull}). 
@@ -68,8 +68,8 @@ Einem Push kann man einen bestimmten Zweig (\hyperref[sec:Branch]{Branch}) zuord
 \end{figure}
 Diese Zweige dienen dazu, um das Projekt in verschiedene
 unabhängige Teile zu trennen, falls man zum Beispiel an einer Demo Version weiterschreiben möchte. \\* Nach einem erfolgreichen Push sind die Änderungen
-online auf dem Repository zu finden. Ein Repository ist der "Ordner", wo alle Dateien online gespeichert zu finden sind. 
-\\* Ein Vorteil, den Git ebenfalls bietet ist das jeder Commit eine Version des Projekts ist, die man bis zum Zeitpunkt vom Commit herunterladen oder klonen kann.
+online auf dem Repository zu finden. Ein Repository ist der ``Ordner'', wo alle Dateien online gespeichert zu finden sind. 
+\\* Ein Vorteil, den Git ebenfalls bietet ist, dass jeder Commit eine Version des Projekts ist, die man bis zum Zeitpunkt vom Commit herunterladen oder klonen kann.
 Jedes Projekt kann privat oder öffentlich gemacht werden, sodass auch Personen, die keine Entwickler sind, darauf zugreifen können.
 \cite{GitExpl} 
 
@@ -86,28 +86,28 @@ Innerhalb des erstellten Ordners können alle weiteren Git Befehle ausgeführt w
 \label{sec:Commit}
 Ein Commit beschreibt Änderungen, die man im Projekt gemacht hat. Jeder Commit hat eine Bezeichnung, mit der der Entwickler die Änderungen,
 die er gemacht hat beschreiben kann. Zu jedem Commit gehören auch die Dateien die dabei geändert bzw. hinzugefügt wurden.
-\\* Es speichert den Zustand des gesamten Projekts bis zu dem Zeitpunkt und kann danach jederzeit abgerufen oder rückgängig gemacht werden.
+\\* Der Commit speichert die Veränderungen, die seit dem letzten Commit gemacht wurden und dieser kann danach jederzeit abgerufen oder rückgängig gemacht werden.
 Diese Änderungen bleiben aber zunächst nur lokal auf dem Rechner. \cite{GitCmnds}
 
 \subsubsection{Push}
 \label{sec:Push}
 
 Ein Push dient dazu, um die lokalen Änderungen (Commits) zu veröffentlichen. Es kopiert den aktuellen, lokalen Stand und speichert diesen auf 
-das vom Internet erreichbare Repository. \\* Einem Push kann ein Zweig (Branch) zugeordnet werden um die Änderungen zuzuordnen. 
-Ansonsten wird der Master Branch genommen. \cite{GitCmnds}
+das vom Internet erreichbare Repository. \\* Einem Push kann ein Zweig (Branch) zugeordnet werden um die Änderungen zuzuordnen.
+ \cite{GitCmnds}
 
 \subsubsection{Pull}
 \label{sec:Pull}
 Der Pull Befehl kopiert die Inhalte vom öffentlichen Repository und fasst diese mit den lokalen Zustand auf dem 
-rechner zusammen (merge). Es dient dazu die aktuelle Version des Projekts auf den Rechner herunterzuladen.
+Rechner zusammen (merge). Er dient dazu die aktuelle Version des Projekts auf den Rechner herunterzuladen.
 \\* Falls es Konflikte zwischen der derzeitigen und neusten Version gibt, werden die Änderungen zusammengeführt. \cite{GitCmnds}
 
 \subsubsection{Branch}
 \label{sec:Branch}
-Die Branch Befehle dienen dazu um eine neue Abzweigung des Projekts (Branch) zu erstellen.
+Die Branch Befehle dienen dazu, um eine neue Abzweigung des Projekts (Branch) zu erstellen.
 \\*
 Branches erstellt man, wenn man an einer neuen Version des Projekts arbeitet und diese vom Hauptteil trennen will.
-Meistens werden dadurch neue Funktionen programmiert, die später wieder in den Master Branch eingebunden werden.
+Meistens wird an neuen Funktionen gearbeitet, die später wieder in den Master Branch eingebunden werden.
 \\* Der Vorteil daran ist, dass man an neuen Funktionalitäten experimentieren kann, ohne den Hauptentwicklungsstand zu 
 beeinflussen. Branches können jederzeit gelöscht oder wieder ins Hauptprojekt integriert werden.
 Es kann simultan am Master Branch und an Nebenzweigen gearbeitet werden durch trennen mit dem Push Befehl. \cite{GitExpl}
@@ -121,29 +121,39 @@ Es kann simultan am Master Branch und an Nebenzweigen gearbeitet werden durch tr
 \end{figure}
 
 \subsection{GitHub}
-GitHub ist ein gewinnorientiertes Unternehmen, dass einen auf Cloud basierten Git Repository Hosting-Service anbietet.
+GitHub ist ein gewinnorientiertes Unternehmen, das einen auf Cloud basierten Git Repository Hosting-Service anbietet.
 Es wurde im Februar 2008 gestartet und von Chris Wanstrath, PJ Hyett, Scott Chacon und Tom Preston-Werner entwickelt.
 Es ist das beliebteste Tool um Softwareprojekte zu verwalten und wird von über 73 Millionen Entwicklern und über 4 Millionen Organisationen
-benutzt. Dazu ist es das größte und am meisten fortgeschrittene Entwicklungssystem, das es gibt. \cite{GitHub} \\*
+benutzt. Es ist das größte und am meisten fortgeschrittene Entwicklungssystem, das es gibt. \cite{GitHub} \\*
 Es vereinfacht die Nutzung von Git für Teams und auch Einzelpersonen. 
 Jeder kann sich einen GitHub Account erstellen und direkt loslegen und seine Arbeiten auf Repositories veröffentlichen.
-Es ist nicht nur zwingend für Code-basierte Projekte verwendbar sondern auch Websiten erstellen und das Schreiben von Büchern ist möglich.
+Es ist nicht nur für Code-basierte Projekte verwendbar sondern auch Websiten erstellen und das Schreiben von Büchern ist möglich.
 \\*
 Was GitHub ausmacht ist die Benutzerfreundlichkeit und die Integration von Git. Außerdem bietet Github viele andere Funktionen wie zum Beispiel ein Projekt Board an,
-was es erleichtert innerhalb eines Teams, Probleme besser lösen zu können. \\*
-Es gibt ebenfalls bezahlte Pläne, die es vor allem Organisationen und Unternehmen leichter macht Unternehmensprojekte zu verwalten durch zusätzliche Funktionen.
-\cite{GitKinsta}
+was es erleichtert innerhalb eines Teams, Probleme besser lösen zu können. In diesem Board können alle Probleme aufgelistet werden und dementsprechend können Teammitglieder zu bestimmten Problemen 
+zugeteilt werden.   \\*
+Es gibt ebenfalls Finanzierungspläne, die es vor allem Organisationen und Unternehmen leichter machen Unternehmensprojekte zu verwalten durch zusätzliche Funktionen. \cite{GitKinsta}
+Diese Funktionen wären zum Beispiel:
+\begin{itemize}
+    \item Mehr Speicherplatz für das Repository
+    \item Branches können bestimmten Nutzern zugeteilt werden 
+    \item Es kann eine Prüfung durch Dritte bei Branchänderungen erforderlich gemacht werden
+    \item Bessere Möglichkeit nachzuvollziehen, wer, was, wann gemacht hat durch detaillierte Logs
+    \item Und viele weitere ...
+\end{itemize}
+
+
 
 \section{GitHub Actions}
 \label{sec:GHAction}
 \author{Benjamin Besic}
 
-GitHub Actions ist ein von GitHub entwickelte Plattform, die das Automatisieren von verschiedenen Aspekten eines Softwareprojekts in Form von Pipelines ermöglicht.
+GitHub Actions ist eine von GitHub entwickelte Plattform, die das Automatisieren von verschiedenen Aspekten eines Softwareprojekts in Form von Pipelines ermöglicht.
 Dabei handelt es sich um das Kompilieren, Testen und das Deployment eines Projekts. \\*
 Es implementiert die beiden Methoden \hyperref[sec:CI]{CI} und \hyperref[sec:CD]{CD}. \cite{GHAction}
 
 \subsection{CI und CD}
-CI und CD sind zwei zusammenhängende Methoden, um Entwickler das Programmieren an einem Projekt zu vereinfachen. Ebenfalls wird die Bereitstellung 
+CI und CD sind zwei zusammenhängende Methoden, um Entwicklern das Programmieren an einem Projekt zu vereinfachen. Ebenfalls wird die Bereitstellung 
 an den Kunden vereinfacht. \\*
 
 \begin{figure}[htp]
@@ -157,17 +167,17 @@ an den Kunden vereinfacht. \\*
 
 \subsubsection{CI (Continuous Integration)}
 \label{sec:CI}
-CI steht für "Continuous Integration", dies stellt den Prozess der Automatisierung in der Sicht der Programmierers da. \\*
+CI steht für "Continuous Integration", dies beschreibt den Prozess der Automatisierung aus der Sicht eines Programmierers. \\*
 Wenn mehrere Entwickler gleichzeitig an einem neuen Feature arbeiten, kann es passieren, dass der Code beim Zusammenführen oft die Funktionsfähigkeit des Programms beeinträchtigt.
-CI soll dies verhindern, indem es einen automatisierten Prozess bereitstellt, der das Programm auf bestimmte Validierungen (Tests) prüft nach jeder Zusammenführung.\\* Dies erlaubt 
+CI soll dies verhindern, indem es einen automatisierten Prozess bereitstellt, der die Funktionsfähigkeit eines Programms validiert mittels Tests, nach jeder Zusammenführung.\\* Dies erlaubt 
 es den Entwicklern, den Code öfter zusammenzuführen, sogar eine tägliche Zusammenführung ist dadurch manchmal möglich \cite{RHatCICD}
 
 \subsubsection{CD (Continuous Delivery/Deployment)}
 \label{sec:CD}
-CD steht für "Continuous Delivery" bzw. "Continuous Deployment", dies sind zwei Konzepte die immer gemeinsam genutzt werden. \\*
+CD steht für ``Continuous Delivery'' bzw. ``Continuous Deployment'', dies sind zwei Konzepte die immer gemeinsam genutzt werden. \\*
 Continuous Delivery sorgt dafür, dass Änderungen eines Entwicklers automatisch in ein Repository veröffentlicht werden. Danach können diese Änderungen sofort in einer Produktionsumgebung
 dargestellt werden. \\*
-Nach der Delivery kommt das Continuous Deployment, dies stellt dem Kunden finale Änderungen am Programm, in einem automatisiertem Prozess, zur Verfügung.
+Nach der Delivery kommt das Continuous Deployment, dies stellt dem Kunden finale Änderungen am Programm, durch einen automatisierten Prozess zur Verfügung.
 Das heißt, nachdem die Entwickler zufrieden sind mit einer Version, können sie diese veröffentlichen und der Kunde kann das Programm dann benutzen.\cite{RHatCICD}
 \pagebreak
 
@@ -183,8 +193,8 @@ Das heißt, nachdem die Entwickler zufrieden sind mit einer Version, können sie
 \subsection{Workflows}
 GitHub Actions benutzt Workflows, um Arbeitsschritte, die zusammenhängen, gemeinsam auszuführen. Zum Beispiel gibt es Workflows zum Deployen, nur zum Testen oder um eine Dokumentation hochzuladen.\\*
 Ein Workflow ist ein automatisierter Prozess, der einen oder mehrere Jobs ausführt.
-Diese werden mittels eines .yaml-File beschrieben. Ein Workflow wird durch ein bestimmtes Event ausgeführt, z.B. ein Push auf die main-Branch. Mann kann es aber auch manuell ausführen oder nach einem
-bestimmten Zeitplan. \cite{GHAction}
+Diese werden mittels eines .yaml-File beschrieben. Ein Workflow wird durch ein bestimmtes Event ausgeführt, z.B. ein Push auf den main-Branch. Mann kann es aber auch manuell oder nach einem
+bestimmten Zeitplan ausführen. \cite{GHAction}
 
 \begin{lstlisting}[language=yaml,caption=Ausschnitt eines Workflow Files]
 # Workflow Bezeichnung
@@ -204,7 +214,7 @@ jobs:
 
 \subsection{Event}
 Ein Event ist eine Aktivität, die einen Workflow ausführt. Er dient als sogenannter Trigger.
-Ein Event könnte z.B. ein Push auf eine Branch sein oder ein Pull Request etc.\cite{GHAction}
+Ein Event könnte z.B. ein Push auf einen Branch sein oder ein Pull Request etc.\cite{GHAction}
 
 \subsection{Jobs}
 Ein Job hat mehrere Steps (Stufen), die nacheinander ausgeführt werden. Ein Step kann z.B. ein Shellscript File sein, ein
@@ -234,7 +244,7 @@ Login in ein anderes Repository oder eine vordefinierte Action. Der Jobs fasst d
 \subsection{Actions}
 Die GitHub Actions Plattform stellt verschiedene vordefinierte Actions zur Verfügung.
 Eine Action führt eine bestimmte komplexe Aufgabe aus, die auch oft benutzt wird in Workflows. Diese Actions helfen dabei,
-um die Wiederverwendung von bestimmtem Code bzw. Codeblöcken zu vermeiden.
+um die Redundanz von bestimmtem Code bzw. Codeblöcken zu vermeiden.
 Actions umfassen z.B.: ein Repository pullen oder sich bei einem Dienst zu authentifizieren.\\*
 Es ist auch möglich selber Actions zu schreiben, falls man keine passende auf dem GitHub Marketplace findet.\cite{GHAction}
 
@@ -245,7 +255,7 @@ Dies beinhaltet Softwarecontainer und Dependencies. \\*
 Das Ziel von GitHub Packages ist es den Code und die Software selbst auf einer Plattform zusammen zu Verfügung stellen zu können.
 Der ganze Entwicklungsprozess ist somit auf GitHub zentralisiert. Zusammen mit \hyperref[sec:GHAction]{GitHub Actions} kann man die Veröffentlichung
 komplett automatisieren. \\*
-Es stellt Package Registries (Sammlungen) für die meist benutzten Package Manager wie npm, RubyGems, Apache Maven, Docker (Docker Images), 
+Es stellt Package Registries (Sammlungen) für die gängigsten Package Manager wie npm, RubyGems, Apache Maven, Docker (Docker Images), 
 NuGet und Gradle zur Verfügung. \cite{GHPack}
 
 Nützliche Funktionen von GitHub Packages sind:
@@ -255,11 +265,11 @@ Nützliche Funktionen von GitHub Packages sind:
 \end{itemize}
 
 \subsection{Github Container Registry (ghcr.io)}
-Das GitHub Container Registry (ghcr) ist aus den Packages entstanden, um eine eigene Plattform für Softwarecontainer zu haben, die zu GitHub gehört.
+Die GitHub Container Registry (ghcr) ist aus den Packages entstanden, um eine eigene Plattform für Softwarecontainer zu haben, die zu GitHub gehört.
 Somit wird GitHub noch mehr in die Entwicklung integriert. \\*
 Man kann es mit DockerHub vergleichen, eine Plattform um Docker Images hochzuladen und an einem Ort zu sammeln. 
-Es besteht ebenfalls die Möglichkeit Docker Images auf das ghcr hochzuladen, anstatt DockerHub zu benutzen. \\*
-Es hat die selben Rechte- und Sichtbarkeitsfunktionen wie oben genannt. Darüber hinaus kann man auch verschiedene Versionen eines Images und Statistiken
+Es besteht ebenfalls die Möglichkeit, Docker Images auf das ghcr hochzuladen, anstatt DockerHub zu benutzen. \\*
+Es hat dieselben Rechte- und Sichtbarkeitsfunktionen wie oben genannt. Darüber hinaus kann man auch verschiedene Versionen eines Images und Statistiken
 über die Nutzung einsehen.\cite{GHContReg} 
 
 
@@ -427,26 +437,26 @@ berücksichtigt Abhängigkeiten besser und ist besonders für aufwändigere Mult
 
 \section{Keycloak}
 \author{Benjamin Besic}
-Keycloak ist eine Open-Source Software, die Single-Sign On mit Identity und Access Management für moderne Applikationen bereitstellt. Der erste Release war 2014 als Wildfly Community Projekt, seit 2018 aber steht es unter der Verwaltung von RedHat. \cite{KeycloakWiki}  \\* 
-Es hat mehrere Distributionen und ist mit einer Vielzahl von Frameworks und Tools kompatibel bzw. integriert wie z.B.: Quarkus, Angular, Vue.js, Spring, usw. \cite{KeyCloakDZone}
+Keycloak ist eine Open-Source Software, die Single-Sign-On mit Identity und Access Management für moderne Applikationen bereitstellt. Der erste Release war 2014 als Wildfly Community Projekt, seit 2018 aber steht es unter der Verwaltung von RedHat. \cite{KeycloakWiki}  \\* 
+Es hat mehrere Distributionen und ist mit einer Vielzahl von Frameworks und Tools kompatibel bzw. bietet es eine Unterstützung dafür an. Zu diesen Frameworks zählen z.B.: Quarkus, Angular, Vue.js, Spring, usw. \cite{KeyCloakDZone}
 
 \subsection{Distributionen}
 \subsubsection{Server}
-Die Standalone Applikation ist downloadbar als .zip auf der Keycloak Seite. Es gibt zwei Versionen vom Server, zu einem die Wildy Application Server Version und auch eine Version, die über Quarkus läuft.
+Die Standalone-Applikation ist downloadbar als .zip auf der Keycloak Seite. Es gibt zwei Versionen vom Server, zu einem die Wildy Application Server Version und auch eine Version, die über Quarkus läuft.
 \subsubsection{Docker Image}
-Genau so wie beim Server gibt es auch hier zwei verschiedene, offizielle Docker-Images, eins, dass auf dem Wildfly Server basiert und eins, dass auf Quarkus basiert.
+Genau so wie beim Server gibt es auch hier zwei verschiedene, offizielle Docker-Images, eines, das auf dem Wildfly Server basiert und eines, das auf Quarkus basiert.
 \subsubsection{Operator}
 Dies ist eine Distribution für Kubernetes und OpenShift, basierend auf der Operator SDK. \cite{KeyCloakDZone}
 \subsection{IAM (Identity Access Management)}
 \label{sec:IAM}
 Eine der Hauptfunktionen von Keycloak ist das IAM. \\*
 IAM oder auch IdM (Identity Management) ist ein Framework, das zum Authentifizieren von Benutzern und deren Rechten genutzt wird. \\*
-Es prüft ob der Benutzer Zugang zu bestimmten Bereichen, Dateien und anderen Ressourcen hat, auf die er zugreifen will. Es prüft auch wer diese Rechte verändern darf.
+Es prüft ob der Benutzer Zugang zu bestimmten Bereichen, Dateien und anderen Ressourcen hat, auf die er zugreifen will. Es prüft auch, wer diese Rechte verändern darf.
 IAM-Systeme stellen auch nützliche Admin-Tools zur Verfügung, um z.B. Nutzerrechte zu ändern oder die Aktivität von Benutzern zu verfolgen. \cite{KeycloakMakeIT} \\*
 IAM hat vier Hauptfunktionen:
 \begin{itemize}
-    \item \textbf{Die Identitäts-Funktion: }Es umfasst die Erstellung von Identitäten (Benutzern), das Managen und Löschen von diesen.  
-    \item \textbf{Die User Zugriff-Funktion (log-on): } Dies umfasst ein Interface, indem der Benutzer seine Zugriffsdaten eingeben (übermitteln) kann.
+    \item \textbf{Die Identitäts-Funktion: }Es umfasst die Erstellung von Identitäten (Benutzern) sowie das Managen und Löschen von diesen.  
+    \item \textbf{Die User Zugriff-Funktion (log-on): } Dies umfasst ein Interface, in dem der Benutzer seine Zugriffsdaten eingeben (übermitteln) kann.
     \item \textbf{Die Service-Funktion: } Für Benutzer und deren Geräte stellt das System personalisierte, rollenabhängige, multimedia, online und on-demand Services zur Verfügung. \cite{KeycloakMakeIT}
 \end{itemize}
 
@@ -454,15 +464,15 @@ IAM hat vier Hauptfunktionen:
 \label{sec:SSO}
 SSO ist eine Variante der Zugangskontrolle, deren sich Keycloak bedient. \\*
 Es ist für mehrere und zusammenhängende Softwaresysteme gedacht, wo der Benutzer nur einmal sein Passwort und Benutzernamen eingeben muss, um auf alle Systeme zugreifen zu können,
-ohne sich dazwischen neu identifizieren zu müssen.\\* SSO ist typischerweise zu ermöglichen mit LDAP (Lightweight Directory Access Protocol). Bei IP-Netzwerken funktioniert das Ganze über Cookies, die gespeichert bleiben 
+ohne sich dazwischen neu identifizieren zu müssen.\\* SSO wird typischerweise ermöglicht mit LDAP (Lightweight Directory Access Protocol). Bei Websites funktioniert das Ganze über Cookies, die gespeichert bleiben 
 und die Seiten müssen eine gleiche, übergeordnete DNS Domain haben.\\* 
 Authentifizierungsschemas, die dies unterstützen sind: OAuth, OpenID, OpenID Connect und Facebook Connect. Diese ermöglichen das Einloggen über mehrere verschiedene Websites mit den selben Anmeldedaten.\cite{KeycloakMakeIT}
 \subsubsection{Vorteile von SSO}
 \begin{itemize}
     \item Reduziert das Risiko beim Verwenden von Drittanbieter-Websites
-    \item Reduziert die Passwortschwäche von den verschiedenen User und Passwort Kombinationen.
+    \item Reduziert die Passwortschwäche von den verschiedenen User und Passwort Kombinationen
     \item Reduziert die Zeit, die man für das Eingeben der verschiedenen Identitäten braucht
-    \item Reduziert IT-Helpdesk Anrufe wegen Passwörtern, daraus werden auch die IT-Kosten reduziert \cite{KeycloakMakeIT}
+    \item Reduziert IT-Helpdesk Anrufe wegen Passwörtern, dadurch werden auch die IT-Kosten reduziert \cite{KeycloakMakeIT}
 \end{itemize}
 
 \subsection{OAuth 2.0}
@@ -482,15 +492,15 @@ Ein Anwendungsfall von OAuth wäre einen Client zu verwenden, um Neuigkeiten auf
 \end{figure}
 
 Diese Grafik beschreibt den Weg, den der Client geht, um sich die Rechte auf die bestimmte Ressource (z.B. Veröffentlichung eines Beitrags) zu sichern. \\*
-Wie man an der Grafik erkennen kann kommuniziert OAuth 2.0 nicht mit dem Benutzernamen und Passwort des Benutzers. 
+Wie man an der Grafik erkennen kann, übergibt OAuth 2.0 beim Kommunizieren nicht direkt den Benutzernamen und das Passwort des Benutzers. 
 Als Kommunikationsgrundlage dient ein Access-Token, dieser kann jeder Zeit ungültig gemacht werden, somit verliert der Client auch die Rechte auf die Ressource. \cite{KeycloakCodeCentric}
 
 \subsection{OpenID Connect (OIDC)}
 Mit Keycloak ist es ebenfalls möglich OIDC umzusetzen bzw. zu benutzen. \\*
-OpenID Connect ist ein Authentifizierungs- und Autorisierungsprotokoll, dass im Februar 2014 von der OpenID Foundation veröffentlicht wurde.
+OpenID Connect ist ein Authentifizierungs- und Autorisierungsprotokoll, das im Februar 2014 von der OpenID Foundation veröffentlicht wurde.
 Es erweitert die Funktionalität von OAuth 2.0 und benutzt dazu auch JWT (JSON Web Tokens). \\*
 OpenId Connect soll die zentrale Stelle zur Verwaltung eines Benutzerprofils sein. Somit läuft auch jeder Authentifizierungsprozess über diesen ab.
-Der Browser soll quasi die zentrale Komponente im Internet darstellen und jede Website benutzt die selbe OIDC Authentifizierung. Somit werden einem mehrere Benutzeraccounts gespart. \cite{KeycloakCodeCentric}
+Der Browser soll quasi die zentrale Komponente im Internet darstellen und jede Website benutzt die selbe OIDC Authentifizierung. Somit bleiben einem mehrere Benutzeraccounts erspart. \cite{KeycloakCodeCentric}
 \pagebreak
 
 \subsubsection{Ablauf von OIDC}
@@ -502,9 +512,9 @@ Der Browser soll quasi die zentrale Komponente im Internet darstellen und jede W
     \label{fig:impl:OIDCProtocoll}
 \end{figure}
 
-Der Browser leitet anfangs den Benutzer zum OpenID Provider hin, wo man sich beispielsweise mit Benutzername und Passwort authentifiziert.
+Der Browser leitet den Benutzer anfangs zum OpenID Provider hin. Der Benutzer authentifiziert sich dann beispielsweise mit Name und Passwort .
 Danach bekommt der Client einen Auth-Code, dieser wird dann zum Access, Identity und Refresh Token umgewandelt.
-Der Client wird durch Keycloak verifiziert, indem er vorher bei Keycloak mit einem Secret und einer ID konfiguriert wurde. Dies dient dazu, damit kein willkürlicher Client diese Information erhalten kann.
+Der Client wird durch Keycloak verifiziert, indem er vorher bei Keycloak mit einem Secret und einer ID konfiguriert wurde. Dies verhindert, dass kein willkürlicher Client diese Information erhalten kann.
 In dem ganzen Prozess muss aber sichergestellt sein, dass jede Komponente das Secret sicher bewahren kann.
 Zu allerletzt setzt der Browser dann die Session vom Benutzer und diese bleibt auch. \cite{KeycloakCodeCentric}
 
@@ -524,8 +534,8 @@ Keycloak stellt eine web-basiertes Interface zur Verfügung, wo der Admin seine 
 \subsubsection{User Identity und Accesses}
 \hyperref[sec:IAM]{Siehe hier}
 \subsubsection{External Identity Source Sync}
-Wenn man ein eigene User-Datenbank  hat, kann man diese mit Keycloak verbinden und synchronisieren. Standardmäßig unterstützt es LDAP und Active Directory, aber diese
-kann man durch selbstgeschriebene Extensions erweitern. Diese kann man mit der Keycloak User-Storage API machen. Es garantiert aber nicht, dass Keycloak alle Funktionen aufweist,
+Wenn man ein eigene User-Datenbank  hat, kann man diese mit Keycloak verbinden und synchronisieren. Standardmäßig unterstützt es LDAP und Active Directory, diese sind aber
+erweiterbar durch selbstgeschriebene Extensions. Dies kann man mit der Keycloak User-Storage API machen. Es garantiert aber nicht, dass Keycloak alle Funktionen aufweist,
 die auch die Datenbank hat. \cite{KeyCloakDZone}
 \subsubsection{Identity Brokering}
 Keycloak kann auch als Proxy zwischen den Usern und einem oder mehreren externen Identity Provider fungieren. Diese können im Admin Panel editiert werden. \cite{KeyCloakDZone}
@@ -533,8 +543,8 @@ Keycloak kann auch als Proxy zwischen den Usern und einem oder mehreren externen
 Zusätzlich erlaubt Keycloak die Benutzung von Social Identity Providern. Es hat eine eingebaute Unterstützung für Google, Twitter, Facebook, Stack Overflow, diese müssen aber 
 im Admin Panel manuell konfiguriert werden. Die volle Liste der kompatiblen Social Identity Provider kann in der Keycloak Dokumentation gefunden werden. \cite{KeyCloakDZone}
 \subsubsection{Anpassung von Seiten}
-Keycloak erlaubt eine Anpassung aller Seiten, die dem User angezeigt werden (z.B. Login-Page). Diese sind im .ftl Format, somit kann man klassisches HTML und CSS zum editieren verwenden.
-Auch Javascript steht zur Verfügung, damit ist der Anpassungsspielraum unendlich. \cite{KeyCloakDZone}
+Keycloak erlaubt eine Anpassung aller Seiten, die dem User angezeigt werden (z.B. Login-Page). Die Seiten sind im FTL Format geschrieben, somit kann man klassisches HTML und CSS zum Editieren verwenden.
+Auch Javascript steht zur Verfügung, damit ist der Anpassungsspielraum sehr groß. \cite{KeyCloakDZone}
 \pagebreak
 
 \subsection{Funktionsweise}
@@ -547,12 +557,12 @@ Auch Javascript steht zur Verfügung, damit ist der Anpassungsspielraum unendlic
 \end{figure}
 
 Keycloak speichert sich einen Public Link der Applikation. Wenn dieser Link von einem User geöffnet wird, leitet Keycloak diesen zu einer Keycloak Authentication Page weiter.
-Nachdem erfolgreichen Einloggen leitet Keycloak den User dann zu dem eigentlich gewünschtem Link weiter und gibt einen Token mit Zeitstempel mit.
+Nach dem erfolgreichen Einloggen leitet Keycloak den User dann zu dem eigentlich gewünschtem Link weiter und gibt einen Token mit Zeitstempel mit.
 Die Applikation kann dann den Token verwenden um den User und seine Rechte zu identifizieren. \cite{KeycloakMakeIT} \\*
-\textbf{Bei der Funktionsweise sind wichtige Begriffe von Nöten:}
+\textbf{Bei der Funktionsweise sind wichtige Begriffe nötig:}
 
 \subsubsection{Realm}
-Ein Realm kann man sich als Mieter vorstellen, der einen Bereich zur Verfügung stellt. Dieser sogenannte Realm ist vollkommen isoliert (im Sinne von Usern, Konfigurationen, Rollen, etc.)
+Ein Realm kann man sich als Vermieter vorstellen, der einen Bereich zur Verfügung stellt. Dieser sogenannte Realm ist vollkommen isoliert (im Sinne von Usern, Konfigurationen, Rollen, etc.)
 von anderen Realms. \\* Aus diesem Grund kann man einen internen Realm für z.B. Mitarbeiter machen und einen externen für z.B. Kunden. Somit sind die beiden von einander getrennt. \cite{KeyCloakCodex}
 
 \subsubsection{Client}
@@ -676,7 +686,7 @@ Diese Instanz wird auch als Root Instanz bezeichnet und bildet den Stamm eines B
     \label{fig:impl:RootComponentTree}
 \end{figure}
 Zu einer Instanz gehört auch der data-Bereich. Dieser beherbergt alle Properties einer
-Instanz und diese Properties reagieren auf Veränderungen im Code. Noch dazu kann jede Instanz Methoden haben. \\*
+Instanz und diese Properties reagieren auf Veränderungen von Werten. Noch dazu kann jede Instanz Methoden haben. \\*
 Jede Instanz hat auch seine Lifecycle Hooks, dies sind Methoden, die zu bestimmten Zeitpunkten einer Instanz ausgeführt werden. \cite{VueGuideInstance}
 Diese sind:
 \begin{itemize}
@@ -710,30 +720,30 @@ kommunizieren und Daten austauschen, um z.B. Daten, die ständig verändert werd
         \small \url{https://vuejs.org/images/components.png?_sw-precache=b5c08269dfc26ae6d7db3801e9efd296}
     \label{fig:impl:NestedComponentsTree}
 \end{figure}
-Die folgende Grafik veranschaulicht den Component Tree, der zeigt wie die Single-Page Anwendung umgesetzt ist. 
+Die folgende Grafik veranschaulicht den Component Tree, der zeigt, wie die Single-Page Anwendung umgesetzt ist. 
 Die grünen Boxen zeigen die miteinander vernetzten Komponenten, jeder Komponent kann mehrere Unterkomponenten haben, je nach Einteilung der Webseite.
 \subsection{Angular vs. Vue}
 \subsubsection{Marktstatistik}
 \textbf{Angular:}
 \begin{itemize}
-    \item Angular wird eher für Seiten benutzt mit hohen Aufrufzahlen
-    \item Nachdem was bekannt ist benutzen unter 0.4\% aller Webseiten Angular    
-    \item Angular wird von 16.1\% Entwicklern weltweit verwendet \cite{AngVsVueSIM}
+    \item Angular wird eher für Seiten benutzt mit hohen Aufrufzahlen \cite{AngularUsage}
+    \item Nachdem was bekannt ist, benutzen unter 0.4\% aller Webseiten Angular \cite{UsageJSLibs}   
+    \item Angular wird von 22.96\% Entwicklern weltweit verwendet \cite{AngVsVueSIM}
 \end{itemize}
 
 \textbf{Vue:}
 \begin{itemize}
-    \item Es gibt mehr als 1.523.449 Millionen Webseiten, die Vue benutzen
-    \item Der Marktanteil von Vue beträgt nicht mehr als 0.5\% \cite{AngVsVueSIM}       
+    \item Es gibt mehr als 2.071.882 Millionen Webseiten, die Vue benutzen
+    \item Der Marktanteil von Vue bei Webseiten mit hohen Aufrufzahlen, beträgt nicht mehr als 0.8\% \cite{AngVsVueSIM}       
 \end{itemize}
 \subsubsection{Vor- und Nachteile}
 Von der Lernkurve her ist Vue deutlich im Vorteil, da es einfacher zu verstehen ist als Angular. Angular benötigt viel Einarbeitungszeit, bis man die Funktionsweise
 verstanden hat. Angular ist eher für umfangreiche Projekte gedacht, währenddessen Vue auf geringe Größe und hohe Performance abzielt. \\*
 In Angular sind die Logik und das Aussehen strikt getrennt, währenddessen in Vue alles in einem File zu finden ist und mehr an HTML erinnert durch die Scripts, die man schreibt.
 Ein Vorteil von Angular ist die Implementierung von Typescript, was eine Weiterentwicklung von JavaScript ist, die versucht die Macken von JavaScript zu verbessern.\\* 
-Was noch zu erwägen ist ist, dass Angular weiter verbreitet ist als Vue und es oft Features oder Plugins gibt, die in Angular selbstverständlich sind, aber in Vue nicht aufzufinden sind.
+Was noch zu erwägen ist ist, dass Angular bei Entwicklern weiter verbreitet ist als Vue und es oft Features oder Plugins gibt, die in Angular selbstverständlich sind, aber in Vue nicht aufzufinden sind.
 Dies sollte sich aber im Laufe der Zeit verbessern. \\*  Generell kann man sagen, dass das Programmieren mit Angular eher and die Programmierung mit Java erinnert mit den Objekten, Abhängigkeiten,
-Konstruktoren, usw. Während Vue an das Programmieren von Websites mittels HTML und JavaScript erinnert. \cite{AngVsVueHOST}
+Konstruktoren und so weiter. Während Vue an das Programmieren von Websites mittels HTML und JavaScript erinnert. \cite{AngVsVueHOST}
 \subsubsection{Warum Vue?}
 Unsere Entscheidung Vue zu nehmen ist einerseits von der Firma beeinflusst worden, da sie es vorgeschlagen haben und es bei ihnen das gängige Framework ist.\\*
 Andere Faktoren waren noch, dass wir Angular in der Schule oft verwendet haben und wollten durch Vue eine andere Methode ausprobieren, um Webanwendungen zu erstellen.
@@ -741,10 +751,10 @@ Vue ist die bessere Wahl für den Umfang unserer Webanwendung gewesen und die be
 
 \section{HTML}
 \author{Benjamin Besic}
-HTML genannt HyperText Markup Language, ist eine einheitliche, textbasierte, Auszeichnungssprache für Webdokumente. HTML definiert ganz allgemein gesehen die Struktur eines Dokuments. 
+HTML genannt HyperText Markup Language, ist eine einheitliche, textbasierte Auszeichnungssprache für Webdokumente. HTML definiert ganz allgemein gesehen die Struktur eines Dokuments. 
 Am 13.März 1989 wurde am CERN in Genf das Konzept HTML von Tim Berners-Lee vorgeschlagen, um eine einheitliche Methode zu finden Dokumente öffentlich zu übermitteln. Seitdem ist HTML  einer Grundbausteine des World Wide Webs geworden. \\*
 HTML basiert auf sogenannten Tags, die verschiedene Inhalte auf der Website definieren sollten. Diese basieren auf einer bestimmten Syntax, um das Schreiben zu vereinheitlichen. \\*
-Es ist im Grunde eigentlich keine Programmiersprache, sondern eine statische Sprache, die zur Definierung benutzt wird. 
+Es ist im Grunde eigentlich keine klassische Programmiersprache, sondern eine statische Sprache, die zur Definierung benutzt wird, auch genannt deklarative Programmiersprache.  
 Das HTML Gerüst wird von einem Browser eingelesen und dieser generiert dann auf der Basis des HTML Files eine Website. \cite{HTMLTut} \cite{HTMLSeoKueche}
 
 \begin{lstlisting}[language=HTML,caption=HTML File Grundgerüst,label=lst:impl:foo]
@@ -759,13 +769,13 @@ Das HTML Gerüst wird von einem Browser eingelesen und dieser generiert dann auf
 </html>
 \end{lstlisting}
 
-Wie man im Beispiel sieht gibt bei Tags ein Beginn und ein Ende und der Inhalt dazwischen wird dargestellt.
-Es gibt auch Tags ohne Beginn und Ende, sogenannte inhaltslose Tags.
+Wie man im Beispiel sieht, gibt es bei Tags einen Anfang und ein Ende und der Inhalt dazwischen wird dargestellt.
+Es gibt auch Tags ohne Ende, sogenannte inhaltsleere Tags.
 Doch HTML wird meist nie allein verwendet, erst in der Kombination mit CSS, Bootstrap und JavaScript kann man eine gute Website erstellen.
 
 \section{CSS}
 \author{Benjamin Besic}
-CSS (Cascading Style Sheets) ist die Sprache, die benutzt wird eine HTML Seite visuell zu gestalten. CSS ist wie HTML keine Programmiersprache, sie wurde dafür entwickelt um das Aussehen von HTML Seiten einheitlich zu verändern.\\*
+CSS (Cascading Style Sheets) ist die Sprache, die benutzt wird, um eine HTML Seite visuell zu gestalten. CSS ist wie HTML keine Programmiersprache, sie wurde dafür entwickelt um das Aussehen von HTML Seiten einheitlich zu verändern.\\*
 Eine CSS-Datei wird durch einen Tag mit dem zugehörigen HTML Dokument verbunden und dadurch werden die Änderungen angewendet. \cite{CSSMozilla}
 
 \begin{figure}[htp]
@@ -777,16 +787,16 @@ Eine CSS-Datei wird durch einen Tag mit dem zugehörigen HTML Dokument verbunden
 \end{figure}
 
 Die Struktur von CSS-Dateien wird durch Regeln beschrieben. Jede Regel hat einen Selektor, der auf ein zugehöriges HTML Tag zugreift.
-Innerhalb der Deklaration wird dann der Wert einer bestimmten Eigenschaft gesetzt (Mehrere Eigenschaften sind möglich).
+Innerhalb der Deklaration wird dann der Wert einer bestimmten Eigenschaft gesetzt (mehrere Eigenschaften sind möglich).
 Es gibt eine große Auswahl von Eigenschaften wie z.B.: Schriftfarbe, Textart, Positionierung, etc. \cite{CSSMozilla}
 
 \section{JavaScript}
 \author{Benjamin Besic}
-JavaScript ist eine leichtgewichtige Skriptsprache, die 1995 vom Softwareunternehmen Netscape entwickelt geworden ist, um die Möglichkeiten von HTML und CSS zu erweitern.
+JavaScript ist eine leichtgewichtige Skriptsprache, die 1995 vom Softwareunternehmen Netscape entwickelt worden ist, um die Möglichkeiten von HTML und CSS zu erweitern.
 Bekannt ist sie hauptsächlich als Sprache für Webseiten geworden, jedoch wird sie auch in vielen Umgebungen außerhalb des Browsers oft benutzt, wie z.B. Servern. 
-\\* Sie unterstützt objektorientierte, imperative als auch deklarative Programmierung. JavaScript folgt dem Standard ECMAScript, welche alle Browser unterstützen. 
-JavaScript dient dazu auf Webseiten Benutzerinteraktionen auszuwerten, Inhalte zu verändern, nachzuladen oder zu generieren. Sie bietet normalen HTML Webseiten eine Großzahl an Verbesserung, durch Hinzufügen von Programmierelementen. \\*
-Jedoch sollte man JavaScript nicht mit der Programmiersprache Java verwechseln. Beide sind verschiedene Handelsmarken der Firma Oracle und ähneln einander höchstens mit der Syntax.
+\\* Sie unterstützt objektorientierte, imperative als auch deklarative Programmierung (funktionales Programmieren). JavaScript folgt dem Standard ECMAScript, welchen alle Browser unterstützen. 
+JavaScript dient dazu auf Webseiten Benutzerinteraktionen auszuwerten, Inhalte zu verändern, nachzuladen oder zu generieren.  \\*
+Jedoch sollte man JavaScript nicht mit der Programmiersprache Java verwechseln. Beide sind verschiedene Handelsmarken der Firma Oracle und ähneln einander höchstens, was die Syntax betrifft.
 \cite{JSWiki} \cite{JSMozilla}
 \section{JSON Web Token (JWT)}
 \author{Benjamin Besic}
@@ -809,8 +819,8 @@ Jeder JWT hat auch eine Gültigkeitsdauer, wenn diese abgelaufen ist, gilt ein T
 \subsubsection{Header}
 Der Header besteht meist aus zwei Teilen und liefert Informationen über den Typ des Tokens und den verwendeten Signatur- bzw. Verschlüsselungsalgorithmus.
 \begin{itemize}
-    \item Der "typ"-Wert beschreibt den IANA Medientypen des Tokens, oft wird "application/jwt" verwendet.
-    \item Der "alg"-Wert gibt an welcher Algorithmus zum Signieren des Tokens verwendet wurde. Es ist möglich auch keine Verschlüsselung anzugeben, was jedoch nicht zu empfehlen ist. \cite{JWTIONOS}     
+    \item Der ``typ''-Wert beschreibt den IANA Medientypen des Tokens, oft wird ``application/jwt'' verwendet.
+    \item Der ``alg''-Wert gibt an welcher Algorithmus zum Signieren des Tokens verwendet wurde. Es ist auch möglich keine Verschlüsselung anzugeben, was jedoch nicht zu empfehlen ist. \cite{JWTIONOS}     
 \end{itemize}
 \subsubsection{Payload}
 Der Payload ist der Teil des Tokens, der die tatsächlichen Daten bzw. Informationen enthält, die übermittelt werden sollen.
@@ -818,7 +828,7 @@ Sie werden als Key-/Value-Paare bereitgestellt, diese Werte werden bei JWT als C
 \begin{itemize}
     \item \textbf{Registrierte Claims} sind standardisiert und im JWT Claim Register festgelegt. Es wird empfohlen diese zu verwenden.
     \item \textbf{Öffentliche Claims} sind nach belieben definierbar.
-    \item \textbf{Private Claims} sind für Informationen gedacht, die speziell auf unsere Anwendung angepasst sind wie z.B. "Benutzer-ID". \cite{JWTIONOS} 
+    \item \textbf{Private Claims} sind für Informationen gedacht, die speziell auf die Anwendung angepasst sind wie z.B. "Benutzer-ID". \cite{JWTIONOS} 
 \end{itemize}
 
 \subsubsection{Signature}
@@ -830,7 +840,7 @@ Damit die Signatur funktioniert, muss man einen geheimen Schlüssel verwenden, d
 Wenn die Daten keiner Verschlüsselung bedürfen, kann im Header "none" angegeben werden. In diesem Fall wird keine Signatur generiert, dadurch fällt auch der Signature-Teil weg. \\*
 Ohne Sicherung lässt sich die Nachricht nach einer Base64-Entschlüsselung klar und deutlich lesen. Der Absender oder ob die Nachricht im Laufe verändert worden ist, ist nicht mehr verifizierbar.\cite{JWTIONOS} 
 \subsubsection{Signatur (JWS)}
-Im Normalfall reicht es nur zu prüfen, ob die Daten vom richtigen Absender kommen und ob Veränderungen geschehen sind. Da kommt die JWS (JSON Web Signature) zum Einsatz, die genau die vorher genannten Sachen überprüft.
+Im Normalfall reicht es nur zu prüfen, ob die Daten vom richtigen Absender kommen und ob Veränderungen geschehen sind. Die JWS (JSON Web Signature) führt diese Überprüfungen aus. 
 \\* Bei diesem Verfahren lässt sich die Payload nach Base64-Entschlüsselung klar und deutlich lesen. \cite{JWTIONOS}
 \subsubsection{Signatur (JWS) und Verschlüsselung (JWE)}
 Es ist möglich zusätzlich zum JWS noch eine JWE (JSON Web Encryption) zu benützen. JWE verschlüsselt den Inhalt des Payloads, diese werden danach mit JWS signiert.
