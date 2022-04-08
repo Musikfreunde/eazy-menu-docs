@@ -876,6 +876,28 @@ Da Kotlin sehr gut mit Java arbeiten kann, können beim Testen die Frameworks un
 Ursprünglich hat man den Kotlin Code in Bytecode übersetzt und diesen dann in edr JVM laufen gelassen. 
 Aber den Code kann man aber auch in Javascript umschreiben lassen und somit für Web Anwendungen verwenden.
 
+Einer der Hauptvorteile von Kotlin sind die Unterstützungen für Multiplatform-Programmierung.
+Die Felxibilität sowie die Vorteile der nativen programmierung bleiben erhalten, es reduziert sich aber 
+der Umfang des Schreibens sowie des Programmiercodes.
+
+Einer der größten Anwendungsfälle von Kotlin Multiplatformen ist die Codeverteilung zwischen mobilen Geräten.
+
+Wie funktioniert die Multiplatform von Kotlin?
+
+Man unterteilt in drei Abschnitte, mit \textit{Common Kotlin} als Kern.
+
+\begin{itemize}
+    \item JVM Code mit Kotlin/JVM
+    \item JS Code mit Kotlin/JS
+    \item Native Code mit Kotlin/Native
+\end{itemize}
+
+Der Kern \textit{Common Kotlin} beinhaltet das nötigste für das Programmieren. Wie zum Beispiel wichtige Bibliotheken
+und basis Tools.
+
+
+
+
 \section{XML}
 \cite{XML1}
 \cite{XML2}
@@ -957,6 +979,17 @@ Mit dem Package kotlin.collection werden Schleifen zu verfügung gestellt.
 Wenn man die neueste Version von OkHttp sucht, ist man auf Maven Central genau richtig.
 Diese tragt man dann in dem build.gradle file ein und nach einem neu laden des scriptes kann man es auch schon verwenden.
 
+\pagebreak
+
+\section{Retrofit}
+\cite{Retrofit}
+\author{Bozidar Spasenovic}
+Über einen REST-basierten Webdienst wird es sehr einfach Daten hochzuladen oder auch abrufen. 
+Retrofit ist ein REST-Client für Java und Android.
+Es wird verwendet, um Requests zu empfangen, senden und erstellen von HTTP-Anforderungen sowie zu antworten.
+Noch dazu wird die IP-Adressen ausgewechselt, wenn eine Verbindung zu einem Webdienstfehler besteht.
+
+
 
 
 
@@ -1009,13 +1042,6 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
 \pagebreak
 
 
-\section{Retrofit}
-\cite{Retrofit}
-\author{Bozidar Spasenovic}
-Über einen REST-basierten Webdienst wird es sehr einfach Daten hochzuladen oder auch abrufen. 
-Retrofit ist ein REST-Client für Java und Android.
-Es wird verwendet, um Requests zu Empfangen, Senden und Erstellen von HTTP-Anforderungen sowie Antworten.
-Noch dazu wird die IP-Adressen ausgewechselt, wenn eine Verbindung zu einem Webdienstfehler besteht.
 
 \section{Asciidoc}
 \author{David Ignjatovic}
