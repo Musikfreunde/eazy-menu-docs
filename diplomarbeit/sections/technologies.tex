@@ -863,6 +863,7 @@ Das App wird aber nicht nach jeder änderung neu gebaut, was wiederum die Schnel
 Jetpack Compose mehrere Themes zu Verfügung. Noch dazu kann man diese dann auch selbst konfigurieren indem man Items hinzufügt oder löscht.
 Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu starten, damit man Desktop Anwendungen genau so schnell und einfach erstellen kann. 
 
+
 \section{Kotlin}
 \cite{Kotlin1}
 \cite{Kotlin2}
@@ -882,7 +883,7 @@ der Umfang des Schreibens sowie des Programmiercodes.
 
 Einer der größten Anwendungsfälle von Kotlin Multiplatformen ist die Codeverteilung zwischen mobilen Geräten.
 
-Wie funktioniert die Multiplatform von Kotlin?
+\subsection{Wie funktioniert die Multiplatform von Kotlin?}
 
 Man unterteilt in drei Abschnitte, mit \textit{Common Kotlin} als Kern.
 
@@ -931,7 +932,7 @@ Anschließend erstellen und starten Sie mit einem einzigen Befehl alle Dienste a
 Man setzt die Umgebung der App mit einer Dockerfile.
 Danach wird die \textit{docker-compose.yaml} file erstellt, welche die einzelnen Dienste startet.
 
-Starten mit -> docker-compose update
+Starten mit -> docker-compose up \linebreak
 Killen/Beenden mit -> docker-compose down
 
 
@@ -942,11 +943,11 @@ Killen/Beenden mit -> docker-compose down
 \author{Bozidar Spasenovic}
 OkHttp ist ein HTTP-Client, der standardmäßig effizient ist.
 Dank der HTTP/2-Unterstützung ist es möglich alle Anfragen an einen Host zu schicken. 
-Response Caching hilft bei vermeidung von wiederholten Anfragen.
-\\*
+Response Caching hilft zur Vermeidung von wiederholten Anfragen.
+\linebreak  
 OkHttp hilft bei Verbindungsproblemen indem man alternative Adressen benutzt und unterstürzt weiters noch TLS-Funktionen.
 Der Client wird sich lautlos von Verbindungsproblemen erholen, sprich er bleibt bei Verbindungsproblemen noch vorhanden.
-\\*
+\linebreak
 Falls ein Dienst mehrere IP-Adressen verfügt, wird sich der Client automatisch alternative Adressen aussuchen und mit denen
 die Aufrufe noch einmal versuchen.
 Das braucht man häufig für IPv4 und IPv6, weil die in redundanten Rechenzentren behütet werden. 
