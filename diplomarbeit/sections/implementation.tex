@@ -1054,7 +1054,7 @@ Dies dient dazu, dass sie einen Ausdruck auf Papier haben, der für die Kantine 
 \pagebreak
 
 \section{Android-App}
-Die Android App ist in verschieden Packages unterteilt. 
+Die Android App ist in verschiedene Packages unterteilt: 
 
 \begin{itemize}
     \item api
@@ -1085,7 +1085,7 @@ ApiObject:
 
 
 
-Im composable Package sind jene Klassen mit einer View drinnen. Diese werden jeweils mit @Composable annotiert. Diese benutzen sich dann
+Im composable Package sind jene Klassen mit einer View. Diese werden jeweils mit @Composable annotiert. Diese benutzen sich dann
 entweder gegenseitig oder die Methoden der ApiService Klasse.
 \\*
 Im dataClasses Package sind die gebrauchten Entitäten und DTO's (Data Transfer Object).
@@ -1093,7 +1093,7 @@ Hier werden den Menüs, Bestellungen, Öffnungszeiten und dem Acces Token die ei
 \\*
 
 Die MainActivity Klasse ist die Hauptklasse über die die ganze Oberfläche der Android Applikation aufgerufen wird. 
-Sie zeigt auch noch die Bottom Navigation Bar, welche zur navigierung zwischen Übersicht, Bestellansicht und Verlauf verwendet wird.
+Sie zeigt auch noch die Bottom Navigation Bar, welche zur Navigierung zwischen Übersicht, Bestellansicht und Verlauf verwendet wird.
 
 
 
@@ -1114,8 +1114,9 @@ Sie zeigt auch noch die Bottom Navigation Bar, welche zur navigierung zwischen �
 \end{figure}
 
 \subsection{Authentification}
-Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie den Keycloak nach einem Token für den User zu fragen.
-Kriegt man einen Token zurück, so besteht der User.
+Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request an den Keycloak zu schicken.
+Im Request wird nach einem Access-Token gefragt.
+Liefert der Response einen Token, so besteht der User.
 
 \begin{lstlisting}
 
@@ -1156,8 +1157,10 @@ Im body stehen die Felder die für den Request nötig sind wie zum Beispiel:
 \end{itemize}
 
 Als Client wird ein OkHttpClient verwendet. Dieser erstellt einen neuen Aufruf mit dem erstelltem Request. 
-Er wartet auf einen Response und speichert bei einem erfolgreichem Response den Token. Da es zu Internet Problemen kommen kann haben wir
-einen countDownLatch eingebaut, der vor der Rückgabe der Methode darauf wartet, dass der Token gespeichert worden ist.  
+Wird im Response ein Token zurückgegeben, so wird er gespeichert. In diesem Schritt werden gleichzeitig mehrere Threads verwendet und deswegen
+einen countDownLatch eingebaut. Er ist eine Hilfe für das Warten zwischen einzelnen Threads.
+Er wartet also vor der Rückgabe der Methode darauf, dass der Token gespeichert wird. 
+
 
 \begin{lstlisting}
     client.newCall(request).enqueue(object : Callback {
@@ -1197,7 +1200,7 @@ In der Übersicht kann man mit einem Datepicker ein Datum auswählen, was dazu f
 als Cards angezeigt werden. Noch dazu wird die jeweilige Vorspeise und Nachspeise angezeigt.
 
 \subsection{Datepicker}
-Der Datepicker in Kotlin wird als DatePickerDialog verwendet. Im Dialog wird das ausgewählte datum in eine temporäre Variable gespeichert
+Der Datepicker in Kotlin wird als DatePickerDialog verwendet. Im Dialog wird das ausgewählte Datum in eine temporäre Variable gespeichert
 und der Methode getMenuesForDate(date: String) übergeben. Anschließend wird der Wert in der Übersicht angezeigt und man wird wieder zurücknavigiert.
 
 \begin{lstlisting}
@@ -1272,7 +1275,7 @@ Dazu wird die Methode getOeffnungszeiten() aufgerufen die die notwendigen Zeiten
 \cite{Card}
 \author{Bozidar Spasenovic}
 
-Eine Card wird verwendet um mehrere Items schön beisammen zu halten. Man kann die Card konfigurieren indem man die erhöhung und den Schatten erhöht.
+Eine Card wird verwendet um mehrere Items schön beisammen zu halten. Man kann die Card konfigurieren indem man die Erhöhung und den Schatten erhöht.
 Außerdem kann man Formen definieren wie zum Beispiel:
 
 \begin{itemize}
@@ -1335,7 +1338,7 @@ Der Mitarbeiter hat eine Möglichkeit sich auch aus der App auszuloggen. Das erf
     \label{fig:impl:SignOutScreenAndroid}
 \end{figure}
 
-Nach dem einloggen wird die Methode InitBestellungen() aufgerufen. Ihre Aufgabe ist es den derzeitigen Bestellungsverlauf des Mitarbeiters zu initialisieren.
+Nach dem Einloggen wird die Methode InitBestellungen() aufgerufen. Ihre Aufgabe ist es den derzeitigen Bestellungsverlauf des Mitarbeiters zu initialisieren.
 Den kann man dann auch in der Verlaufsansicht sehen. Noch dazu wird die Methode InitMenues() aufgerufen und somit alle erstellten Menüs geholt.
 
 
@@ -1363,9 +1366,9 @@ Den kann man dann auch in der Verlaufsansicht sehen. Noch dazu wird die Methode 
 
 
 Der Response wird so benutzt, dass man als erstes mit dem GsonBuilder ein Gson-Objekt erstellt
- was das umwandeln von JSON-Objekten zu Kotlin Objekten ermöglicht. 
+ was das Umwandeln von JSON-Objekten zu Kotlin Objekten ermöglicht. 
 Dieses Objekt wird verwendet um ein JSON-Objekt in ein Kotlin-Objekt umzuwandeln. 
-Damit man Gson verwendetn kann, benötigt man die abhängigkeit com.google.code.gson:gson:2.8.9.
+Damit man Gson verwendetn kann, benötigt man die Abhängigkeit com.google.code.gson:gson:2.8.9.
 Mit dem collectionType wird definiert in was für ein Typ das JSON-Objekt umgewandelt werden soll.
 Abschliesend wird vom Responsebody eine Collection von allen mitgegebenen Bestellungen erstellt und gespeichert.
 
@@ -1377,7 +1380,7 @@ Abschliesend wird vom Responsebody eine Collection von allen mitgegebenen Bestel
 Der Verlauf ist eine einfache Liste (LazyColumn) von den ganzen Bestellungen des Users.
 Es wird der Menüname, das Bestelldatum und das Datum des Menüs angezeigt.
 Ist die Bestellung stornierbar, so wird eine Mülltonne als Icon angezeigt. 
-Durchs draufklicken auf die Mülltonne, wird die Bestellung storniert.
+Durch das Draufklicken auf die Mülltonne, wird die Bestellung storniert.
 
 \begin{figure}[htp]
     \centering
@@ -1388,8 +1391,8 @@ Durchs draufklicken auf die Mülltonne, wird die Bestellung storniert.
 \end{figure}
 
 
-Es wird ein PUT auf die URL http://10.0.2.2:8080/menue/bestellung?id=\$menuId was im backend das löschen zur jeweiligen Menü Id ausübt.
-Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Methode zum neu laden des Verlaufes aufgerufen.
+Es wird ein PUT auf die URL http://10.0.2.2:8080/menue/bestellung?id=\$menuId was im backend das Löschen zur jeweiligen Menü Id ausübt.
+Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Methode zum neu Laden des Verlaufes aufgerufen.
 
 \begin{lstlisting}
     client.newCall(request).enqueue(object : Callback {

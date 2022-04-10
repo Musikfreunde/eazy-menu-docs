@@ -12,6 +12,7 @@ sehr intuitive Intelligenz, die es dem Entwickler sehr einfach macht damit zu pr
 Wir haben uns für die Verwendung entschieden, da wir damit viel Erfahrung hatten und die oben genannten Punkte
 unterstützten unsere Entscheidung dabei.
 
+\pagebreak
 \section{Android Studio}
 \cite{Jetpack-Compose}
 \author{Bozidar Spasenovic}
@@ -886,6 +887,22 @@ Weiters kann man die PWA so konfigurieren, dass sie wie eine echte Applikation a
 
 
 \section{Google Charts}
+\cite{Google-Charts}
+Google Charts ist eine leicht verwendbare Möglichkeit, Werte in verschiedenen Darstellungen anzuzeigen.
+Es gibt 18 verschiedene Arten von Diagrammen. Aber die meist benützen sind:
+
+\begin{itemize}
+    \item Histogram
+    \item Bar Charts
+    \item Donut Chart
+    \item Collumn Chart
+    \item Pie Chart
+    \item Area Chart
+\end{itemize}
+Zu jedem Diagramm gibt es auch eine \textit{options}-Variable, welche das modifizieren ermöglicht.
+Man kann somit die Höhe, Breite, den Titel und die einzelnen Farben angeben.
+\linebreak
+Viele solcher Features sind kostenpflichtige Angelegenheiten. Google Charts sind kostenfrei.
 
 \section{Jetpack Compose}
 \cite{Jetpack-Compose}
@@ -897,7 +914,7 @@ Das App wird aber nicht nach jeder änderung neu gebaut, was wiederum die Schnel
 Jetpack Compose mehrere Themes zu Verfügung. Noch dazu kann man diese dann auch selbst konfigurieren indem man Items hinzufügt oder löscht.
 Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu starten, damit man Desktop Anwendungen genau so schnell und einfach erstellen kann. 
 
-
+\pagebreak
 \section{Kotlin}
 \cite{Kotlin1}
 \cite{Kotlin2}
@@ -916,7 +933,7 @@ Die Felxibilität sowie die Vorteile der nativen Programmierung bleiben erhalten
 der Umfang des Schreibens sowie des Programmiercodes.
 
 
-\subsection{Wie funktioniert die Multiplatform von Kotlin?}
+\subsection{Die Unterteilung der Multiplatform von Kotlin?}
 
 Man unterteilt in drei Abschnitte, mit \textit{Common Kotlin} als Kern.
 
@@ -957,8 +974,9 @@ Dies geschieht durch Virtualisierung des Betriebssystems, auf dem es installiert
 \cite{Docker-Compose}
 Compose ist ein Tool zum Definieren und Ausführen von Docker-Anwendungen mit mehreren Containern. 
 Um Container ausführen zu können, werden compose-files geschrieben um Docker-Anwendungen zu starten.
-Die Compose-File ist eine .YAML File, in der die konfiguration statt findet. 
+Die Compose-File ist eine \textit{.YAML} File, in der die konfiguration statt findet. 
 Anschließend erstellen und starten Sie mit einem einzigen Befehl alle Dienste aus Ihrer Konfiguration.
+
 
 \subsection{Verwendung}
 
@@ -1018,12 +1036,41 @@ Diese tragt man dann in dem build.gradle file ein und nach einem neu laden des s
 \section{Retrofit}
 \cite{Retrofit}
 \author{Bozidar Spasenovic}
-Über einen REST-basierten Webdienst wird es sehr einfach Daten hochzuladen oder auch abrufen. 
+Über einen REST-basierten Webdienst wird es sehr einfach Daten hochzuladen oder auch abzurufen. 
 Retrofit ist ein REST-Client für Java und Android.
-Es wird verwendet, um Requests zu empfangen, senden und erstellen von HTTP-Anforderungen sowie zu antworten.
+Es wird verwendet, um Requests zu empfangen, senden, antworten und erstellen von HTTP-Anforderungen.
 Noch dazu wird die IP-Adressen ausgewechselt, wenn eine Verbindung zu einem Webdienstfehler besteht.
 
 
+\subsection{Verwendung}
+Wenn man Retrofit benützen möchte, muss man darauf achten immer eine \textit{HTTP}-Annotation über die jeweilige Methode
+zu schreiben. Die verfügbaren Annptationen lauten:
+
+\begin{itemize}
+    \item HTTP
+    \item GET
+    \item POST
+    \item PUT
+    \item DELETE
+    \item OPTIONS
+    \item HEAD
+\end{itemize}
+
+
+Zu den Annotationen kann man natürlich einen zugehörigen Pfad der Methode angeben.
+
+\textit{@POST("persons/person")}
+
+Man kann auch jeweilige \textit{Query}-Parameter mitgeben.
+
+\textit{@POST("persons/person?id=1")}
+
+Um einen Body übergeben zu können, schreibt man vor dem Methodenparameter \textit{@Body}.
+
+\textit{
+@POST("person/new")
+Call<Person> addPerson(@Body Person person);
+}
 
 
 
