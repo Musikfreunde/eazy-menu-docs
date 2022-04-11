@@ -909,10 +909,51 @@ Viele solcher Features sind kostenpflichtige Angelegenheiten. Google Charts sind
 \author{Bozidar Spasenovic}
 Jetpack Compose ist seit Juli 2021 in der ersten stabilen Version verfügbar. Es ist ein "Werkzeugkasten" zum Bauen von Android Applikationen.
 Es vereinfacht und beschleunigt den Anwendungsentwicklungsprozess. Da man mit wenig Code schnell viele Ansichten erstellen kann, ist die Fehlerqoute dementsprechend niedrig.
-Jetpack Compose basiert 100 Prozent auf Kotlin. Man kann zwischen drei Ansichten auswählen, die da Code, Split oder Design wären die das parallele arbeiten sehr vereinfacht. 
-Das App wird aber nicht nach jeder änderung neu gebaut, was wiederum die Schnelligkeit des Arbeiten beeinflusst. Damit die Applikation eine schöne Oberfläche hat, bietet
+Man kann zwischen drei Ansichten auswählen, welche Code, Split oder Design wären. Diese vereinfachen parallele Arbeiten sehr. 
+Die App wird aber nicht nach jeder Änderung neu gebaut, was wiederum die Schnelligkeit des Arbeiten beeinflusst. Damit die Applikation eine schöne Oberfläche hat, stellt
 Jetpack Compose mehrere Themes zu Verfügung. Noch dazu kann man diese dann auch selbst konfigurieren indem man Items hinzufügt oder löscht.
 Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu starten, damit man Desktop Anwendungen genau so schnell und einfach erstellen kann. 
+
+\subsection{Wichtig zu wissen!}
+\cite{Jetpack-Compose-Docu}
+Um mit Jetpack Compose coole Applikationen entwerfen zu können, muss man die Anfangsschritte verstanden haben.
+
+\begin{itemize}
+    \item Jetpack Compose wird mithilfe von \textit{Android Studio} programmiert.
+    \item Jetpack Compose basiert 100 Prozent auf Kotlin. 
+    \item Laufzeit und Speichernutzung der App verbessern.
+\end{itemize}
+
+\subsection{Applikationsgröße}
+Jede Applikation benötigt Speicher. Aber wie schafft man es den Speicher einer App zu minimieren. 
+Auf den Speicher haben Bibliotheken einen großen einfluss. 
+
+\subsection{Applikationsbauzeit}
+\cite{Jetpack-Compose-Build}
+Man kann mit einem einfachem Kommando die \textit{Build Time} herausfinden.
+\begin{lstlisting}
+    ./gradlew --profile --offline --rerun-tasks --max-workers=4 assembleDebug
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textit{--profile} ermöglicht das Profilieren
+    \item \textit{--offline} verweigert das benützen von Abhängigkeiten aus dem Internet
+    \item \textit{--rerun-tasks} wird verwendet um \textit{Gradle} um alle Prozesse zu wiederholen
+    \item \textit{--max-workers=4} beschreibt die Anzahl der parallelen Prozesse \cite{Gradle-Max-Worker}
+    \item \textit{assembleDebug} erstellt eine \textit{debug.apk} von der App
+\end{itemize}
+
+
+\subsection{Entwurf}
+Jeder Entwurf sollte schön und benutzerfreundlich ausschauen. Somit kann man mit \textit{Theming} ein solches erstellen.
+Dazu verwendet man meistens \textit{Material Theming}. Natürlich kann man aber auch eigene Entwürfe erstellen und verwenden.
+Um Daten anzeigen lassen zu können, sollte man sich mit dem Thema \textit{Data Binding} auseinander gesetzt haben.
+Dazu kommen noch die die Möglichkeiten Animationen, Grafiken und Gästen in die App einzubauen.
+
+
+\subsection{Data Binding}
+
+
 
 \pagebreak
 \section{Kotlin}
