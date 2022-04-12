@@ -18,16 +18,15 @@ unterstützten unsere Entscheidung dabei.
 \author{Bozidar Spasenovic}
 Android Studio ist eine Entwicklungsumgebung für Android-Anwendungen. Es basiert auf IntelliJ.
 \\* 
-Neben dem leistungsstarken Code Editor werden noch mehr Funktionen bereitgestellt um für die Produktivität zu verbessern. 
-Android Studio funktioniert auf Windows, GNU/Linux, macOS und Chrome OS. Die erste Version kam, nach zwei Jahren Entwicklungsdauer, am 8. Dezember 2014 heraus.
-Weiters beinhaltet es ein Gradle-build-system, viele verschiedene Android Emulatoren und ein Vorschaufenster mit der Anwendung.
-
+Neben dem leistungsstarken Code Editor werden noch mehr Funktionen bereitgestellt, um für die Produktivität zu verbessern. 
+Android Studio funktioniert auf Windows, GNU/Linux, macOS und Chrome OS. Die erste Version kam nach zwei Jahren Entwicklungsdauer am 8. Dezember 2014 heraus.
+Weiters beinhaltet es ein Gradle-build-system, viele verschiedene Androidemulatoren und ein Vorschaufenster mit der Anwendung.
 
 \subsection{Apply Changes}
 \cite{Android-Studio-ApplyChange}
-Das ist eine sehr wichtiges Merkmal für alle Programmierer. Ab der Android Studio 3.5 Version ist es möglich seinen Code
-zur Laufzeit des Programmes zu ändern ohne die Applikation zu schließen. Um dieses Merkmal benutzen zu können muss man ein so genanntes \textit{debug build variant} benutzen
-und der Emulator muss die Version 8.0 oder höher haben. 
+Das ist eine sehr wichtiges Merkmal für alle Programmierer. Ab der Android Studio 3.5 Version ist es möglich, seinen Code
+zur Laufzeit des Programmes zu ändern, ohne die Applikation zu schließen. Um dieses Merkmal benutzen zu können, muss man ein sogenanntes \textit{debug build variant} benutzen
+und der Emulator muss die Version 8.0 oder höher haben.
 
 Wenn man die Änderungen verwenden möchte hat man drei Möglichkeit:
 \begin{itemize}
@@ -40,7 +39,13 @@ Falls ein Problem auftaucht nachdem man \textit{Apply Changes and Restart Activi
 wird sofort vorgeschlagen die App mittels \textit{Run} zu starten. 
 
 \subsection{Emulator}
+Um eine App sehen zu können, benötigt man ein Emulator oder ein echtes Gerät. 
+Der Android Emulator simuliert also nicht nur ein einzelnes Gerät sondern viele andere Versionen.
+Somit kann man seine App auf mehreren Devices problemlos testen, auch wenn man nicht jedes besitzt.
 
+Den Emulator kann genauso viel wie ein normales Handy. Anrufen, SMS, Standort sowie rotieren des Emulators ist kein Problem.
+Einer der Vorteile zu einem echten Gerät ist die Schnelligkeit der Übertragungen von Daten. Android Studio bietet 
+eine Vielzahl von Emulatoren für normale Handys, Tablets, Smart-Uhren und Android Fernseher. 
 
 
 
@@ -463,7 +468,40 @@ Neben Maven gibt es auch noch ANT, welches eher kommandoorientiert arbeitet. Mav
 berücksichtigt Abhängigkeiten besser und ist besonders für aufwändigere Multimodulprojekte geeignet. \cite{Maven}
 
 \section{Cypress}
+\author{Bozidar Spasenovic}
+\cite{Cypress-Docu}
+Cypress ist eine JavaScript Framework, welches 2020 auf den Markt kam. Der CEO von Cypress ist Drew Lanham.
+Da es kostenlos für jeden ist, hat Cypress somit eine gute Position unter den Entwicklern eingenommen.
+Mit Cypress ist es hat man die Möglichkeiten seine Webapplikation zu bestimmten Anwendungsfällen zu testen.
+Ein Anwendungsfall wäre eine Bestellung aufzugeben, eine vorhandene Bestellung löschen oder einzelne Menüs zu erstellen und kategorisieren.
 
+
+Mit Cypress ist es möglich solche Beispiele aufzuzeichnen und es mehrere Male abspielen zu lassen. Somit wird der Input vom User 
+von Cypress übernommen. 
+
+Die Vorteile davon sind:
+\begin{itemize}
+    \item schnelles Testen
+    \item Inputfehler vermeiden
+    \item leicht konfigurierbar
+    \item Fehleranalyse leichter
+\end{itemize}
+
+Cypress bietet aber noch mehr Funktionen an. Man kann sehen was der nöchste Schritt ist, somit kann man es auch Debuggen.
+Es ist aber auch oft von Vorteil wenn man eine Bildschirmaufnahme oder Fotos hat. Somit ist man ständig in der Lage einen 
+Fehler nachzuvollziehen.
+
+Es gibt drei Arten von Tests:
+
+\begin{itemize}
+    \item End-To-End
+    \item Integration
+    \item Unit
+\end{itemize}
+
+
+
+\pagebreak
 \section{Keycloak}
 \author{Benjamin Besic}
 Keycloak ist eine Open-Source Software, die Single-Sign-On mit Identity und Access Management für moderne Applikationen bereitstellt. Der erste Release war 2014 als Wildfly Community Projekt, seit 2018 aber steht es unter der Verwaltung von RedHat. \cite{KeycloakWiki}  \\* 
@@ -915,7 +953,7 @@ Jetpack Compose ist seit Juli 2021 in der ersten stabilen Version verfügbar. Es
 Es vereinfacht und beschleunigt den Anwendungsentwicklungsprozess. Da man mit wenig Code schnell viele Ansichten erstellen kann, ist die Fehlerqoute dementsprechend niedrig.
 Man kann zwischen drei Ansichten auswählen, welche Code, Split oder Design wären. Diese vereinfachen parallele Arbeiten sehr. 
 Die App wird aber nicht nach jeder Änderung neu gebaut, was wiederum die Schnelligkeit des Arbeiten beeinflusst. Damit die Applikation eine schöne Oberfläche hat, stellt
-Jetpack Compose mehrere Themes zu Verfügung. Noch dazu kann man diese dann auch selbst konfigurieren indem man Items hinzufügt oder löscht.
+Jetpack Compose mehrere Themes zur Verfügung. Noch dazu kann man diese dann auch selbst konfigurieren, indem man Items hinzufügt oder löscht.
 Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu starten, damit man Desktop Anwendungen genau so schnell und einfach erstellen kann. 
 
 \subsection{Wichtig zu wissen!}
@@ -994,7 +1032,7 @@ Der Kern \textit{Common Kotlin} beinhaltet das  Nötigste für das Programmieren
 und basis Tools.
 
 
-
+\pagebreak
 
 \section{XML}
 \cite{XML1}
@@ -1061,7 +1099,7 @@ Es hängt von Okio und der Kotlin Standardbibliothek ab.
 \subsubsection{Kotlin Standardbibliothek}
 \cite{Kotlin-Standartbibliothek}
 Damit man überhaupt mit Kotlin programmieren kann, bietet die Standartbibliothek \textit{kotlin-stdlib} viele Packages an.
-Standartgemäß bietet diese die einzelnen Datentypen wie zum Beispiel
+Standartgemäß bietet diese die einzelnen Datentypen wie zum Beispiel:
 
 \begin{itemize}
     \item String
@@ -1073,21 +1111,21 @@ Standartgemäß bietet diese die einzelnen Datentypen wie zum Beispiel
 \end{itemize}
 
 Mit den mitgelieferten Packages wie zum Beispiel kotlin.io kann man ganz übliche Input/Output Funktionen verwenden.
-Mit dem Package kotlin.collection werden Schleifen zu verfügung gestellt.
+Mit dem Package kotlin.collection werden Schleifen zu Verfügung gestellt.
 
 Wenn man die neueste Version von OkHttp sucht, ist man auf Maven Central genau richtig.
-Diese tragt man dann in dem build.gradle file ein und nach einem neu laden des scriptes kann man es auch schon verwenden.
+Diese fügt man dann im build.gradle file ein und nach einem neu laden des Scriptes kann man es auch schon verwenden.
 
 \pagebreak
 
 \section{Retrofit}
 \cite{Retrofit}
 \author{Bozidar Spasenovic}
-Über einen REST-basierten Webdienst wird es sehr einfach Daten hochzuladen oder auch abzurufen. 
+
 Retrofit ist ein REST-Client für Java und Android.
 Es wird verwendet, um Requests zu empfangen, senden, antworten und erstellen von HTTP-Anforderungen.
 Noch dazu wird die IP-Adressen ausgewechselt, wenn eine Verbindung zu einem Webdienstfehler besteht.
-
+Über einen REST-basierten Webdienst wird es sehr einfach Daten hochzuladen oder auch abzurufen. 
 
 \subsection{Verwendung}
 Wenn man Retrofit benützen möchte, muss man darauf achten immer eine \textit{HTTP}-Annotation über die jeweilige Methode
@@ -1125,13 +1163,13 @@ Call<Person> addPerson(@Body Person person);
 \cite{Gradle1}
 \cite{Gradle2}
 \author{Bozidar Spasenovic}
-Gradle ist ein, in 2007 entwickeltes, Build-Management-Automatisierungs-Tool welches auf Java basiert.
+Gradle ist ein 2007 entwickeltes Build-Management-Automatisierungs-Tool, welches auf Java basiert.
 Man kann es mit Apache Maven und Ant vergleichen.
-Es hat die Flexibilität von Apache Ant und die simple Bediunungsmöglichkeit von Maven.
-Der unterschied zu den  Maven-Projektdefinitionen ist, dass man Gradle-Scripts gleich ausführen kann.
+Es hat die Flexibilität von Apache Ant und die simple Bedingungsmöglichkeit von Maven.
+Der Unterschied zu den  Maven-Projektdefinitionen ist, dass man Gradle-Scripts gleich ausführen kann.
  Gradle unterstütz neben Java noch die Programmiersprachen Groovy und Kotlin.
-DAG wird verwendetr um die Tasks in richtiger Reihenfolge zu dirigieren.
-Heutzutage hat Gradle eine eigene Maschiene für das verwalten der einzelnen Abhängigkeiten, aber es begann mit Apache Ivy.
+DAG wird verwendet, um die Tasks in richtiger Reihenfolge zu dirigieren.
+Heutzutage hat Gradle eine eigene Maschine für das Verwalten der einzelnen Abhängigkeiten, aber es begann mit Apache Ivy.
 Seit Mitte 2013 ist Android hinzugekommen. Seitdem wurde das Tool weitgehend erweitert, um den Aufbau sogenannter „nativer“ Systeme zu unterstützen, welche nicht auf Java basieren.
 Gradle wird von sehr großen Unternehmen verwendet wie zum Beispiel LinkedIn, Netflix, Adobe und vielen weiteren.
 
