@@ -1,0 +1,8 @@
+@startuml
+start
+partition Mitarbeiter {
+    :Login;
+    :init internal variable;
+}
+end
+@enduml
