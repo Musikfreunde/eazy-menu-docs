@@ -130,8 +130,6 @@ Unser Projektes beinhaltet 5 Entitäten:
   \item Oeffungszeit
 \end{itemize}
 
-\pagebreak
-
 \subsection{Bestellung} 
 
 Die Entität \textbf{Bestellung} enthält die wichtigsten Informationen über einen Mitarbeiter und die dazu ausgewählte Mahlzeit.
@@ -139,7 +137,7 @@ Zur Identifikation einer Bestellung verwenden wir eine Id welche generiert wird.
 
 In der Bestellung wird angegeben von wem die Bestellung bestellt wurde und ob der Mitarbeiter es auch für sich selbst bestellt hat oder für jemand anderen. 
 Jeder Mitarbeiter der Firma hat auch eine Personalnummer. Bei jeder Bestellung gibt es die Möglichkeit einen Kommentar abzugeben. Dieser wird an die Kantine mitgegeben. Natürlich hat man auch die Möglichkeit 
-eine Mahlzeit öfters zu bestellen. Somit hat jeder Mitarbeiter die Möglichkeit eine Bestellanzahl mitzugeben. Für das Bestellen, bearbeiten aber auch das Stornieren wird immer die jetzige Uhrzeit mitgegeben. \\*
+eine Mahlzeit öfters zu bestellen. Somit hat jeder Mitarbeiter die Möglichkeit eine Bestellanzahl mitzugeben. Für das Bestellen, Bearbeiten aber auch das Stornieren wird immer die jetzige Uhrzeit mitgegeben. \\*
 
 Das wichtigste in der Bestellung ist die Mahlzeit und für wann es bestellt wurde. Dafür verwenden wir die zwei Klassen, Oeffnungszeit und Menue. \\*
 
@@ -165,41 +163,9 @@ Das wichtigste in der Bestellung ist die Mahlzeit und für wann es bestellt wurd
   tabsize=3
 }
 
-\begin{lstlisting}
-    private Long id;
-
-    private String orderedBy;
-
-    private String orderedFor;
-
-    private String comment;
-
-    private Long personalNumber;
-
-    private int menueCounter;
-
-    private Timestamp canceledAt;
-
-    private Timestamp settledAt;
-
-    private Integer moneyPool;
-
-    private Timestamp createdAt;
-
-    private String createdBy;
-
-    private Timestamp changedAt;
-
-    private String changedBy;
-
-    private Oeffnungszeit oeffnungszeit;
-
-    private Menue menue;
-\end{lstlisting}
-
 \subsection{Categories}
 
-Die Entität \textbf{Categories} ist ein Enum, welches wir Hauptsächlich für unseren Algorithmus verwenden. Es besteht aus 4 Einträgen: \\*
+Die Entität \textbf{Categories} ist ein Enum, welches wir hauptsächlich für unseren Algorithmus verwenden. Es besteht aus 4 Einträgen: \\*
 
 
 \begin{itemize}
@@ -216,108 +182,41 @@ Die Entität \textbf{Categories} ist ein Enum, welches wir Hauptsächlich für u
     \item Sonstiges
 \end{itemize}
 
-Die einzelnen Kategorien beschreiben eine Mahlezeit. Sommit kann man ganz einfach zwischen einzelnen Mahlezeiten unterscheiden und sie auch gruppieren.
+Die einzelnen Kategorien beschreiben eine Mahlzeit. Sommit kann man ganz einfach zwischen einzelnen Mahlzeiten unterscheiden und sie auch gruppieren.
 
-\pagebreak
 
 \subsection{Kantine}
 
 In der Entitäten \textbf{Kantine} befinden sich die wichtigsten Informationen über eine Kantine wie zum Beispiel ob eine Kantine offen hat oder zurzeit geschlossen ist. 
 Eine kleine Beschreibung über die Kantine und über das Service ist ebenso enthalten. \\*
 
-\begin{lstlisting}
-    private Long id;
-
-    private String canteenDesc;
-
-    private String serviceDesc;
-
-    private char status;
-
-    private Timestamp createdAt;
-
-    private String createdBy;
-
-   private Timestamp changedAt;
-
-    private String changedBy;
-
-\end{lstlisting}
+\pagebreak
 
 \subsection{Menue}
 
 In der Entität \textbf{Menue} stehen die wichtigsten Informationen über ein Menü. Ein Menü beinhaltet eine Vorspeise, Hauptspeise, Nachspeise und ein Dessert. 
 Noch dazu findet man in der Entität ein Datum, um zuzuordnen wann das Menü bestellt worden ist. \\*
 
-Neben dem Bestelldatum beinhaltet die Entität Menue auch noch weiter Timestamps.
+Neben dem Bestelldatum beinhaltet die Entität Menue auch noch weitere Timestamps.
 Die verwendeten Timestamps werden verwendet, um zu speichern, wann ein Menü erstellt wurde oder wann ein Menü geändert wurde. 
 Natürlich wird auch mitgespeichert, von wem diese Änderungen durchgeführt worden sind. \\*
 
-\pagebreak
 
 Die bereits oben genannten Kategorien finden wir in der Entität \textbf{Menue}. 
 Diese werden verwendet, um einzelne Menüs zu unterscheiden und mit Hilfe der Kategorien und unserem Algorithmus kann man einfach hervorwagen welche Mahlzeit zu welchem Mitarbeiter am besten passt. \\*
 
 Für jedes Menü wird auch die dazu ausgewählte Kantine mitgespeichert. So weiß man, zu welcher Kantine der Mitarbeiter gehen muss, um sein Menü zu bekommen. \\*
 
-\begin{lstlisting}
 
-    private Long id;
-
-    private LocalDate date;
-
-    private char code;
-
-    private String appetizer;
-
-    private String mainDish;
-
-    private String desert;
-
-    private Timestamp createdAt;
-
-    private String createdBy;
-
-    private Timestamp changedAt;
-
-    private String changedBy;
-
-    private String categories;
-
-    private Kantine kantine;
-\end{lstlisting}
-
-\pagebreak
 
 \subsection{Oeffnungszeit}
 
-Die Entitäten \textbf{Oeffnungszeit} zeigt an, ob ein Kantinenraum in Verwendung ist und ob die Maximale Anzahl an Sitzplätzen schon belegt ist. 
-Das Zeitfenster welches beschreibt wann gegessen wird, wird ebenso mitgespeichert. \\*
+Die Entitäten \textbf{Oeffnungszeit} zeigt an, ob ein Kantinenraum in Verwendung ist und ob die maximale Anzahl an Sitzplätzen schon belegt ist. 
+Das Zeitfenster, welches beschreibt wann gegessen wird, wird ebenso mitgespeichert. \\*
 
-Um zu wissen welcher Kantinenraum gemeint wird, wird auch die verwendete Kantine mitgespeichert. \\*
+Um zu wissen, welcher Kantinenraum gemeint wird, wird auch die verwendete Kantine mitgespeichert. \\*
 
-\begin{lstlisting}
-
-    private Long id;
-
-    private char status;
-
-    private String timeWindowFrom;
-
-    private String timeWindowTo;
-
-    private Integer maxPositions;
-
-    private Timestamp createdAt;
-
-    private String createdBy;
-
-    private Timestamp changedAt;
-
-    private String changedBy;
-
-    private Kantine kantine;
-\end{lstlisting}
+\pagebreak
 
 \section{REST-Schnittstellen}
 
@@ -357,17 +256,15 @@ Um zu wissen welcher Kantinenraum gemeint wird, wird auch die verwendete Kantine
 
 \subsection{Allgemein}
 
-In den folgenden Beispielen läuft unser Server lokal auf den Port 8080. Die URL uber die unser
+In den folgenden Beispielen läuft unser Server lokal auf dem Port 8080. Die URL über die unser
 Server erreicht werden kann, lautet: \textbf{\textit{http://localhost:8080/menue}}.
-
-\pagebreak
 
 \subsection{Bestellung}
 
 \subsubsection{Bestellungen von einem Mitarbeiter}
 
-Um zu sehen welche Bestellungen ein Mitarbeiter gemacht hat, muss der Pfad \textbf{\textit{/bestellung/<username>}} aufgerufen werden. 
-Hierbei handelt es sich um eine GET-Methode die mittels Path parameter die Bestellungen eines bestimmten Mitarbeiters zurück gibt.
+Um zu sehen welche Bestellungen ein Mitarbeiter hat, muss der Pfad \textbf{\textit{/bestellung/<username>}} aufgerufen werden. 
+Hierbei handelt es sich um eine GET-Methode die mittels Path Parameter die Bestellungen eines bestimmten Mitarbeiters zurück gibt.
 Wenn ein Mitarbeiter gefunden wurde und dieser auch mindestens eine Bestellung hat wird der Status 200 zurückgegeben. \\*
 
 Das Reslutat für den Mitarbeiter \textbf{spabo} sieht folgendermassen aus:
@@ -395,8 +292,8 @@ Die Bestellungen wird nach dem Datum, an dem eine Bestellungen angelegt wurde, s
 
 \subsubsection{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
 
-Wenn man sehen will wie oft ein Mitarbeiter pro Wochentag ein Menue bestellt hat, muss der Pfad \textbf{\textit{/bestellung/stats/<username>}} aufgerufen werden.
-Es werden alle Wochentage angezeigt an denen ein Mitarbeiter eine bestellung getätigt hat. Wenn mindestens ein Wochentag mit einer bestellung zur verfügung steht, 
+Wenn man sehen will, wie oft ein Mitarbeiter pro Wochentag ein Menue bestellt hat, muss der Pfad \textbf{\textit{/bestellung/stats/<username>}} aufgerufen werden.
+Es werden alle Wochentage angezeigt an denen ein Mitarbeiter eine Bestellung getätigt hat. Wenn mindestens ein Wochentag mit einer Bestellung zur verfügung steht, 
 wird der Status 200 zurückgegeben.
 
 Das Reslutat für den Mitarbeiter \textbf{besbe} sieht folgendermassen aus:
@@ -432,10 +329,11 @@ Output:
 
 \subsubsection{Alle Kategorien}
 
-Damit man alle Kategorien sehen kann, die eine Mahlzeit beschreiben kann, muss der Pfad  \textbf{\textit{/bestellung/categories}} aufgerufen werden.
-Wichtig ist es, dass man hier keinen namen als Parameter übergibt. \\*
+Damit man alle Kategorien sehen kann, die eine Mahlzeit beschreibt, muss der Pfad  \textbf{\textit{/bestellung/categories}} aufgerufen werden.
+Wichtig ist es, dass man hier keinen Namen als Parameter übergibt. \\*
 
-Anhand der Kategrien, wird mit hilfe eines Algorithmus enschieden, welche Mahlzeit am besten zu einem Mitarbeiter passt. 
+Anhand der Kategorien, wird mit Hilfe eines Algorithmus enschieden, welche Mahlzeit am besten zu einem Mitarbeiter passt. Es wird darauf geschaut, welche Kategorie
+am häufigsten vorkommt.
 
 Die verwendbaren Kategorien sehen folgendermassen aus:
 
@@ -466,7 +364,7 @@ Das wird hauptsächlich verwendet, um bei dem Frontend alle Kategorien anzuzeige
 
 Um zu sehen welche Kategorien ein Mitarbeiter bestellt hat, muss der Pfad \textbf{\textit{/bestellung/categories/<username>}} aufgerufen werden.
 
-Wenn ein User keine Bestellungen getätigt hast, werden auch keine Kategorien zurückgegeben. In dem folgenden Beispiel kann man aber sehen, wie das Reslutat
+Wenn ein User keine Bestellungen getätigt hat, werden auch keine Kategorien zurückgegeben. In dem folgenden Beispiel kann man aber sehen, wie das Reslutat
 für den Mitarbeiter \textbf{spabo} aussieht:
 
 URL: GET \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/bestellung/categories/spabo|}
@@ -488,7 +386,7 @@ Output:
 
 Damit die Kantine sehen kann, welche Bestellungen an welchen Tagen zugewissen worden sind, muss der Pfad \textbf{\textit{/bestellung?date=datum}} aufgerufen werden.
 
-Es kann aber auch sein, das es an bestimmten Tagen keine bestellungen gibt. Deshalb werden auch keine Ergebnisse zurückgegeben.
+Es kann aber auch sein, das es an bestimmten Tagen keine Bestellungen gibt. Deshalb werden auch keine Ergebnisse zurückgegeben.
 
 Um aber zu veranschaulichen, wie manche Bestellungen an einem bestimmten Zeitpunkt zurückgegeben werden, verwenden wir das den \textbf{16.03.2022}.
 
@@ -523,8 +421,8 @@ Output:
 
 \subsubsection{Bestellung erstellen}
 
-Wenn ein User eine Bestellung bestellen will, muss der Pfad \textbf{\textit{/menue/bestellung}} aufgerufen werden. 
-Mithilfe der id, die man von dem vorherigen Request bekommen hat, kann man ganz einfach seine bestellung abgeben. \\*
+Wenn ein User eine Bestellung aufgeben will, muss der Pfad \textbf{\textit{/menue/bestellung}} aufgerufen werden. 
+Mithilfe der id, die man von dem vorherigen Request bekommen hat, kann man ganz einfach seine Bestellung abgeben. \\*
 
 Ein Beispiel für eine Bestellung sieht folgendermassen aus:
 
@@ -540,17 +438,17 @@ Ein Beispiel für eine Bestellung sieht folgendermassen aus:
     }
 \end{lstlisting}
 
-Wenn die betellung erfolgreich war, wird der Status 200 zurückgegeben.
+Wenn die Betellung erfolgreich war, wird der Status 200 zurückgegeben.
 
 
 \subsubsection{Bestellung stornieren}
 
-Um eine bestellung zu stornieren, muss der Pfad \textbf{\textit{/menue/bestellung}} aufgerufen werden. Wie auch bei dem erstellen einer Bestellung wird 
-mit hilfe einer id die Bestellung zugeordnet. \\*
+Um eine Betellung zu stornieren, muss der Pfad \textbf{\textit{/menue/bestellung}} aufgerufen werden. Wie auch bei dem Erstellen einer Bestellung wird 
+mit Hilfe einer id die Bestellung zugeordnet. \\*
 
 In unserer Datenbank wird die Bestellung nicht direkt gelöscht sondern überschrieben. Sie wird also auf gelöscht gesetzt, jedoch nicht aus der Datenbank gelöscht.
 
-Wenn die Bestellung erfolgreich storniert wurde, wird die Antwort \textbf{Order with id <is> was cancelled!} zurückgegeben.
+Wenn die Bestellung erfolgreich storniert wurde, wird die Antwort \textit{Order with id <is> was cancelled!} zurückgegeben.
 
 \subsection{Menue}
 
@@ -640,11 +538,11 @@ JSON Objekt für Menue C:
 }
 \end{lstlisting}
 
-Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Kategorien werden aber dann in getrennt und als Enum gespeichert.
+Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Kategorien werden dann getrennt und als Enum gespeichert.
 
 \subsubsection{Menü verändern}
 
-Wie auch bei dem erstellen eines Menüs, wird der Pfad \textbf{\textit{/menue/menues}} aufgerufen. 
+Wie auch bei dem Erstellen eines Menüs, wird der Pfad \textbf{\textit{/menue/menues}} aufgerufen. 
 
 Wie schon erwähnt, besteht eine Bestellung aus genau 3 Menüs, deswegen werden auch 3 PUT-Requests abgeschickt.
 
@@ -697,7 +595,7 @@ JSON Objekt für Menue C:
 \subsubsection{Menü-Vorschlag (Recommendation)}
 
 Wenn ein Mitarbeiter nicht weiß, welche Mahlezeit er wählen soll, wird mithilfe eines Recommender entschieden, welche Mahlzeit am besten dem 
-User passt. Mithilfe eines Expertensystem wird entschieden welche Mahlzeit am besten wäre. 
+User passt.  
 
 Um die passende Mahlezeit zu bekommen, muss der Pfad \textbf{\textit{/menue/menues/recommendation}} aufgerufen werden.
 
@@ -734,18 +632,19 @@ URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
     }
 \end{lstlisting}
 
-Um herauszufinden zu können welche Mahlezeit optimal wäre, werden mit Hilfe des Algorithmus alle Kategorien des Users gehollt. 
+Um herausfinden zu können welche Mahlzeit optimal wäre, werden mit Hilfe des Algorithmus alle Kategorien des Users aus der Datenbank gehollt. 
 Jeder User der eine Bestellung getätigt hat, hatte die höglichkeit zu sehen, welche Kategorien die Mahlzeit auch besitzt. Sommit kann man leicht herauszufinden
 welche Kategorien auch am häufigsten in der Bestellhistorie vorkommen. \\*
 
-Unser Algorithmus würde nicht funktionieren, gäbe es keine Bestellungen. In anderen Worten, desto mehr Bestellungen man hat, umso genauer wird die recommendation. \\*
+Unser Algorithmus würde nicht funktionieren, gäbe es keine Bestellungen oder Mahlzeiten würden keine Kategorien besitzten. 
+In anderen Worten, desto mehr Bestellungen man hat, umso genauer wird die recommendation. \\*
 
 Die Kategorien werden in der Datenbank als string gespeichert die mit einem Strichpunkt geteilt werden. Hat man also bei einer Mahlzeit mehr als eine Kategorie,
 so wird dieser als string mit einem oder mehreren Strichpunkten gespeichert. \\*
 
 Hier ein paar Beispiele:
 
-\textit{Schnitzel mit Pommes} = \textbf{"schwein"}
+\textit{Schnitzel mit Pommes} = \textbf{"Schwein"}
 
 \textit{Eisbergsalat} = \textbf{"Vegan;Vegetarisch"}
 
@@ -814,14 +713,14 @@ URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
 }
 \end{lstlisting}
 
-Hier sieht man die wichtigsten Daten wie zum Beispiel die Vorspeise, Hauptspeise, Nachspeise und Desert welche von  dem jeweiligem Mitarbeiter bestellt worden sind. 
+Hier sieht man die wichtigsten Daten wie zum Beispiel die Vorspeise, Hauptspeise, Nachspeise und Desert welche von dem jeweiligem Mitarbeiter bestellt worden sind. 
 Auch Daten wie die Bestellzeit und in welcher Kantine gegessen wird wird auch mitgegeben.
 
-\subsubsection{Alle Aktiven Essenszeiten}
+\subsubsection{Alle aktiven Essenszeiten}
 
-Um zu sehen ob noch freie Sitzplätze zur verfügung stehen, wird der Pfad \textbf{\textit{/menue/oeffnungszeiten}} aufgerufen. 
+Um zu sehen ob noch freie Sitzplätze zur Verfügung stehen, wird der Pfad \textbf{\textit{/menue/oeffnungszeiten}} aufgerufen. 
 
-In unserer Kantine gibt es 4 Zeiten an denen man essen gehen kann. Diese dauern immer eine halbe Stunde und haben einen zwischenpause vo n 15 min. 
+In unserer Kantine gibt es 4 Zeiten an denen man essen gehen kann. Diese dauern immer eine halbe Stunde und haben eine Zwischenpause von 15 min. 
 Pro Essenszeit können maximal 20 Personen in dem Saal essen.
 
 Ein Beispiel für die Öffnungszeiten und für die freien Plätze sieht folgendermassen aus:
