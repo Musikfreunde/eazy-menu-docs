@@ -33,7 +33,6 @@ Beim Entwickeln wurden folgende Technologien verwendet:
 \author{David Ignjatovic}
 
 Ein Datenmodell wird als Darstellung der relevanten Objekte eines Projektes verwendet. 
-Unser Datenmodell ist im Großen und Ganzen immer gleichgeblieben. Für den Algorithmus aber haben wir es aber erweitern müssen.
 
 \subsection{Use Cases}
 
@@ -85,36 +84,51 @@ Unser Datenmodell ist im Großen und Ganzen immer gleichgeblieben. Für den Algo
 
 \subsection{Planung}
 \author{Benjamin Besic}
-Einer der ersten Arbeitsschritte war die Entwicklung eines Datenmodells, welches die Basis der Programmlogik sein soll. Dieses wurde mit einem ERD-Diagramm erstellt.
-\begin{figure}[htp]
-    \centering
-    \includegraphics[scale=0.4]{pics/erd-alt.png}
-    \caption{Erste Version des Datenmodells}
-    \label{fig:impl:ERDold}
-\end{figure}
+Einer der ersten Arbeitsschritte war die Entwicklung eines Datenmodells, welches die Basis der Programmlogik sein soll. Dieses wurde mittels einem ERD-Diagramm visualisiert.
+
 
 Die erste Version wurde von unserem Team entwickelt, aus den Erfahrungen und Informationen, die wir im Unterricht gesammelt haben. \\*
 An dieser Version merkt man, dass die meisten Teile in einzelne Tabellen aufgeteilt wurden. Dies sorgt für Flexibilität und Wiederverwendung von einem Menü, da die einzelnen
 Speisen aufgeteilt sind.
 Am Anfang war geplant, dass jede Speise auch ein Bild hat, damit der Mitarbeiter weiß, wie die Speise auch wirklich aussieht.\\*
-Ebenfalls erkennt man, dass es eine User-Klasse gibt, da Mitarbeiter, Personal und Kantine gleiche Eigenschaften miteinander teilen wie zum Beispiel Vor- und Nachname.\\*
-
+Ebenfalls erkennt man, dass es eine User-Klasse gibt, da Mitarbeiter, Personal und Kantine gleiche Eigenschaften miteinander teilen wie zum Beispiel Vor- und Nachname.\\* \pagebreak
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[scale=0.5]{pics/erd-aktuell.png}
-    \caption{Finale Version des Datenmodells}
-    \label{fig:impl:ERDnew}
+    \includegraphics[scale=0.6]{pics/erd-alt.png}
+    \caption{Erste Version des Datenmodells}
+    \label{fig:impl:ERDold}
 \end{figure}
 
-Die finale Version des Datenmodells übernimmt das meiste der ersten Version, jedoch wurde es nach Absprache mit unserer Partnerfirma überarbeitet, um deren Anforderungen mehr zu entsprechen.\\*
+Die zweite Version des Datenmodells übernimmt das Meiste der ersten Version, jedoch wurde es nach Absprache mit unserer Partnerfirma überarbeitet, um deren Anforderungen mehr zu entsprechen.\\*
 Eine wichtige Änderung ist, dass die Menue-Klasse alle Speisen enthält und diese als einfacher Text gespeichert werden. Der Grund dafür ist, dass die Kantine
 immer die Menüs händisch eingibt und eine Auswahl von vorhandenen Speisen würde nur den Speicheraufwand unnötig erhöhen. Es kommt eher selten vor, dass die selben Speisen nacheinander kommen.\\*
-Was vorher gefehlt hat war der Kommentar und die Möglichkeit die Stornierung eines Menüs nachzuvollziehen. Wenn ein Menü storniert wird, wird es nicht gelöscht, sondern es wird nur 
+Was vorher gefehlt hat, war der Kommentar und die Möglichkeit die Stornierung eines Menüs nachzuvollziehen. Wenn ein Menü storniert wird, wird es nicht gelöscht, sondern es wird nur 
 das Stornodatum gesetzt. Es ist wichtig, dass auch stornierte Bestellungen in der Datenbank bleiben. \\*
 Ebenfalls wurde die Abrechnung eines Menüs in der ersten Version nicht berücksichtigt. Die Kosten für das Menü werden dem Mitarbeiter vom Gehalt abgezogen und dies erfolgt anhand 
 von den Daten in der Datenbank.
+Die Benutzertabellen sind noch leer, da zu dem Zeitpunkt noch nicht feststand ob diese Tabellen wirklich benutzt werden sollen, da es bereits eine Datenbank für Mitarbeiter gab in der Firma.  \pagebreak
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.6]{pics/erd-aktuell.png}
+    \caption{Zweite Version des Datenmodells}
+    \label{fig:impl:ERDSecond}
+\end{figure}
+
+In der finalen Version wurde entschieden auf die Benutzertabellen zu verzichten, da die Mitarbeiter mittels Keycloak ihre Anmeldedaten übermitteln. Daher reicht auch nur die Personalnummer
+in der Bestellung-Tabelle. Der Menue-Tabelle wurde ein Kategorien-Attribut hinzufügt. Dies dient dazu, um jedes Menü in bestimmte Kategorien einzuteilen. Ebenfalls zu erkennen sind neue Felder 
+wie ``GEANDERTUM'' oder ``ANGELEGTVON''. Diese wurden ergänzt, um Logdaten direkt in der Tabelle einsehen zu können. Die Felder werden automatisch ausgefüllt, nachdem 
+eine Transaktion auf die Tabellen erfolgt.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.5]{pics/erd.jpeg}
+    \caption{Finale Version des Datenmodells}
+    \label{fig:impl:ERDFinal}
+\end{figure}
+
+\pagebreak
 
 \subsection{Entitäten}
 \author{David Ignjatovic}
@@ -782,8 +796,8 @@ Nachdem das Datenmodell feststand wurden UI-Prototypen entwickelt, die das Ausse
 \subsubsection{Bestellvorgang}
 Beim Entwickeln stehen die Benutzerfreundlichkeit und das Aussehen auf mobilen Geräten an erster Stelle. Anhand dessen ist die Navigationsleiste am Wichtigsten.
 Diese soll den Benutzer auf alle Sichten führen können und dem Benutzer ermöglichen, sich auszuloggen. \\*
-Der Kalender muss übersichtlich sein und die Tage, an denen Bestellungen nicht möglich sind, sollten ausgeblendet sein. Ebenfalls soll auch in die Vergangenheit geschaut werden können.\\*
-Um den Rest des Platzes auszunutzen wurde eine Menüauswahlt geplant, die soviel wie möglich Information darstellen kann, ohne den Benutzer zu überfordern.
+Der Kalender muss übersichtlich sein und die Tage, an denen Bestellungen nicht möglich sind, sollten ausgeblendet sein. Ebenfalls soll auch in die Vergangenheit gesehen werden können.\\*
+Um den Rest des Platzes auszunutzen wurde eine Menüauswahlt geplant, die so viel Informationen wie möglich  darstellen kann, ohne den Benutzer zu überfordern.
 Nach langem Überlegen wurden die drei Menüs groß als Kästen dargestellt, um soviel wie möglich innerhalb dieser darstellen zu können.
 Die Vor- und Nachspeise ist kleiner dargestellt, da man keine Entscheidung darüber machen kann.\\*
 Die Sicht nachdem man sich ein Menü ausgewählt hat, soll so kompakt wie möglich sein, da auch die mobile Ansicht ohne Probleme nutzbar sein soll.
@@ -805,7 +819,7 @@ Der Benutzer soll auch eine Möglichkeit haben die Bestellungen zu filtern, um b
 
 
 \subsection{Login}
-Beim Aufrufen der Webapp wird man zunächst zu der Login-Seite weitergeleitet. Wie diese fungiert, sieht man in der nächsten Abbildung. \\*
+Beim Aufrufen der Webapp wird man zunächst zu der Login-Seite weitergeleitet. Wie diese ausschaut, sieht man in der nächsten Abbildung. \\*
 Der Login dient in erster Hinsicht dazu, um festzustellen ob der Benutzer ein Mitarbeiter oder Kantinenmitarbeiter ist.
 Denn nach dem Login wird man entweder zur Mitarbeiter-Ansicht oder Kantinenmitarbeiter-Ansicht weitergeleitet. \\*
 
@@ -820,13 +834,19 @@ Denn nach dem Login wird man entweder zur Mitarbeiter-Ansicht oder Kantinenmitar
 \pagebreak
 
 \subsection {Mitarbeiter-Ansicht}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.125]{pics/activity-mitarbeiter.png}
+    \caption{Die wichtigsten Aktivitäten der Mitarbeitenden}
+    \label{fig:impl:ActEmployee}
+\end{figure}
 
 \subsubsection {Home}
 \label{sec:MitHome}
 Das Erste, was ein Mitarbeiter zu sehen bekommt, ist die Home Ansicht. In dieser Ansicht ist eine Kalender und die Menüauswahl enthalten. \\*
 Der Benutzer kann im Kalender das gewünschte Bestelldatum anklicken, dadurch wird automatisch die Menüauswahl aktualisiert. Man kann sich in die Zukunft, sowohl auch 
 in die Vergangenheit klicken, um sich Auskunft über die vergangenen/kommenden Menüs zu beschaffen. Die Ansicht ist nur auf die Bestelltage beschränkt, an denen Menüs angeboten werden.\\*
-Nach der erfolgreichen Datumswahl hat man unten drei Menüs zur Auswahl, sowohl wie die dazugehörige Vor- und Nachspeise. Das dem Benutzer empfohlene Menü (Analyse aus seinem Bestellverlauf) wird grün hinterlegt.
+Nach der erfolgreichen Datumswahl hat man unten drei Menüs zur Auswahl, dabei steht auch die dazugehörige Vor- und Nachspeise. Das dem Benutzer empfohlene Menü (Analyse aus seinem Bestellverlauf) wird grün hinterlegt.
 Neben den Bestellköpfen befindet sich ein Fragezeichen-Knopf, wenn man über diesen geht werden einem die Kategorien des Menüs angezeigt.
 \\* Wenn die Bedingungen für eine Bestellung erfüllt sind,
 kann man auf einen der drei Bestellknöpfe drücken, um zur Bestellansicht weitergeleitet zu werden. Sind diese Bedingungen nicht erfüllt, sind die Knöpfe ausgeschaltet. \\*
@@ -851,11 +871,11 @@ Weiters werden unter den Menüs noch relevante Informationen angezeigt. Durch da
 \subsubsection {Bestellansicht}
 
 In der Bestellansicht werden die nötigen Daten für die Bestellung ausgefüllt. Die ersten drei Felder sind automatisch ausgefüllt, aufgrund der vorherigen Auswahl. \\*
-Die Tabelle auf der rechten Seite enthält alle Bestellzeiträume, die es gibt. Man kann nur eine gleichzeitig auswählen. Außerdem stehen die freien Plätze dabei, die aus der Datenbank geladen werden.\\*
+Die Tabelle auf der rechten Seite enthält alle Bestellzeiträume, die es gibt. Man kann nur einen gleichzeitig auswählen. Außerdem stehen die freien Plätze dabei, die aus der Datenbank geladen werden.\\*
 Die Anzahl der Menüs kann durchs Klicken des Plus- und Minusknopfs angepasst werden.  \\*
 Darunter steht voreingestellt der Benutzer, doch dies kann verändert werden, um das Menü für einen anderen Mitarbeiter bestellen zu können. \\*
 Abschließend kann man noch einen Kommentar an die Kantine mitgeben, falls es etwaige Extrawünsche geben sollte. \\*
-Die Bestellung kann durch den Abschließen-Knopf durchgeführt werden und Abbrechen kann man jederzeit mit dem Abbrechen-Knopf.
+Die Bestellung kann durch den Abschließen-Knopf durchgeführt werden und abbrechen kann man jederzeit mit dem Abbrechen-Knopf.
 Die Bestellung ist erst ausführbar, sobald alle Felder außer des Kommentars ausgefüllt wurden.
 \begin{figure}[htp]
     \centering
@@ -904,6 +924,12 @@ Die Informationen der Statistiken beziehen sich auf alle Bestellungen, die der N
 \pagebreak
 
 \subsection {Kantinen-Ansicht}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.125]{pics/activity-kantine.png}
+    \caption{Die wichtigsten Aktivitäten der Kantine}
+    \label{fig:impl:ActCanteen}
+\end{figure}
 \subsubsection {Home}
 
 Die Startseite der Kantinenmitarbeiter ähnelt der Ansicht der Mitarbeiter. \hyperref[sec:MitHome]{Siehe hier}. \\*
@@ -930,7 +956,7 @@ vorhandenes wird aktualisiert.
 
 \subsubsection {Drucken}
 
-Die Druckansicht dient den Kantinenmitarbeitern dazu, um die Bestellungen des jeweiligen Tages auch durchführen zu können.
+Die Druckansicht dient den Kantinenmitarbeitern dazu, um die Bestellungen des jeweiligen Tages durchführen zu können.
 Der Tag kann durch eine Datumsauswahl bestimmt werden.
 Die Ansicht zeigt alle nötigen Informationen, damit die Kantine einen Überblick über die Bestellungen hat und dementsprechend das Essen vorbereiten kann.
 Es sind die Essenszeiten sowie Anzahl der jeweiligen Menücodes summiert für einen schnellen Überblick. \\*
