@@ -204,8 +204,6 @@ Die einzelnen Kategorien beschreiben eine Mahlzeit. Sommit kann man ganz einfach
 In der Entitäten \textbf{Kantine} befinden sich die wichtigsten Informationen über eine Kantine wie zum Beispiel ob eine Kantine offen hat oder zurzeit geschlossen ist. 
 Eine kleine Beschreibung über die Kantine und über das Service ist ebenso enthalten. \\*
 
-\pagebreak
-
 \subsection{Menue}
 
 In der Entität \textbf{Menue} stehen die wichtigsten Informationen über ein Menü. Ein Menü beinhaltet eine Vorspeise, Hauptspeise, Nachspeise und ein Dessert. 
@@ -229,8 +227,6 @@ Die Entitäten \textbf{Oeffnungszeit} zeigt an, ob ein Kantinenraum in Verwendun
 Das Zeitfenster, welches beschreibt wann gegessen wird, wird ebenso mitgespeichert. \\*
 
 Um zu wissen, welcher Kantinenraum gemeint wird, wird auch die verwendete Kantine mitgespeichert. \\*
-
-\pagebreak
 
 \section{REST-Schnittstellen}
 
@@ -273,6 +269,58 @@ Um zu wissen, welcher Kantinenraum gemeint wird, wird auch die verwendete Kantin
 In den folgenden Beispielen läuft unser Server lokal auf dem Port 8080. Die URL über die unser
 Server erreicht werden kann, lautet: \textbf{\textit{http://localhost:8080/menue}}.
 
+Wir verwenden 13 Endpoints:
+
+\subsubsection{Bestellung}
+
+\begin{tabular}{|p{3cm}|p{6cm}|p{5cm}|}
+    \hline
+    Typ & Path & Info\\
+    \hline
+    GET & /bestellung/{username} & Bestellungen von einem Mitarbeiter\\
+    \hline
+    GET & /bestellung/stats/{username} & Anzahl der Bestellungen pro Wochentag eines Mitarbeitern\\
+    \hline
+    GET & /bestellung/categories & Alle Kategorien\\
+    \hline
+    GET & /bestellung/categories/{username} & Alle Kategorien von einem bestimmten Mitarbeiter\\
+    \hline
+    GET & /bestellung?date=datum & Alle Bestellungen an einem bestimmten Tag\\
+    \hline
+    POST & /menue/bestellung & Bestellung erstellen\\
+    \hline
+    POST & /menue/bestellung & Bestellung stornieren\\
+    \hline
+\end{tabular}
+
+\subsubsection{Menue}
+
+\begin{tabular}{|p{3cm}|p{6cm}|p{5cm}|}
+    \hline
+    Typ & Path & Info \\
+    \hline
+    GET & /menues/menues & Alle Menüs\\
+    \hline
+    POST & /menues/menues & Menü erstellen\\
+    \hline
+    POST & /menues/menues & Menü verändern\\
+    \hline
+    GET & /menue/menues/recommendation & Menü-Vorschlag (Recommendation)\\
+    \hline
+    GET & /menues/menues/<date> & Alle Menüs an einem bestimmten Tag\\
+    \hline
+\end{tabular}
+
+\subsubsection{Öffnungszeiten}
+
+\begin{tabular}{|p{3cm}|p{6cm}|p{5cm}|}
+    \hline
+    Typ & Path & Info\\
+    \hline
+    GET & /menues/oeffnungszeiten & Alle aktiven Essenszeiten\\
+    \hline
+\end{tabular}
+
 \subsection{Bestellung}
 
 \subsubsection{Bestellungen von einem Mitarbeiter}
@@ -302,7 +350,6 @@ Output:
 
 Die Bestellungen wird nach dem Datum, an dem eine Bestellungen angelegt wurde, sortiert. Somit werden immer die neusten Bestellungen gleich am Anfgang angezeigt.
 
-\pagebreak
 
 \subsubsection{Anzahl der Bestellungen pro Wochentag eines Mitarbeitern}
 
@@ -404,6 +451,8 @@ Es kann aber auch sein, das es an bestimmten Tagen keine Bestellungen gibt. Desh
 
 Um aber zu veranschaulichen, wie manche Bestellungen an einem bestimmten Zeitpunkt zurückgegeben werden, verwenden wir das den \textbf{16.03.2022}.
 
+\pagebreak
+
 URL: GET \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/bestellung?date=2022-03-16|}
 
 Output:
@@ -468,7 +517,7 @@ Wenn die Bestellung erfolgreich storniert wurde, wird die Antwort \textit{Order 
 
 \subsubsection{Alle Menüs}
 
-Um sehen zu können, welche Menüs es überhapt schon gab, muss der Pfad \textbf{\textit{/menues}} aufgerufen werden. 
+Um sehen zu können, welche Menüs es überhapt schon gab, muss der Pfad \textbf{\textit{/menues/menues}} aufgerufen werden. 
 
 Ein Beispiel für ein Menue sieht folgendermassen aus:
 
@@ -557,7 +606,6 @@ Wie man sehen kann, werden die Kategorien in einem String übergeben. Die Katego
 \subsubsection{Menü verändern}
 
 Wie auch bei dem Erstellen eines Menüs, wird der Pfad \textbf{\textit{/menue/menues}} aufgerufen. 
-
 Wie schon erwähnt, besteht eine Bestellung aus genau 3 Menüs, deswegen werden auch 3 PUT-Requests abgeschickt.
 
 Ein Beispiel für eine Bestellung sieht folgendermassen aus:
@@ -606,6 +654,7 @@ JSON Objekt für Menue C:
 }
 \end{lstlisting}
 
+
 \subsubsection{Menü-Vorschlag (Recommendation)}
 
 Wenn ein Mitarbeiter nicht weiß, welche Mahlezeit er wählen soll, wird mithilfe eines Recommender entschieden, welche Mahlzeit am besten dem 
@@ -646,6 +695,8 @@ URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
     }
 \end{lstlisting}
 
+\pagebreak
+
 Um herausfinden zu können welche Mahlzeit optimal wäre, werden mit Hilfe des Algorithmus alle Kategorien des Users aus der Datenbank gehollt. 
 Jeder User der eine Bestellung getätigt hat, hatte die höglichkeit zu sehen, welche Kategorien die Mahlzeit auch besitzt. Sommit kann man leicht herauszufinden
 welche Kategorien auch am häufigsten in der Bestellhistorie vorkommen. \\*
@@ -656,13 +707,14 @@ In anderen Worten, desto mehr Bestellungen man hat, umso genauer wird die recomm
 Die Kategorien werden in der Datenbank als string gespeichert die mit einem Strichpunkt geteilt werden. Hat man also bei einer Mahlzeit mehr als eine Kategorie,
 so wird dieser als string mit einem oder mehreren Strichpunkten gespeichert. \\*
 
+
 Hier ein paar Beispiele:
 
-\textit{Schnitzel mit Pommes} = \textbf{"Schwein"}
+\textit{Schnitzel mit Pommes} = \textbf{Schwein}
 
-\textit{Eisbergsalat} = \textbf{"Vegan;Vegetarisch"}
+\textit{Eisbergsalat} = \textbf{Vegan;Vegetarisch}
 
-\textit{Nudelsalat mit Hühnerfleisch} = \textbf{"Nudel;Salat;Huhn"}
+\textit{Nudelsalat mit Hühnerfleisch} = \textbf{Nudel;Salat;Huhn}
 
 \subsubsection{Alle Menüs an einem bestimmten Tag}
 
@@ -672,6 +724,7 @@ Ein Beispiel für paar Menüs, welche am 12.08.2021 bestellt worden sind, sieht 
 
 URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=html]|http://localhost:8080/menue/menues/2021-12-08|}
 
+\pagebreak
 
 \begin{lstlisting}[language=json,firstnumber=1]
 {
@@ -729,6 +782,8 @@ URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
 
 Hier sieht man die wichtigsten Daten wie zum Beispiel die Vorspeise, Hauptspeise, Nachspeise und Desert welche von dem jeweiligem Mitarbeiter bestellt worden sind. 
 Auch Daten wie die Bestellzeit und in welcher Kantine gegessen wird wird auch mitgegeben.
+
+\subsection{Öffnungszeiten}
 
 \subsubsection{Alle aktiven Essenszeiten}
 

@@ -360,13 +360,24 @@ Die Akuelle JUnit Version, welche wir verwenden, heißt JUnit 5. Diese Version s
 \section{Karate}
 \author{David Ignjatovic} 
 
-Karate wird verwendet, um Enpoints testen zu können. Die Syntax ist sehr einfach und leserlich für Menschen, die wenig bis keine Programmierkenntnisse haben.
+Karate wird verwendet, um Endpoints testen zu können. Die Syntax ist sehr einfach und leserlich für Menschen, die wenig bis keine Programmierkenntnisse haben.
 Karate selbst testet nicht nur Enpoints, sondern erstellt auch HTML Reports, welche alle Testfälle dokumentiert und anzeigt. \\*
 
+Ein HTML Report sieht folgendermaßen aus:
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.18]{pics/karate-maven-report.jpg}
+    \caption{Karate Report}
+    \small \url{https://karatelabs.github.io/karate/} 
+    \label{fig:impl:karatereport}
+\end{figure}
+
 Einzelne Testfälle bezeichnet man in Karate als Scenarios. In diesen Scenarios werden dann CRUD Operationen getestet. Den Path der Abfrage und die einzelnen 
-Parameter werden in den Scenarios mitgegeben, aber auch was für ein Response code zurückkommen soll.
+Parameter werden in den Scenarios mitgegeben, aber auch was für ein Response code zurückkommen soll. \\*
 
 
+\pagebreak
 
 \section{Java EE}
 \author{David Ignjatovic} 
@@ -457,15 +468,58 @@ Panache ist eine Quarkus-spezifische Bibliothek, welche die Entwicklung einer Hi
 Panache ersetzt den größten Teil des Boilerplate-Codes mit einfachen Methoden die man in die Quarkus Anwendung implementieren kann. 
 Methoden wie create, update, and remove aber auch eigene Abfragen auf der Datenbank werden von Panache zur Verfügung gestellt. \\* \cite{Panache}
 
+\pagebreak
 
 \section{Maven}
 \author{David Ignjatovic}
 
-Apache Maven ist ein leistungsfähiges Werkzeug, welches immer wieder vorkommende Prozeduren automatisiert und vereinfacht. 
-Es wird oft als \textbf{Build Management System} bezeichnet und ist Teil vom \textbf{Software Configuration Management (SCM)}.  \\* \cite{Maven}
+Apache Maven ist ein Abhängigkeitsverwaltung und ein Automatisierungstool welches hauptsächlich nur für Java Applikationen verwendet wird. Wie auch Ant verwendet
+Maven verwendet genauso wie Ant \textit{XML-Files} nur das sie viel besser zum verwalten sind. Während Ant Flexibilität bietet und erfordert, 
+dass alles von Grund auf neu geschrieben wird, verlässt sich Maven auf Konventionen und stellt vordefinierte Befehle (Ziele) bereit. \\* \cite{MavenVsAntVsGradle}
 
-Neben Maven gibt es auch noch ANT, welches eher kommandoorientiert arbeitet. Maven ist eher strategisch orientiert, realisiert mehr Abstraktionen, wird deklarativer gesteuert, 
-berücksichtigt Abhängigkeiten besser und ist besonders für aufwändigere Multimodulprojekte geeignet. \cite{Maven}
+Ein Beispiel für eine \textit{pom.xml} File sieht folgendermaßen aus.
+
+ 
+\begin{lstlisting}[language=xml,caption=maven file,label=lst:impl:foo]
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>baeldung</groupId>
+    <artifactId>mavenExample</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <description>Maven example</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+\end{lstlisting}
+
+\subsection{Ant vs. Gradle vs. Maven}
+
+\subsubsection{Ant}
+
+Am Anfang war Make das enzige Werkzeug für automatisierte Prozeduren. Make wurde 1976 hauptsächlich für Java Applikationen vernwendet.
+Ant ist in vielen Aspekten gleich wie Make. Der einzige unterschied ist, dass Ant nicht nur für Java Applikationen verwendet werden kann.
+
+Die sogenannten Ant build files sind in in \textit{.xml} geschrieben und werden \textit{build.xml}genannt. \\* \cite{MavenVsAntVsGradle}
+
+\subsubsection{Gradle}
+
+Gradle wurde nach dem Konzepten von Ant. Der große unterschied ist das Gradle keine XML files benützt sondern in einer Domänenspezifische Sprache verwendet.
+Der Vorteil dabei ist, dass die Konfigurations Files deutlich kleiner sind. Die Konfigurations File wird als \textit{build.gradle} bezeichnet. \\*  \cite{MavenVsAntVsGradle}
+
+\subsubsection{Maven}
+
+Der Grund warum wir Maven verwenden ist, dass wir viel Erfahrung im Unterricht gesammelt haben. Noch dazu arbeitet Maven gut mit Quarkus zusammen. 
+
 
 \section{Cypress}
 \author{Bozidar Spasenovic}
@@ -680,6 +734,8 @@ SELECT t.Spaltenname1, t.Spaltenname2 FROM Tabellenname t
 \end{lstlisting}
 
 Wenn man den Select Befehl mit einem \textbf{WHERE} erweiter, kann man die Datenbank abfrage umso genauer gestallten. Es werden sommit nur spezielle Daten abgefragt. \\*
+
+\pagebreak
 
 \begin{lstlisting}[language=SQL,caption=Sql Select Where,label=lst:impl:foo]
 SELECT t.Spaltenname1, t.Spaltenname2 FROM Tabellenname t WHERE t.Spaltenname1 = 1
