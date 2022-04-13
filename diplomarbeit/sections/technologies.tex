@@ -808,7 +808,7 @@ Von der Lernkurve her ist Vue deutlich im Vorteil, da es einfacher zu verstehen 
 verstanden hat. Angular ist eher für umfangreiche Projekte gedacht, währenddessen Vue auf geringe Größe und hohe Performance abzielt. \\*
 In Angular sind die Logik und das Aussehen strikt getrennt, währenddessen in Vue alles in einem File zu finden ist und mehr an HTML erinnert durch die Scripts, die man schreibt.
 Ein Vorteil von Angular ist die Implementierung von Typescript, was eine Weiterentwicklung von JavaScript ist, die versucht die Macken von JavaScript zu verbessern.\\* 
-Was noch zu erwägen ist ist, dass Angular bei Entwicklern weiter verbreitet ist als Vue und es oft Features oder Plugins gibt, die in Angular selbstverständlich sind, aber in Vue nicht aufzufinden sind.
+Was noch zu erwägen ist ist, dass Angular länger existiert als Vue und es oft Features oder Plugins gibt, die in Angular selbstverständlich sind, aber in Vue nicht aufzufinden sind.
 Dies sollte sich aber im Laufe der Zeit verbessern. \\*  Generell kann man sagen, dass das Programmieren mit Angular eher and die Programmierung mit Java erinnert mit den Objekten, Abhängigkeiten,
 Konstruktoren und so weiter. Während Vue an das Programmieren von Websites mittels HTML und JavaScript erinnert. \cite{AngVsVueHOST}
 \subsubsection{Warum Vue?}
@@ -1242,22 +1242,24 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
 
 
 
-\section{Asciidoc}
+\section{AsciiDoc}
 \author{David Ignjatovic}
 
 AsciiDoc ist ein Textformat, welcher hauptsächlich für Dokumentationen, Webpages, Blog und vieles mehr verwendet mit.
-Da AsciiDoc ein plain-text Format ist und nicht wie die meisten Anwendungen für Textverarbeitungen Binärformate sind, wird es auch als Docs-as-Code bezeichnet.
+Da AsciiDoc ein plain-text Format ist und nicht wie die meisten Anwendungen für Textverarbeitungen Binärformate ist, wird es auch als Docs-as-Code bezeichnet.
 
 AsciiDoc wurde entwickelt, um Dokument so zu schreiben als währen sie normale Textdokumente. Da das Design von AsciiDoc schon inkludiert ist,
 muss man nicht einstellen wie die einzelnen Schriftgrößen für Überschriften sind. Somit ist man mit AsciDoc viel schneller als mit einer Anwendung,
-welche in Binärform ist.
+die mit einer Binärform arbeitet.
+
+Der größte Vorteil an AsciiDoc ist, dass es gut mit Github verwaltbar ist. Noch dazu braucht man keinen besonderen Editor für AsciiDoc. 
 
 \section{Asciidoctor}
 \author{David Ignjatovic}
 
-Asciidoctor ist eine open source Textverarbeitung, welche AsciiDoc Text in Formate wie HTML 5, PDF und weiter, umwandelt.
+Asciidoctor ist eine open source Textverarbeitung, welche AsciiDoc Text in HTML 5, PDF oder in anderen Formaten umwandelt.
 
-Asciidoctor selbst ist in Ruby entwickelt worden. Um aber Asciidoctor zu verwenden braucht man kein Ruby. Mittels AsciidoctorJ
+Asciidoctor selbst ist in Ruby entwickelt worden. Um aber Asciidoctor zu verwenden braucht man kein Ruby. Mit AsciidoctorJ
 kann man ganz einfach Asciidoctor auf einer JVM ausführen.
 
 \pagebreak
@@ -1268,7 +1270,7 @@ kann man ganz einfach Asciidoctor auf einer JVM ausführen.
 Swagger ist ein Open-Source Werrkzeug welches verwendet wird um HTTP-Webservices zu entwerfen, dokumentierten aber auch zu benutzen. Um einen leichten überblick über seine 
 ganzen Endpoints zu haben, wird Swagger verwendet, da es ganz schnell und einfach zum verwenden ist. \\*
 
-Damit man Swagger in einem Quarkus Backend verwedet, muss mann in den Application.Properties folgende Zeile eintragen:
+Damit man Swagger in einem Quarkus Backend verwenden kann, muss mann in den Application.Properties folgende Zeile eintragen:
 
 \textbf{quarkus.swagger-ui.always-include=true}
 
@@ -1276,7 +1278,7 @@ Die Sagger Page wird dann unter folgender URL abgerufen:
 
 \textbf{\textit{http://localhost:8080/q/swagger-ui/ }}
 
-Wie schon erwähnt, kann man bei der Swagger Page alle Requests sehen die verwendet werden. 
+Bei der Swagger Page hat man die Möglichkeit, alle Requests zu sehen die verwendet werden.
 
 \begin{figure}[htp]
     \author{David Ignjatovic}
@@ -1286,12 +1288,12 @@ Wie schon erwähnt, kann man bei der Swagger Page alle Requests sehen die verwen
     \label{fig:impl:swagger}
 \end{figure}
 
-Noch dazu kann man mit Swagger auch einzelne Data Transfer Objects veranschaulichen, welche in den Requests verwendet wird.
+Mit Swagger hat man auch die möglichkeit einzelne Data Transfer Objects veranschaulichen, welche in den Requests verwendet wird.
 
 \begin{figure}[htp]
     \author{David Ignjatovic}
     \centering
-    \includegraphics[scale=0.40]{pics/swagger-schema.jpg}
+    \includegraphics[scale=0.90]{pics/swagger-schema.jpg}
     \caption{SwaggerUI}
     \label{fig:impl:swagger-schema}
 \end{figure}
