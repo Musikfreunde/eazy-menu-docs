@@ -1011,7 +1011,7 @@ Es konzentriert sich auf Interoperabilität, Sicherheit, Übersichtlichkeit und 
 Lambdafunktionen werden deutlich reduziert und somit auch leichter in der Praxis als in Java. 
 Da Kotlin sehr kompatibel mit Java ist, können beim Testen die Frameworks und Bibliotheken von Java sehr weiterhelfen.  
 Ursprünglich hat man den Kotlin Code in Bytecode übersetzt und diesen dann in der JVM laufen gelassen. 
-Aber den Code kann man aber auch in Javascript umschreiben lassen und somit für Web Anwendungen verwenden.
+Aber den Code kann man auch in Javascript umschreiben lassen und somit für Web Anwendungen verwenden.
 
 Einer der Hauptvorteile von Kotlin sind die Unterstützungen für Multiplatform-Programmierung.
 Die Felxibilität sowie die Vorteile der nativen Programmierung bleiben erhalten, es reduziert sich aber 
@@ -1067,13 +1067,40 @@ Anschließend erstellen und starten Sie mit einem einzigen Befehl alle Dienste a
 
 Man setzt die Umgebung der App mit einer Dockerfile.
 Danach wird die \textit{docker-compose.yaml} file erstellt, welche die einzelnen Dienste startet.
-
-Starten mit -> docker-compose up \linebreak
-Killen/Beenden mit -> docker-compose down
-
+Starten mit \textit{docker-compose up}.
+Killen/Beenden mit \textit{docker-compose down}.
 
 
+\subsection{Docker Container}
+\cite{Docker-Container}
+Einen Docker Container kann man sich als Schiffe, Lkws oder auch als Zug vorstellen. Der Container ist eine virtuelle Maschine, die aber von einzelnen Anwendungen bereitgestellt werden.
+Mithilfe von Docker Images werden Container erstellt. Man kann diese aber auch in neue Images speichern und intern die Prozesse steuern.
+Der Unterschied zu normalen virtuellen Maschinen ist das es kein eigenes Betriebsystem hat. Docker Container greifen auf die Linux-Hosts
+zu, falls vorhanden. Liegt aber kein Linux vor, so hilft der Hypervisor mit einem kleinen Linux-Kernel nach. 
 
+
+In einem Docker Container werden mehrere Anwendungen installiert. Da es mit Linux-Hosts arbeitet, werden 
+die Anwendungen mittels \textit{apt, apk} oder mittels \textit{pip, npm, cargo}. Außerhalb von den externen Methoden
+gibt es auch die Möglichkeit mittels \textit{make, mvn} Pakete und Programme zu installieren.
+
+\subsection{Docker Image}
+
+Ein Docker Image ist ein mehrschichtiges Modell, was zu einer Datei entworfen wird. Diese führ speziellen Code in einem Docker Container aus.
+Docker Images haben kein Verfalldatum. Die sind mehrfach und gleichzeitig auf mehreren Containern benutzbar.
+
+\subsection{Docker Images von EazyMenue}
+\begin{figure}[htp]
+    \author{Bozidar Spasenovic}
+    \centering
+    \includegraphics[scale=0.80]{pics/docker-images.PNG}
+    \caption{Docker Images}
+    \label{fig:impl:docker-images}
+\end{figure}   
+
+Das \textit{eazy-menue-backend}-Image beinhaltet den Quarkus Server und die dazugehörige Keycloakanbindung.
+Das \textit{eazy-menue-frontend}-Image enthält die Kantinenwebapp.
+
+\pagebreak
 \section{OKHttp}
 \cite{OkHttp}
 \author{Bozidar Spasenovic}
@@ -1115,8 +1142,6 @@ Mit dem Package kotlin.collection werden Schleifen zu Verfügung gestellt.
 
 Wenn man die neueste Version von OkHttp sucht, ist man auf Maven Central genau richtig.
 Diese fügt man dann im build.gradle file ein und nach einem neu laden des Scriptes kann man es auch schon verwenden.
-
-\pagebreak
 
 \section{Retrofit}
 \cite{Retrofit}
@@ -1167,9 +1192,14 @@ Gradle ist ein 2007 entwickeltes Build-Management-Automatisierungs-Tool, welches
 Man kann es mit Apache Maven und Ant vergleichen.
 Es hat die Flexibilität von Apache Ant und die simple Bedingungsmöglichkeit von Maven.
 Der Unterschied zu den  Maven-Projektdefinitionen ist, dass man Gradle-Scripts gleich ausführen kann.
- Gradle unterstütz neben Java noch die Programmiersprachen Groovy und Kotlin.
+ \\*
+    
+Gradle unterstütz neben Java noch die Programmiersprachen Groovy und Kotlin.
 DAG wird verwendet, um die Tasks in richtiger Reihenfolge zu dirigieren.
 Heutzutage hat Gradle eine eigene Maschine für das Verwalten der einzelnen Abhängigkeiten, aber es begann mit Apache Ivy.
+\\*
+
+
 Seit Mitte 2013 ist Android hinzugekommen. Seitdem wurde das Tool weitgehend erweitert, um den Aufbau sogenannter „nativer“ Systeme zu unterstützen, welche nicht auf Java basieren.
 Gradle wird von sehr großen Unternehmen verwendet wie zum Beispiel LinkedIn, Netflix, Adobe und vielen weiteren.
 
@@ -1183,6 +1213,7 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
         \caption{Gradle-Plugin}
         \label{fig:impl:gradle-plugin}
     \end{figure}   
+    \linebreak
     \item Default Android
     \begin{figure}[htp]
         \author{Bozidar Spasenovic}
@@ -1191,6 +1222,8 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
         \caption{Gradle-Android}
         \label{fig:impl:gradle-android}
     \end{figure}   
+    \linebreak
+
     \item Dependencies
     \begin{figure}[htp]
         \author{Bozidar Spasenovic}
