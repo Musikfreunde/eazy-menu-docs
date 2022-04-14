@@ -1096,9 +1096,9 @@ Sie zeigt auch noch die Bottom Navigation Bar, welche zur Navigierung zwischen �
 \end{figure}
 
 \subsection{Authentification}
-Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request an den Keycloak zu schicken.
-Im Request wird nach einem Access-Token gefragt.
-Liefert der Response einen Token, so besteht der User.
+Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request zum Keycloak-Server zu schicken.
+Im Request wird nach einem Access-Token gefragton.
+Ein User  ist vorhanden wenn ein Accestoken im Response vorhanden ist.
 
 \begin{lstlisting}
 
@@ -1413,7 +1413,7 @@ Man kann dann die Anzahl angeben, für wen man es bestellen möchte und auch zwi
 
 \subsection{postBestellung()}
 Nach dem Abschließen wird die postBestellung()-Methode aufgerufen. Sie erstellt einen Requestbody mit den eingegebenen Werten
-und schickt es mittels POST an die "http://10.0.2.2:8080/menue/bestellung/" URL. Dieser Endpoint führt dann die Anfrage durch und schickt einen Response zurück.
+und schickt es mittels POST an die \textit{http://10.0.2.2:8080/menue/bestellung/} URL. Dieser Endpoint führt dann die Anfrage durch und schickt einen Response zurück.
 Wichtig dabei ist es den richtigen Media-Type zu definieren. 
 
 Die Anfrage und Antwort:
@@ -1441,9 +1441,14 @@ Da hingegen gibt es das sogenannte Callback Interface.
 Jede Schnittstelle hat einen Speicherort. Diese wird dann, anstatt der Funktion selbst, übergeben und verwendet.
 \\*
 
-\subsubsection{onResponse}
+\subsubsection{onResponse()}
+Die onResponse Methode ist eine abstrakte, vom Interface Callback vorgegebene Hilfsmethode. Diese wird aufgerufen 
+wenn ein Response erfolgreich war. Solange der \textit{ResponseBody} noch besteht, so ist der Response noch vorhanden.
+Um ihn zu löschen, hat man den Body vorerst zu schließen.
 
-
+\subsubsection{onFailure()}
+Die onResponse Methode ist ebenso eine abstrakte, vom Interface Callback vorgegebene Hilfsmethode. Diese wird bei einem
+nicht erfolgreichem Response aufgerufen. Ursachen wären Internetprobleme von der Server als auch Client Seite. 
 
 
 
