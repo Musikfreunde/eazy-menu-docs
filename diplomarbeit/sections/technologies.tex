@@ -915,11 +915,11 @@ Es gibt eine große Auswahl von Eigenschaften wie z.B.: Schriftfarbe, Textart, P
 
 \section{JavaScript}
 \author{Benjamin Besic}
-JavaScript ist eine leichtgewichtige Skriptsprache, die 1995 vom Softwareunternehmen Netscape entwickelt worden ist, um die Möglichkeiten von HTML und CSS zu erweitern.
-Bekannt ist sie hauptsächlich als Sprache für Webseiten geworden, jedoch wird sie auch in vielen Umgebungen außerhalb des Browsers oft benutzt, wie z.B. Servern. 
-\\* Sie unterstützt objektorientierte, imperative als auch deklarative Programmierung (funktionales Programmieren). JavaScript folgt dem Standard ECMAScript, welchen alle Browser unterstützen. 
-JavaScript dient dazu auf Webseiten Benutzerinteraktionen auszuwerten, Inhalte zu verändern, nachzuladen oder zu generieren.  \\*
-Jedoch sollte man JavaScript nicht mit der Programmiersprache Java verwechseln. Beide sind verschiedene Handelsmarken der Firma Oracle und ähneln einander höchstens, was die Syntax betrifft.
+JavaScript ist eine leichtgewichtige Skriptsprache, die 1995 vom Softwareunternehmen Netscape entwickelt worden ist, um die Möglichkeiten von CSS und HTML zu erweitern.
+Bekannt ist sie insbesondere als Sprache für Webseiten geworden, jedoch wird sie auch in Bereichen abseits des Browsers oft benutzt, wie z.B. Servern. 
+\\* Sie unterstützt imperative, objektorientierte als auch deklarative Programmierung (funktionales Programmieren). JavaScript folgt dem Standard ECMAScript, welchen alle Browser unterstützen. 
+JavaScript dient dazu auf Webseiten Interaktionen von Benutzern auszuwerten. Veränderung, Nachladen oder Generierung von Inhalten gehört auch zu den Funktionen.  \\*
+Jedoch sollte man JavaScript nicht mit Java, der Programmiersprache, vertauschen. Beide sind verschiedene Handelsmarken der Firma Oracle und ähneln einander höchstens, was die Syntax betrifft.
 \cite{JSWiki} \cite{JSMozilla}
 \section{JSON Web Token (JWT)}
 \author{Benjamin Besic}
@@ -966,8 +966,8 @@ Ohne Sicherung lässt sich die Nachricht nach einer Base64-Entschlüsselung klar
 Im Normalfall reicht es nur zu prüfen, ob die Daten vom richtigen Absender kommen und ob Veränderungen geschehen sind. Die JWS (JSON Web Signature) führt diese Überprüfungen aus. 
 \\* Bei diesem Verfahren lässt sich die Payload nach Base64-Entschlüsselung klar und deutlich lesen. \cite{JWTIONOS}
 \subsubsection{Signatur (JWS) und Verschlüsselung (JWE)}
-Es ist möglich zusätzlich zum JWS noch eine JWE (JSON Web Encryption) zu benützen. JWE verschlüsselt den Inhalt des Payloads, diese werden danach mit JWS signiert.
-Um die Inhalte dann zu entschlüsseln wird noch ein Kennwort oder ein privater Schlüssel angegeben. \\*
+Es besteht die Möglichkeit als Zusatz zum JWS noch eine JWE (JSON Web Encryption) zu benützen. JWE verschlüsselt den Inhalt des Payloads, diese werden danach mit JWS signiert.
+Damit die Entschlüsselung des Inhalts auch möglich ist, wird ein privater Schlüssel oder ein Kennwort mitgegeben. \\*
 Damit ist der Absender verifiziert, die Nachricht authentisch und der Payload ist nicht lesbar nach einer Base64-Entschlüsselung. \cite{JWTIONOS}
 
 
