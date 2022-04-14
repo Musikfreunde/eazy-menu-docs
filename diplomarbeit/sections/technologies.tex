@@ -972,12 +972,13 @@ Damit ist der Absender verifiziert, die Nachricht authentisch und der Payload is
 
 
 \section{Progressive Web App(PWA)}
-Webanwendung werden mit Hilfe von HTML, CSS und Javascript wntwickelt. 
-Das in Verbindung mit dem Progressive Enhancement, was für die Lauffähigkeit einer Webseite in jedem Browser verantwortlich ist, wird eine PWA genannt. 
+\author{Bozidar Spasenovic}
+Webanwendung werden mit Hilfe von HTML, CSS und Javascript entwickelt. 
+Das in Verbindung mit dem \textit{Progressive Enhancement}, was für die Lauffähigkeit einer Webseite in jedem Browser verantwortlich ist, wird eine PWA genannt. 
 
-Der Service-Worker arbeitet mit HTTPS und führt konstant einen Web-Browser im Hintergrund.
+Der Service-Worker arbeitet mit HTTPS und führt konstant einen Web-Browser im Hintergrund aus.
 Dank ihm hat die PWA Zugriff auf Caching und kann Offline verwendet werden. 
-Weiter noch stellt der Service-Workerr die Funktionalität der Push-Notification bereit.  
+Weiter noch stellt der Service-Worker die Funktionalität der Push-Notification bereit.  
 
 
 Vorteile sind die Kostenreduktion in der Entwicklung da man nur eine PWA benötigt, die man auf Android, IOS und Windows benützen kann.
@@ -1096,15 +1097,56 @@ und basis Tools.
 \author{Bozidar Spasenovic}
 XML steht für eXtensible Markup Language und ist ein textformbasiertes Datenformat.
 Das Wort eXtensible heißt übersetzt erweiterbar und soll die Erweiterungsmöglichkeiten der Sprache beschreiben.
+\linebreak
 Sie wurde im Jahre 1996 entwickelt und wurde zwe Jahre später zum W3C-Standard. 
 Sie ist sehr leicht einsetzbar in verschiedene Anwendungen da sie keine Lizenz benötigt.
 Viele Tools heutzutage erleichtern aber auch die Bearbeitung von XML-Dateien.
+\linebreak
 Ein Vorteil ist, dass man die Daten im XML als Textformat abspeichert, was heißt das XML auch plattformunabhängig ist.
 Wie in HTML, gibt es auch hier sogenannte Tags, die aber selbst zu kofigurieren sind. 
-Der große Vorteil von XML ist das es sehr leicht lesbar ist, sowohl von Mensch als auch von Machine.
+Der große Vorteil von XML ist das es sehr leicht lesbar ist, sowohl von Mensch als auch von Maschine.
 Es wird in Android verwendet um das Layout jeder Aktivität des Android zu entwerfen und erleichtert die Datenübertragung zwischen Anwendungen.
 
+\subsection{Wie funktioniert XML}
 
+Der Autor hat die zu benutzenden Tags selber zu definieren. Es werden keine vordefinierten Tags wie \textit{<p1>} oder \textit{<h1>} wie in HTML verwendet.
+
+\begin{figure}[htp]
+    \author{Bozidar Spasenovic}
+    \centering
+    \includegraphics[scale=0.80]{pics/xml-tags.png}
+    \caption{XML Tags}
+    \label{fig:impl:XML-Tags}
+\end{figure}   
+
+\pagebreak
+\subsection{Vergleich}
+Es gibt einerseits das XML-Schema, welches die neuere Generation benutz. Aber auch das DTD-Schema.
+DTD steht für Documenttypedefinition und wurde früher benutzt, um den Typ eines Dokumentes zu bestimmen.
+
+Angefangen wird solch ein Dokument wie folgt:
+
+\begin{figure}[htp]
+    \author{Bozidar Spasenovic}
+    \centering
+    \includegraphics[scale=0.60]{pics/dtd-schema.png}
+    \caption{DTD Schema}
+    \label{fig:impl:DTD-Schema}
+\end{figure}   
+
+
+\cite{DTD-Schema}
+So eine Dokumentendefinition ist in folgende Punkte gegliedert:
+\begin{itemize}
+    \item Notationen
+    \item Elementattributen
+    \item Entitäten
+    \item Elementtypen
+\end{itemize}
+
+DTD-Dokumente können auch \textit{Paramtere-Entities} benutzen, die aber nur in \textit{CDATA (Character Data)} 
+oder \textit{PCDATA (Parsed Character Data)} vorhanden sind.
+Mit Parameter-Entities wird es ermöglicht, fremde Files in das DTD einzubinden.
 
 
 \section{Docker}
@@ -1156,7 +1198,6 @@ Docker Images haben kein Verfalldatum. Die sind mehrfach und gleichzeitig auf me
 Das \textit{eazy-menue-backend}-Image beinhaltet den Quarkus Server und die dazugehörige Keycloakanbindung.
 Das \textit{eazy-menue-frontend}-Image enthält die Kantinenwebapp.
 
-\pagebreak
 \section{OKHttp}
 \cite{OkHttp}
 \author{Bozidar Spasenovic}
@@ -1265,7 +1306,7 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
     \begin{figure}[htp]
         \author{Bozidar Spasenovic}
         \centering
-        \includegraphics[scale=0.80]{pics/gradle-plugins.PNG}
+        \includegraphics[scale=0.60]{pics/gradle-plugins.PNG}
         \caption{Gradle-Plugin}
         \label{fig:impl:gradle-plugin}
     \end{figure}   
@@ -1274,7 +1315,7 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
     \begin{figure}[htp]
         \author{Bozidar Spasenovic}
         \centering
-        \includegraphics[scale=0.80]{pics/gradle-android.PNG}
+        \includegraphics[scale=0.60]{pics/gradle-android.PNG}
         \caption{Gradle-Android}
         \label{fig:impl:gradle-android}
     \end{figure}   
@@ -1284,7 +1325,7 @@ Inwiefern man das Gradle Script verändern möchte, kann man auswählen zwischen
     \begin{figure}[htp]
         \author{Bozidar Spasenovic}
         \centering
-        \includegraphics[scale=0.50]{pics/gradle-dependencies.PNG}
+        \includegraphics[scale=0.40]{pics/gradle-dependencies.PNG}
         \caption{Gradle-Dependencies}
         \label{fig:impl:gradle-Dependencies}
     \end{figure}   
