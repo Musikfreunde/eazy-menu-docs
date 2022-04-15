@@ -833,11 +833,46 @@ URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
 \end{lstlisting}
 
 \section{Authentifizierung}
-\author{Bozidar Spasenovic}
-Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request zum Keycloak-Server zu schicken.
-Im Request wird nach einem Access-Token gefragton.
-Ein User  ist vorhanden wenn ein Accestoken im Response vorhanden ist.
+Eine Authentifizierung ist eine Benutzeranfrage an den Server. Nach einem versuchtem Login, sucht man in der Benutzer-Datenbank
+nach den Werten die man eingetragen hat. Die häufigsten Protokolle die für das Internet sind:
 
+\begin{itemize}
+    \item Http
+    \item Https
+\end{itemize}
+
+Früher war der Benutzer verpflichtend sich immer wieder neu anzumelden. Heute gibt es sogenannte "Access-Token", die ebenso für
+die Benutzer Existenz Abfrage verwendet wird.
+
+In unserer Diplomarbeit wird Keycloak als Server verwendet.
+Mittels dem erstellten Keycloak Realm für die Diplomarbeit, stehen in diesem alle User mit den zugeteilten Rollen drinnen.
+Nach einem Anmeldeversuch wird nachgefragt ob der User vorhanden ist. 
+Somit authentifiziert sich der User zu dem Server.
+Danach erfolgt die Authorisierung.
+
+Bei so einer Authentifizierung spricht mman über \textit{Single Core Authentifizierung}. Dabei hat man nur den Benutzer und das 
+jeweilige Kennwort zu Verfügung.
+
+\cite{Authorization-Faktoren}
+Möchte man aber ein stärkere Authentifizierung haben, so benötigt man mehrere Authentifizierungsfaktoren.
+\begin{itemize}
+    \item Wissensfaktor
+    \item Besitzfaktor
+    \item Inhärenzfaktor
+\end{itemize}
+
+Beim \textbf{Wissensfaktor} beschreibt alle Arten von Authentifizierung, die ein Benutzer kennt. Ein Benutzer
+kennt zum Beispiel seinen Username und seinen Pin-Code.
+
+
+Anders ist es beim \textbf{Besitzfaktor}, welcher mehr auf \textit{"Etwas, das man hat“} sich fokkusiert. Es geht um 
+Gegenstände wie zum Beispiel eine Smartwatch, Handy oder jegliche Chips dessen Funktion ist einen OTP zu erzeugen und 
+immer wieder verwenden zu können.
+Ein OTP ist ein \textit{One Time Password}. Es ist in der Regel sicherer als ein, vom Server oder Benutzer erstelltem, statischem Password.
+
+Fast jedes moderne Handy hat heutzutage einen \textbf{Inhärenzfaktor}. Das ist der Faktor, der auf Fingerabdrücke sowie Gesichtserkennung
+Wert liegt. Bei einer Gesichtserkennung werden virtuell mit Infrarotlicht tausende Punkte auf das Gesicht konstruiert. Daraus
+entwickelt sich ein 3D Modell, welches die Höhen, Tiefen und viele weitere Eigenschaften des Gesichtes aufnimmt und analysiert.
 
 
 \section {Interface Webapp}
