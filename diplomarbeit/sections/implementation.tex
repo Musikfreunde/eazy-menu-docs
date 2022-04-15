@@ -833,6 +833,12 @@ URL: PUT \colorbox{white}{\lstinline[basicstyle=\ttfamily\color{black},language=
 \end{lstlisting}
 
 \section{Authentifizierung}
+\author{Bozidar Spasenovic}
+Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request zum Keycloak-Server zu schicken.
+Im Request wird nach einem Access-Token gefragton.
+Ein User  ist vorhanden wenn ein Accestoken im Response vorhanden ist.
+
+
 
 \section {Interface Webapp}
 \author{Benjamin Besic}
@@ -1036,7 +1042,84 @@ Dies dient dazu, dass sie einen Ausdruck auf Papier haben, der für die Kantine 
 \pagebreak
 
 \section{Android-App}
+\author{Bozidar Spasenovic}
+\subsection{Android Manifest}
+Alle Android Projekte haben eine \textit{AndroidManifest.xml} Datei im Root-Verzeichniss. Diese wird benötigt, da sie  
+Auskunft über die App für folgende Systeme bieten muss:
 
+\begin{itemize}
+    \item Buiild-Tools
+    \item Geräte mit Android Betriebsystemen
+    \item Google Play 
+\end{itemize}  
+
+In der Datei werden jene Komponenten angegeben, welche alle Dienste und Aktivitäten beinhaltet.
+Zu jeder Komponente gibt es Eigenschaften, wie zum Beispiel die Attribute eine Klasse oder den Klassennamen,
+ die man von der jeweiligen Kotlin Klasse bekommt.
+
+ Komponenten von AndroidManifest:
+
+ \begin{itemize}
+     \item <activity>
+     \item <service>
+     \item <receiver>
+     \item <provider>    
+ \end{itemize}
+
+
+
+Dazu kommen noch Spezifikationen gegeüber der Hardware, was soviel bedeutet wie die Auswahl von Smartphones oder Tablets
+auf der die App installiert werden kann.
+ Neben den Komponenten, gibt es auch die Rechtevergabung. Es wird bestimmt auf was die App alles Zugriff hat, sowie
+ was eine andere App benötigt um mit der kommunizieren zu können.
+ Es ist sehr wichtig bei einer App die mit Internet in Verbindung gebracht wird folgende Zeile hinzuzufügen.
+ 
+ \begin{lstlisting}
+    <uses-permission android:name="android.permission.INTERNET" />
+\end{lstlisting}
+
+\subsubsection{Konventionen}
+In der AndroidManifest.xml gibt es sogenannte Konventionen die man einhalten muss.
+Von den Elementen her gibt es zwei die enthalten sein müssen. Das wären \textit{<manifest>} und \textit{<application>}.
+Diese Zwei dürfen auch nur einmal vorkommen.
+
+Die Konvention für Attribute ist, dass vor jedem Attribut \textit{android:} davor zu stehen hat. Attribute sind aber 
+generell nicht notwendig und können weggelassen werden.
+
+Es gibt auch die Ressourcen Werte. Diese Werte sind jene Werte die dem Benutzer gezeigt werden. Um Hardcoding zu vermeiden,
+werden solche Variablen in Ressource-Dateien gespeichert. Diese Datei ist leicht modifizierbar und wird auch 
+sofort in der App übernommen. Ein Beispiel wäre:
+
+\begin{lstlisting}
+    <activity android:icon="@drawable/logo" ... >
+\end{lstlisting}
+
+\subsection{Testing}
+Beim Erstellen von einem Android Projekt, werden noch zwei Packages automatisch dazuerstellt, welche vorgefertigte Tests beinhalten. 
+Diese sollen dazu dienen, eigene Tests schreiben zu können und somit Die App auf Fehler und Aktivität zu prüfen.
+
+\subsection{Properties}
+Gradle hat eigene \textit{gradle.properties} und \textit{gradle-wrapper.properties}.
+
+\cite{Gradle-properties}
+Gradle-Properties bieten eine simple Alternative um Builds zu adaptieren,
+ die in manchen Lagen anders ausgeführt werden müssen.
+
+\subsubsection{Auf welche Arten kann man die Properties bearbeiten?}
+
+\begin{itemize}
+    \item gradle.properties File
+    \subitem \textit{name=name }
+    \item Kommandozeile
+    \subitem \textit{-PpropertyName=propertyValue }
+    \item Properties von Java 
+    \subitem \textit{-Dorg.gradle.project.name=name}
+    \item Umgebungsvariablen
+    
+\end{itemize}
+
+
+\subsection{Aufbau}
 
 Die Android App ist in verschiedene Packages unterteilt: 
 
@@ -1048,7 +1131,6 @@ Die Android App ist in verschiedene Packages unterteilt:
 
 Im api Package sind gibt es ein ApiObject, welcher alle URL's beinhaltet. Dies erleichtert die Konfiguration der Android Anwendung im Bezug auf das Kommunizieren mit dem Backend.
 Noch dazu gibt es die ApiService Klasse, die alle Requests erledigt. 
-
 
 ApiObject:
 \begin{lstlisting}

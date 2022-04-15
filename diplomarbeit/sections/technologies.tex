@@ -520,7 +520,6 @@ Der Vorteil dabei ist, dass die Konfigurations Files deutlich kleiner sind. Die 
 
 Der Grund warum wir Maven verwenden ist, dass wir viel Erfahrung im Unterricht gesammelt haben. Noch dazu arbeitet Maven gut mit Quarkus zusammen. 
 
-
 \section{Cypress}
 \author{Bozidar Spasenovic}
 \cite{Cypress-Docu}
@@ -552,8 +551,8 @@ Es gibt drei Arten von Tests:
     \item Integration
     \item Unit
 \end{itemize}
-
-
+Cypress wurde in dieser Diplomarbeit nicht verwendet, da die Anwendungsfälle minimal sind.
+ Als Testframework haben wir stattdessen Karate-Tests verwendet.
 
 \pagebreak
 \section{Keycloak}
@@ -981,10 +980,12 @@ Dank ihm hat die PWA Zugriff auf Caching und kann Offline verwendet werden.
 Weiter noch stellt der Service-Worker die Funktionalität der Push-Notification bereit.  
 
 \subsection{Vorteile}
+\author{Bozidar Spasenovic}
 Vorteile sind die Kostenreduktion in der Entwicklung da man nur eine PWA benötigt, die man auf Android, IOS und Windows benützen kann.
 Weiters kann man die PWA so konfigurieren, dass sie wie eine echte Applikation ausschaut.
 
 \subsection{Nachteile}
+\author{Bozidar Spasenovic}
 Die Nachteile sind minimal. Doch einer der wichtigsten ist, dass die PWAs im Vergelich zu nativen Applikationen viel langsamer auf die
 Hardware Ressourcen zugreift. 
 
@@ -992,6 +993,7 @@ Noch dazu haben zurzeit (Stand April 2022) PWAs keine volle Kompatibilität mit 
 kann der Browser von Apple, namens Safari, keine Push Notifikationen sowie Hintergrundprozesse bearbeiten.
 
 \subsection{Bekannte PWAs}
+\author{Bozidar Spasenovic}
 
 Jeder hat schon einmal eine PWA benutzt, auch wenn er sich nicht bewusst war. Viele bekannte Firmen wie zum Beispiel Starbucks,
 BMW, Spotify und Pinterest verwenden solch eine.
@@ -1003,6 +1005,7 @@ Dabei sieht man wie unterschiedlich eine PWA verwendet werden kann. Zum Teil als
 
 
 \section{Google Charts}
+\author{Bozidar Spasenovic}
 \cite{Google-Charts}
 Google Charts ist eine leicht verwendbare Möglichkeit, Werte in verschiedenen Darstellungen anzuzeigen.
 Es gibt 18 verschiedene Arten von Diagrammen. Aber die meist benützen sind:
@@ -1031,6 +1034,7 @@ Jetpack Compose mehrere Themes zur Verfügung. Noch dazu kann man diese dann auc
 Jetbrains hat in Planung eine plattformübergreifendes Open-source Projekt zu starten, damit man Desktop Anwendungen genau so schnell und einfach erstellen kann. 
 
 \subsection{Wichtig zu wissen!}
+\author{Bozidar Spasenovic}
 \cite{Jetpack-Compose-Docu}
 Um mit Jetpack Compose coole Applikationen entwerfen zu können, muss man die Anfangsschritte verstanden haben.
 
@@ -1041,10 +1045,12 @@ Um mit Jetpack Compose coole Applikationen entwerfen zu können, muss man die An
 \end{itemize}
 
 \subsection{Applikationsgröße}
+\author{Bozidar Spasenovic}
 Jede Applikation benötigt Speicher. Aber wie schafft man es den Speicher einer App zu minimieren. 
 Auf den Speicher haben Bibliotheken einen großen einfluss. 
 
 \subsection{Applikationsbauzeit}
+\author{Bozidar Spasenovic}
 \cite{Jetpack-Compose-Build}
 Man kann mit einem einfachem Kommando die \textit{Build Time} herausfinden.
 \begin{lstlisting}
@@ -1061,6 +1067,7 @@ Man kann mit einem einfachem Kommando die \textit{Build Time} herausfinden.
 
 
 \subsection{Entwurf}
+\author{Bozidar Spasenovic}
 Jeder Entwurf sollte schön und benutzerfreundlich ausschauen. Somit kann man mit \textit{Theming} ein solches erstellen.
 Dazu verwendet man meistens \textit{Material Theming}. Natürlich kann man aber auch eigene Entwürfe erstellen und verwenden.
 Um Daten anzeigen lassen zu können, sollte man sich mit dem Thema \textit{Data Binding} auseinander gesetzt haben.
@@ -1068,9 +1075,23 @@ Dazu kommen noch die die Möglichkeiten Animationen, Grafiken und Gästen in die
 
 
 \subsection{Data Binding}
+\author{Bozidar Spasenovic}
 Data Binding ist eine sehr wichtige Funktion im Programmieren mit einer Benutzeroberfläche. Es wird verwendet um das Backend 
 zu informieren, falls sich ein Wert ändert. Durch das Data Binding kann man also Aktivitäten und Aktionen kontrollieren und ausnutzen.
 Um eine Variable binden zu können, muss man \textit{mutableStateOf} benutzen. 
+
+Man unterscheidet in \textit{One-Way Binding} und \textit{Two-Way Binding}  
+
+\begin{figure}[htp]
+    \author{Bozidar Spasenovic}
+    \centering
+    \includegraphics[scale=0.50]{pics/Data-Binding.PNG}
+    \caption{Data Binding}
+    \label{fig:impl:Data Binding}
+\end{figure}   
+
+Es wird heutzutage mehr auf das Two-Way Binding zugegriffen, da es einfacher zu benutzen ist und man sich viel Code erspart.
+
 
 
 \pagebreak
