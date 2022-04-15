@@ -429,8 +429,9 @@ Die Konfiguration bei Quarkus war auch um einiges einfacher als bei Java EE. Bei
 Bei Java EE war die Konfiguration auf dem Application Server. Hier gab es nicht nur eine File zum konfigurieren sondern mehrere .xml Files. 
 Das war ebenso noch ein Grund weshalb wir uns zum Schluss doch noch für Quarkus entschieden haben.
 
+\pagebreak
 
-\subsection{JPA}
+\section{JPA}
 \author{David Ignjatovic} 
 
 Java Persistence API (JPA) ist eine API welche für Datenbankzugriffe und für das objektrelationale Mapping verwendet wird. 
@@ -441,6 +442,100 @@ Durch die Hilfe von JPA (Java Persistance API) wird der Aufwand reduziert, welch
 
 JPA wurde von JSR 220 Expert Group entwickelt und im Mai 2006 erstmals veröffentlicht.
 
+\subsection{Entity}
+\author{David Ignjatovic} 
+
+Das Grundobjekt ist die so genannte Entity Klasse, die sich aus einem Standardobjekt-Java-Objekt, auch genannt POJO, ableitet. In einer relationalen Datenbank
+werden Entities in form einer Tabelle angezeigt. Einzelne Klassen Attribute sind in einer Tabelle die zeilen. \cite{JPA-Entity} \\*
+
+In JPA arbeitet man viel mit Annotationen. Die wichtigsten Annotationen kann man im folgenden Beispiel leicht ersehen:
+
+\begin{lstlisting}[language=Java,caption=JPA Entity,label=lst:impl:foo]
+    @Entity
+    public class Oeffnungszeit {
+        @Id
+        @Column(name = "OEFFNUNGSZEIT_ID")
+        private Long id;
+
+        @Column(name = "STATUSKZ", length = 1)
+        private char status;
+
+        @ManyToOne
+        @JoinColumn(name = "KANTINE_ID")
+        private Kantine kantine;
+    }
+\end{lstlisting}
+
+Mithilfe der Anotation @Entity wird die Klasse als Entity erkannt. Jede relationalen Datenbank braucht einen Primarschlüssel beziehungsweise eine Id.
+In JPA wird das mit der Anotation @ID gemacht.
+
+\subsection{Beziehungen}
+\author{David Ignjatovic} 
+
+Um Beziehungen darzustellen gibt es 3 Anotationen.
+
+\begin{itemize}
+    \item @OneToOne
+    \item @OneToMany
+    \item @ManyToMany
+\end{itemize}
+
+Diese Beziehungen können dann auf zwei Arten umgesetzt werden.
+
+\begin{itemize}
+    \item Unidirektional
+    \item Bidirektional
+\end{itemize}
+
+Unidirektional bedeutet, dass die Beziehung nur in einer richtung zeigt. Bidirektional zeigt in beide Richtungen.
+
+Durch folgender Grafik werden die zwei Arten deutlich gemacht.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.4]{pics/biunddi.JPG}
+    \caption{Ablauf des OAuth 2.0 Protokolls}
+    \label{fig:impl:UnidirektionalBidirektional}
+\end{figure}
+
+\subsection{Java Persistence Query Language}
+
+JPQL ist die Abfragesprache von JPA2 und differenziert sich von SQL in den folgenden Punkten.
+
+
+\begin{itemize}
+    \item JPQL greift auf Entities und Objekte zu.
+    \item B SQL greift auf Tabellen, Spalten und Zeilen zu.
+\end{itemize}
+
+Hier sind Beispiele für einige Queries:
+
+\subsubsection{TypedQuery}
+
+TypedQuery ist sozusagen die Standard Abfrage. Es besteht aber auch die möglichkeit Parameter mitzugeben welche mit einem doppeltpunkt gekennzeichnet werden.
+Hier ein Beispiel für eine TypedQuery:
+
+\begin{lstlisting}[language=Java,caption=JPA Entity,label=lst:impl:foo]
+    TypedQuery<PersistenceOrderItem> allMatchesQuery = em.createQuery("SELECT u FROM " + getEntityClass().getName()
+        + " u WHERE u.product = :prod", getEntityClass());
+\end{lstlisting}
+
+
+\subsubsection{NamedQuery}
+
+NamedQuery ist deutlich übersichtlicher indem sie als Annotation an eine Entity dazugeschrieben werden und somit an verschiedenen Stellen aufgerufen werden. 
+Hier ein Beispiel für eine NamedQuery:
+
+\begin{lstlisting}[language=Java,caption=JPA Entity,label=lst:impl:foo]
+    @Entity
+    @Table(name = "Bestellung")
+    @NamedQuery(
+        name = "Bestellung.getAllOrders",
+        query = "SELECT b FROM Bestellung b")
+    public class Bestellung {
+        ...
+    }
+\end{lstlisting}
 
 \subsection{Hibernate}
 \author{David Ignjatovic}
@@ -1375,6 +1470,88 @@ kann man ganz einfach Asciidoctor auf einer JVM ausführen.
 
 \pagebreak
 
+\section{PlantUML}
+
+PlantUML ist ein open-source tool, welches hauptsächlich zum Modelieren von Diagrammen verwendet wird. Mithilfe von 
+PlantUML hat man die möglichkeit verschiedenste Diagramme zu erstellen wie zum Beispiel:
+
+\begin{itemize}
+    \item UML Class Diagram
+    \item Archimate
+    \item Block diagram
+    \item BPMN
+    \item C4
+    \item Computer network diagram 
+    \item ERD
+    \item Gantt chart
+    \item Mind map 
+\end{itemize}
+
+Für unserer Projekt haben wir PlantUML hauptsächlich nur für das Klassen Diagramm verwendet. \cite{PlantUML} 
+
+\pagebreak
+
+\subsection{UML Class diagram}
+
+PlantUML ist für den Menschen einfach leesbar und nicht schwierig zum Anwenden. 
+Ein Beispiel für ein Klassen Diagramm sieht folgendermaßen aus:
+
+\begin{lstlisting}[caption=Simple PlantUML example,label=lst:impl:foo]
+    @startuml
+    class Menue {
+        private Long id;
+        private String canteenDesc;
+        private String serviceDesc;
+        ...
+    }
+    
+    class Kantine {
+        private Long id;
+        private String canteenDesc;
+        private String serviceDesc;
+       ...
+    }
+    
+    class Bestellung {
+        private Long id;
+        private String orderedBy;
+        private String orderedFor;
+        ...
+        
+    }
+    
+    class Oeffnungszeiten {
+        private Long id;
+        private char status;
+        private String timeWindowFrom;
+        ...
+    }
+    
+    Bestellung  "1"-l-"*" Menue
+    
+    Bestellung  "*"--"1" Oeffnungszeiten 
+    
+    
+    Oeffnungszeiten "*"-l-"1" Kantine 
+    
+    Menue"*"--"1" Kantine 
+    @enduml
+\end{lstlisting}
+
+Das Klassen diagramm sieht dann in etwa so aus:
+
+\begin{figure}[htp]
+    \author{David Ignjatovic}
+    \centering
+    \includegraphics[scale=0.60]{pics/plantuml.jpg}
+    \caption{PlantUML}
+    \label{fig:impl:plantuml}
+\end{figure}
+
+
+
+\pagebreak
+
 \section{Swagger}
 \author{David Ignjatovic} 
 
@@ -1389,6 +1566,8 @@ Die Sagger Page wird dann unter folgender URL abgerufen:
 
 \textbf{\textit{http://localhost:8080/q/swagger-ui/ }}
 
+\pagebreak
+
 Bei der Swagger Page hat man die Möglichkeit, alle Requests zu sehen die verwendet werden.
 
 \begin{figure}[htp]
@@ -1398,6 +1577,8 @@ Bei der Swagger Page hat man die Möglichkeit, alle Requests zu sehen die verwen
     \caption{SwaggerUI}
     \label{fig:impl:swagger}
 \end{figure}
+
+\pagebreak
 
 Mit Swagger hat man auch die möglichkeit einzelne Data Transfer Objects veranschaulichen, welche in den Requests verwendet wird.
 
