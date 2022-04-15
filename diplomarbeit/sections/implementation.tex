@@ -1079,7 +1079,7 @@ Dies dient dazu, dass sie einen Ausdruck auf Papier haben, der für die Kantine 
 \section{Android-App}
 \author{Bozidar Spasenovic}
 \subsection{Android Manifest}
-Alle Android Projekte haben eine \textit{AndroidManifest.xml} Datei im Root-Verzeichniss. Diese wird benötigt, da sie  
+Alle Android Projekte haben eine \textit{AndroidManifest.xml} Datei im Root-Verzeichnis. Diese wird benötigt, da sie  
 Auskunft über die App für folgende Systeme bieten muss:
 
 \begin{itemize}
@@ -1103,7 +1103,7 @@ Zu jeder Komponente gibt es Eigenschaften, wie zum Beispiel die Attribute eine K
 
 
 
-Dazu kommen noch Spezifikationen gegeüber der Hardware, was soviel bedeutet wie die Auswahl von Smartphones oder Tablets
+Dazu kommen noch Spezifikationen gegenüber der Hardware, was soviel bedeutet wie die Auswahl von Smartphones oder Tablets
 auf der die App installiert werden kann.
  Neben den Komponenten, gibt es auch die Rechtevergabung. Es wird bestimmt auf was die App alles Zugriff hat, sowie
  was eine andere App benötigt um mit der kommunizieren zu können.
@@ -1130,13 +1130,13 @@ sofort in der App übernommen. Ein Beispiel wäre:
 \end{lstlisting}
 
 \subsection{Testing}
-Beim Erstellen von einem Android Projekt, werden noch zwei Packages automatisch dazuerstellt, welche vorgefertigte Tests beinhalten. 
+Beim Erstellen von einem Android Projekt, werden noch zwei Packages automatisch dazu erstellt, welche vorgefertigte Tests beinhalten. 
 Diese sollen dazu dienen, eigene Tests schreiben zu können und somit Die App auf Fehler und Aktivität zu prüfen.
 
 \subsection{Properties}
 Gradle hat eigene \textit{gradle.properties} und \textit{gradle-wrapper.properties}.
 
-\cite{Gradle-properties}
+\cite{Gradle-}
 Gradle-Properties bieten eine simple Alternative um Builds zu adaptieren,
  die in manchen Lagen anders ausgeführt werden müssen.
 
@@ -1249,8 +1249,8 @@ die Authentifizierung.
 
 \subsection{Authentification}
 Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request zum Keycloak-Server zu schicken.
-Im Request wird nach einem Access-Token gefragton.
-Ein User  ist vorhanden wenn ein Accestoken im Response vorhanden ist.
+Im Request wird nach einem Access-Token gefragt.
+Ein User  ist vorhanden wenn ein Accesstoken im Response vorhanden ist.
 
 \begin{lstlisting}
 
@@ -1365,7 +1365,7 @@ und der Methode getMenuesForDate(date: String) übergeben. Anschließend wird de
 
 
 \subsubsection{getMenuesForDate}
-Die Methode beinhaltet den Filteralgorhytmus von Menüs für einen Tag. Es wird erstmals überprüft ob das jetzige Datum voor dem Datum des Menüs ist
+Die Methode beinhaltet den Filteralgorhytmus von Menüs für einen Tag. Es wird erstmals überprüft ob das jetzige Datum vor dem Datum des Menüs ist
 und ob die jetzige Zeit, falls man am selben Tag bestellt, vor neun Uhr ist. Sind die beiden Bedingungen erfüllt so wird es dem Mitarbeiter ermöglicht ein Menü auszuwählen.
 
 \begin{lstlisting}
@@ -1502,9 +1502,9 @@ Den kann man dann auch in der Verlaufsansicht sehen. Noch dazu wird die Methode 
 Der Response wird so benutzt, dass man als erstes mit dem GsonBuilder ein Gson-Objekt erstellt
  was das Umwandeln von JSON-Objekten zu Kotlin Objekten ermöglicht. 
 Dieses Objekt wird verwendet um ein JSON-Objekt in ein Kotlin-Objekt umzuwandeln. 
-Damit man Gson verwendetn kann, benötigt man die Abhängigkeit com.google.code.gson:gson:2.8.9.
+Damit man Gson verwenden kann, benötigt man die Abhängigkeit com.google.code.gson:gson:2.8.9.
 Mit dem collectionType wird definiert in was für ein Typ das JSON-Objekt umgewandelt werden soll.
-Abschliesend wird vom Responsebody eine Collection von allen mitgegebenen Bestellungen erstellt und gespeichert.
+Abschließend wird vom Responsebody eine Collection von allen mitgegebenen Bestellungen erstellt und gespeichert.
 
 
 \pagebreak
@@ -1530,7 +1530,7 @@ Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Me
 Ist der Löschvorgang erfolgreich, wird eine animierte Löschfunktion dem User gezeigt. Dazu wird \textit{AnimatedVisibility} benutzt.
 
 \subsection{Animation}
-Jetpack Compose bietet programmieren viele Möglochkeiten der App ein benutzerfreundliches Erscheinungsbild zu verleihen.
+Jetpack Compose bietet programmieren viele Möglichkeiten der App ein benutzerfreundliches Erscheinungsbild zu verleihen.
 Am besten wirken Animationen auf einen Benutzer. 
 
 Wird der Inhalt geändert, benutzt man AnimationVisibility oder AnimatedContent.
@@ -1541,7 +1541,7 @@ Wird der Inhalt geändert, benutzt man AnimationVisibility oder AnimatedContent.
     \caption{Bestellansicht Android}
     \label{fig:impl:BestellübersichtAndroid}
 \end{figure}
-Dabei wird erstmals geschaut ob das zu löschende Item noch enthalten ist.
+Dabei wird erstmals geschaut, ob das zu löschende Item noch enthalten ist.
  Wichtig ist es eine \textit{mutableStateListOf<>} zu verwenden um bei jeder Änderung die Liste aktualisieren zu können.
 
 
