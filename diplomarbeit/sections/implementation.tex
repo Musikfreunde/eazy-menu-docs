@@ -1092,7 +1092,7 @@ In der Datei werden jene Komponenten angegeben, welche alle Dienste und Aktivit�
 Zu jeder Komponente gibt es Eigenschaften, wie zum Beispiel die Attribute eine Klasse oder den Klassennamen,
  die man von der jeweiligen Kotlin Klasse bekommt.
 
- Komponenten von AndroidManifest:
+ Komponenten von AndroidManifest.xml:
 
  \begin{itemize}
      \item <activity>
@@ -1152,7 +1152,7 @@ Gradle-Properties bieten eine simple Alternative um Builds zu adaptieren,
     \item Umgebungsvariablen
     
 \end{itemize}
-
+\pagebreak
 
 \subsection{Aufbau}
 
@@ -1213,6 +1213,39 @@ Sie zeigt auch noch die Bottom Navigation Bar, welche zur Navigierung zwischen �
     \caption{Loginscreen Android}
     \label{fig:impl:LoginScreenAnndroid}
 \end{figure}
+
+Für die Login und somit Anfangsansicht, wurde ein simples Design ausgewählt. Wie in der Abbildung zu sehen ist, wird das Logo von
+EazyMenue gezeigt. Das Bild wurde mittels generierter Kotlin Klasse \textit{R} in der Ansicht angezeigt.
+\begin{lstlisting}
+    Row(){
+                Image(
+                    painterResource(R.drawable.logo_eazy_menue),
+                    contentDescription = "",
+                    contentScale = ContentScale.Inside,
+                    modifier = Modifier.padding(end = 10.dp)
+                )
+            }
+\end{lstlisting}
+
+\subsubsection{Painter Resource}
+\cite{Painter-Resource}
+Dabei wird über die \textit{painterResource}-Methode das jeweilige Bild ausgesucht mittels der Id von dem Bild.
+Die Ressourcen mit der angegebenen Id dürfen entweder PNG-, JPG-Dateien oder VectorDrawable-XML-Assets sein. 
+
+Neben Bildern hat man noch die Möglichkeit auch auf andere Resourcen zuzugreifen wie zum Beispiel:
+\begin{itemize}
+    \item Strings
+    \item Icons
+    \item Dimensionen
+    \item Farben
+    \item animierte Bilder und Icons
+\end{itemize}
+
+Unter dem Logo sind zwei Inputfelder zu sehen, welche für den Benutzernamen und Password zuständig sind.
+Damit man sich einloggen kann, wird der Knopf \textit{Sign in} bereitgestellt. Nach dem klicken auf den Button folgt
+die Authentifizierung.  
+
+
 
 \subsection{Authentification}
 Die Authentifizierung erfolgt mit der Methode checkAccessToken, welche nichts anderes macht wie einen Request zum Keycloak-Server zu schicken.
@@ -1491,9 +1524,26 @@ Durch das Draufklicken auf die Mülltonne, wird die Bestellung storniert.
     \label{fig:impl:VerlaufAndroid}
 \end{figure}
 
-
 Es wird ein PUT auf die URL http://10.0.2.2:8080/menue/bestellung?id=\$menuId was im backend das Löschen zur jeweiligen Menü Id ausübt.
 Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Methode zum neu Laden des Verlaufes aufgerufen.
+
+Ist der Löschvorgang erfolgreich, wird eine animierte Löschfunktion dem User gezeigt. Dazu wird \textit{AnimatedVisibility} benutzt.
+
+\subsection{Animation}
+Jetpack Compose bietet programmieren viele Möglochkeiten der App ein benutzerfreundliches Erscheinungsbild zu verleihen.
+Am besten wirken Animationen auf einen Benutzer. 
+
+Wird der Inhalt geändert, benutzt man AnimationVisibility oder AnimatedContent.
+\begin{figure}[htp]
+    \centering
+    \author{Bozidar Spasenovic}
+    \includegraphics[scale=1]{pics/AnimationVisibility.PNG}
+    \caption{Bestellansicht Android}
+    \label{fig:impl:BestellübersichtAndroid}
+\end{figure}
+Dabei wird erstmals geschaut ob das zu löschende Item noch enthalten ist.
+ Wichtig ist es eine \textit{mutableStateListOf<>} zu verwenden um bei jeder Änderung die Liste aktualisieren zu können.
+
 
 \begin{lstlisting}
     client.newCall(request).enqueue(object : Callback {
@@ -1512,9 +1562,6 @@ Falls ein erfolgreicher Response zurückkommt, so wird die InitBestellungen()-Me
         }
     })
 \end{lstlisting}
-
-
-\pagebreak
 
 
 \section{Bestellansicht}
